@@ -1,0 +1,9 @@
+date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
+20230424,IoT,Un,UnIoT,28.0,0,0.0,0,0,0.0
+20230505,IoT,Un,UnIoT,46.0,0,0.0,0,0,0.0
+20230508,IoT,Un,UnIoT,33.0,0,0.0,0,0,0.0
+20230515,IoT,Un,UnIoT,35.0,0,0.0,0,0,0.0
+20230522,IoT,Un,UnIoT,23.0,0,0.0,0,0,0.0
+20230529,IoT,Un,UnIoT,24.0,0,0.0,0,0,0.0
+20230602,IoT,Un,UnIoT,52.0,0,0.0,0,0,0.0
+20230609,IoT,Un,UnIoT,31.0,0,0.0,0,0,0.0

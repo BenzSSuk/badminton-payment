@@ -1,0 +1,9 @@
+date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
+20230424,QA,Frame,FrameQA,28.0,0,0.0,0,0,0.0
+20230505,QA,Frame,FrameQA,46.0,0,0.0,0,0,0.0
+20230508,QA,Frame,FrameQA,33.0,0,0.0,0,0,0.0
+20230515,QA,Frame,FrameQA,35.0,0,0.0,0,0,0.0
+20230522,QA,Frame,FrameQA,23.0,0,0.0,0,0,0.0
+20230529,QA,Frame,FrameQA,24.0,0,0.0,0,0,0.0
+20230602,QA,Frame,FrameQA,52.0,0,0.0,0,0,0.0
+20230609,QA,Frame,FrameQA,31.0,0,0.0,0,0,0.0

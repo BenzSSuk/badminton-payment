@@ -1,0 +1,9 @@
+date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
+20230424,SA,Film,FilmSA,28.0,1,0.0,28,28,0.0
+20230505,SA,Film,FilmSA,46.0,0,0.0,0,0,0.0
+20230508,SA,Film,FilmSA,33.0,1,0.0,33,33,0.0
+20230515,SA,Film,FilmSA,35.0,1,0.0,35,35,0.0
+20230522,SA,Film,FilmSA,23.0,1,0.0,23,23,0.0
+20230529,SA,Film,FilmSA,24.0,1,0.0,24,0,-24.0
+20230602,SA,Film,FilmSA,52.0,0,-24.0,0,24,0.0
+20230609,SA,Film,FilmSA,31.0,0,0.0,0,0,0.0

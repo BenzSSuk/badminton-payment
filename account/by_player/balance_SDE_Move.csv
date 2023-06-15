@@ -1,0 +1,9 @@
+date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
+20230424,SDE,Move,MoveSDE,28.0,0,0.0,0,0,0.0
+20230505,SDE,Move,MoveSDE,46.0,0,0.0,0,0,0.0
+20230508,SDE,Move,MoveSDE,33.0,0,0.0,0,0,0.0
+20230515,SDE,Move,MoveSDE,35.0,0,0.0,0,0,0.0
+20230522,SDE,Move,MoveSDE,23.0,0,0.0,0,0,0.0
+20230529,SDE,Move,MoveSDE,24.0,0,0.0,0,0,0.0
+20230602,SDE,Move,MoveSDE,52.0,0,0.0,0,0,0.0
+20230609,SDE,Move,MoveSDE,31.0,0,0.0,0,0,0.0

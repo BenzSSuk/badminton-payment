@@ -1,0 +1,9 @@
+date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
+20230424,Partner,Pan,PanPartner,28.0,0,0.0,0,0,0.0
+20230505,Partner,Pan,PanPartner,46.0,0,0.0,0,0,0.0
+20230508,Partner,Pan,PanPartner,33.0,0,0.0,0,0,0.0
+20230515,Partner,Pan,PanPartner,35.0,0,0.0,0,0,0.0
+20230522,Partner,Pan,PanPartner,23.0,0,0.0,0,0,0.0
+20230529,Partner,Pan,PanPartner,24.0,0,0.0,0,0,0.0
+20230602,Partner,Pan,PanPartner,52.0,0,0.0,0,0,0.0
+20230609,Partner,Pan,PanPartner,31.0,0,0.0,0,0,0.0

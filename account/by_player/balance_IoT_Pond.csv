@@ -1,0 +1,9 @@
+date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
+20230424,IoT,Pond,PondIoT,28.0,0,0.0,0,0,0.0
+20230505,IoT,Pond,PondIoT,46.0,0,0.0,0,0,0.0
+20230508,IoT,Pond,PondIoT,33.0,1,0.0,33,33,0.0
+20230515,IoT,Pond,PondIoT,35.0,0,0.0,0,0,0.0
+20230522,IoT,Pond,PondIoT,23.0,1,0.0,23,23,0.0
+20230529,IoT,Pond,PondIoT,24.0,1,0.0,24,0,-24.0
+20230602,IoT,Pond,PondIoT,52.0,0,-24.0,0,24,0.0
+20230609,IoT,Pond,PondIoT,31.0,1,0.0,31,0,-31.0

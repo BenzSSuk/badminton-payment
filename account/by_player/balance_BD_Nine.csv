@@ -1,0 +1,9 @@
+date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
+20230424,BD,Nine,NineBD,28.0,0,0.0,0,0,0.0
+20230505,BD,Nine,NineBD,46.0,0,0.0,0,0,0.0
+20230508,BD,Nine,NineBD,33.0,1,0.0,33,33,0.0
+20230515,BD,Nine,NineBD,35.0,1,0.0,35,35,0.0
+20230522,BD,Nine,NineBD,23.0,0,0.0,0,0,0.0
+20230529,BD,Nine,NineBD,24.0,0,0.0,0,0,0.0
+20230602,BD,Nine,NineBD,52.0,0,0.0,0,0,0.0
+20230609,BD,Nine,NineBD,31.0,0,0.0,0,0,0.0

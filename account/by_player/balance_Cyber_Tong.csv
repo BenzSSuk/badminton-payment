@@ -1,0 +1,9 @@
+date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
+20230424,Cyber,Tong,TongCyber,28.0,0,0.0,0,0,0.0
+20230505,Cyber,Tong,TongCyber,46.0,0,0.0,0,0,0.0
+20230508,Cyber,Tong,TongCyber,33.0,0,0.0,0,0,0.0
+20230515,Cyber,Tong,TongCyber,35.0,1,0.0,35,0,-35.0
+20230522,Cyber,Tong,TongCyber,23.0,0,-35.0,0,35,0.0
+20230529,Cyber,Tong,TongCyber,24.0,0,0.0,0,0,0.0
+20230602,Cyber,Tong,TongCyber,52.0,0,0.0,0,0,0.0
+20230609,Cyber,Tong,TongCyber,31.0,0,0.0,0,0,0.0

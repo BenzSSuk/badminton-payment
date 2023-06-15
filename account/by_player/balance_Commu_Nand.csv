@@ -1,0 +1,9 @@
+date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
+20230424,Commu,Nand,NandCommu,28.0,0,0.0,0,0,0.0
+20230505,Commu,Nand,NandCommu,46.0,0,0.0,0,0,0.0
+20230508,Commu,Nand,NandCommu,33.0,1,0.0,33,33,0.0
+20230515,Commu,Nand,NandCommu,35.0,0,0.0,0,0,0.0
+20230522,Commu,Nand,NandCommu,23.0,0,0.0,0,0,0.0
+20230529,Commu,Nand,NandCommu,24.0,1,0.0,24,0,-24.0
+20230602,Commu,Nand,NandCommu,52.0,0,-24.0,0,24,0.0
+20230609,Commu,Nand,NandCommu,31.0,0,0.0,0,0,0.0

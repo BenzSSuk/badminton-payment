@@ -1,0 +1,9 @@
+date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
+20230424,Dev,Tui,TuiDev,28.0,0,0.0,0,0,0.0
+20230505,Dev,Tui,TuiDev,46.0,0,0.0,0,0,0.0
+20230508,Dev,Tui,TuiDev,33.0,0,0.0,0,0,0.0
+20230515,Dev,Tui,TuiDev,35.0,0,0.0,0,0,0.0
+20230522,Dev,Tui,TuiDev,23.0,0,0.0,0,0,0.0
+20230529,Dev,Tui,TuiDev,24.0,0,0.0,0,0,0.0
+20230602,Dev,Tui,TuiDev,52.0,0,0.0,0,0,0.0
+20230609,Dev,Tui,TuiDev,31.0,0,0.0,0,0,0.0
