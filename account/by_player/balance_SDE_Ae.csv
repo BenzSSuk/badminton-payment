@@ -7,3 +7,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20230529,SDE,Ae,AeSDE,24.0,0,91.0,0,0,91.0
 20230602,SDE,Ae,AeSDE,52.0,0,91.0,0,0,91.0
 20230609,SDE,Ae,AeSDE,31.0,1,91.0,31,0,60.0
+20230612,SDE,Ae,AeSDE,39.0,1,60.0,39,0,21.0
