@@ -8,3 +8,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20230602,Dev,Nick,NickDev,52.0,1,0.0,52,0,-52.0
 20230609,Dev,Nick,NickDev,31.0,1,-52.0,31,0,-83.0
 20230612,Dev,Nick,NickDev,39.0,1,-83.0,39,83,-39.0
+20230619,Dev,Nick,NickDev,39.0,1,-39.0,39,39,-39.0
+20230626,Dev,Nick,NickDev,34.0,0,-39.0,0,39,0.0

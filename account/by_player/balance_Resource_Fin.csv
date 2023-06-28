@@ -8,3 +8,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20230602,Resource,Fin,FinResource,52.0,0,0.0,0,0,0.0
 20230609,Resource,Fin,FinResource,31.0,0,0.0,0,0,0.0
 20230612,Resource,Fin,FinResource,39.0,1,0.0,39,0,-39.0
+20230619,Resource,Fin,FinResource,39.0,1,-39.0,39,39,-39.0
+20230626,Resource,Fin,FinResource,34.0,1,-39.0,34,39,-34.0

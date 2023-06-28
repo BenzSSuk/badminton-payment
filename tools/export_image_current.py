@@ -32,7 +32,7 @@ list_dir, list_folder, list_file = wedolib.findFile(folder_player_checked, '2023
 filename_lasted = list_file[-1]
 lasted_date = filename_lasted.split("_")[0]
 
-path_file = os.path.join(FOLDER_PROJECT, 'player', 'checked', 'current_listplayer.xlsx')
+path_file = os.path.join(FOLDER_PROJECT, 'player', 'checked', filename_lasted)
 dfPlayerCurrent = pd.read_excel(path_file)
 
 # ---------- Shuttle ----------

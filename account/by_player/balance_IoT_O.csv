@@ -8,3 +8,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20230602,IoT,O,OIoT,52.0,1,39.0,52,300,287.0
 20230609,IoT,O,OIoT,31.0,1,287.0,31,0,256.0
 20230612,IoT,O,OIoT,39.0,1,256.0,39,0,217.0
+20230619,IoT,O,OIoT,39.0,1,217.0,39,0,178.0
+20230626,IoT,O,OIoT,34.0,1,178.0,34,0,144.0

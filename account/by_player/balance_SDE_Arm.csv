@@ -8,3 +8,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20230602,SDE,Arm,ArmSDE,52.0,0,-24.0,0,100,76.0
 20230609,SDE,Arm,ArmSDE,31.0,1,76.0,31,0,45.0
 20230612,SDE,Arm,ArmSDE,39.0,1,45.0,39,0,6.0
+20230619,SDE,Arm,ArmSDE,39.0,1,6.0,39,0,-33.0
+20230626,SDE,Arm,ArmSDE,34.0,0,-33.0,0,33,0.0
