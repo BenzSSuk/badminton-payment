@@ -33,7 +33,7 @@ Head,Max,MaxHead,448
 Head,Pong,PongHead,0
 Resource,Fin,FinResource,0
 Resource,Maprang,MaprangResource,0
-Resource,Talay,TalayResource,0
+OM,Talay,TalayOM,0
 NLP,Jame,JameNLP,0
 NLP,Fresh,FreshNLP,0
 NLP,Fah,FahNLP,0

@@ -1,0 +1,8 @@
+date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
+20230724,OM,Aom,AomOM,37.0,1,0.0,37,0,-37.0
+20230727,OM,Aom,AomOM,54.0,0,-37.0,0,37,0.0
+20230728,OM,Aom,AomOM,25.0,0,0.0,0,0,0.0
+20230731,OM,Aom,AomOM,39.0,0,0.0,0,0,0.0
+20230804,OM,Aom,AomOM,32.0,0,0.0,0,0,0.0
+20230807,OM,Aom,AomOM,35.0,0,0.0,0,0,0.0
+20230821,OM,Aom,AomOM,35.0,0,0.0,0,0,0.0

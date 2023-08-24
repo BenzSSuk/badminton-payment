@@ -33,7 +33,7 @@ Head,Max,MaxHead,350.0
 Head,Pong,PongHead,393.0
 Resource,Fin,FinResource,-39.0
 Resource,Maprang,MaprangResource,0.0
-Resource,Talay,TalayResource,0.0
+OM,Talay,TalayOM,0.0
 NLP,Jame,JameNLP,0.0
 NLP,Fresh,FreshNLP,0.0
 NLP,Fah,FahNLP,0.0
@@ -52,4 +52,5 @@ BD,Nut,NutBD,0.0
 BD,Jame,JameBD,0.0
 BD,Chamil,ChamilBD,0.0
 Commu,Nand,NandCommu,0.0
+test,xxx,xxxtest,0.0
 Design,Muay,MuayDesign,-39.0

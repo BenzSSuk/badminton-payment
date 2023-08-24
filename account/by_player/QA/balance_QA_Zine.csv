@@ -1,0 +1,9 @@
+date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
+20230717,QA,Zine,ZineQA,42.0,1,0.0,42,0,-42.0
+20230724,QA,Zine,ZineQA,37.0,1,-42.0,37,0,-79.0
+20230727,QA,Zine,ZineQA,54.0,0,-79.0,0,79,0.0
+20230728,QA,Zine,ZineQA,25.0,0,0.0,0,0,0.0
+20230731,QA,Zine,ZineQA,39.0,0,0.0,0,0,0.0
+20230804,QA,Zine,ZineQA,32.0,0,0.0,0,0,0.0
+20230807,QA,Zine,ZineQA,35.0,1,0.0,35,0,-35.0
+20230821,QA,Zine,ZineQA,35.0,1,-35.0,35,0,-70.0

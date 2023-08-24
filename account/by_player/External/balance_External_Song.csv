@@ -1,0 +1,8 @@
+date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
+20230724,External,Song,SongExternal,37.0,2,0.0,74,0,-74.0
+20230727,External,Song,SongExternal,54.0,0,-74.0,0,74,0.0
+20230728,External,Song,SongExternal,25.0,0,0.0,0,0,0.0
+20230731,External,Song,SongExternal,39.0,2,0.0,78,0,-78.0
+20230804,External,Song,SongExternal,32.0,0,-78.0,0,78,0.0
+20230807,External,Song,SongExternal,35.0,2,0.0,70,0,-70.0
+20230821,External,Song,SongExternal,35.0,2,-70.0,70,0,-140.0

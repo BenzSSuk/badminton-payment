@@ -21,42 +21,57 @@ FOLDER_PROJECT = checkSysPathAndAppend(folderFile, 0)
 
 import lib.DataProcessing as wedolib
 
-UPDATE_FROM_CURRENT = True
-FORCE_WRITE_PLAYER_HISTORY = False
-MOVE_CHECKED = True
-FOLDER_BADMINTON_ONEDRIVE = os.path.join(r'C:\Users\Panna\OneDrive\Projects\badminton-payment')
-
-# load balance
-if UPDATE_FROM_CURRENT:
-    path_read = os.path.join(FOLDER_PROJECT, 'account', 'wedo_badminton_balance.csv')
-
-else:  
-    path_read = os.path.join(FOLDER_PROJECT, 'account', 'initial', 'account_balance_init.csv')
- 
-dfBalance = pd.read_csv(path_read)
-list_playercode_balance = list(dfBalance['player_code'].unique())
-dfBalancePlayer = dfBalance.copy()
-dfBalancePlayer['player_index'] = dfBalancePlayer['player_code']
-dfBalancePlayer.set_index('player_index', inplace=True)
+# update: update from current 
+# rewrite: re write histroty from the first file 
+MODE = "rewrite" #
+# FOLDER_BADMINTON_ONEDRIVE = os.path.join(r'C:\Users\Panna\OneDrive\Projects\badminton-payment')
 
 # load daily player checklist
-folder_player_checker = os.path.join(FOLDER_PROJECT, 'player')
-list_dir, list_folder, list_file = wedolib.findFile(folder_player_checker, '*.xlsx')
+if MODE == "update":
+    folder_player_checker = os.path.join(FOLDER_PROJECT, 'player')
 
-if len(list_file) > 0:
+elif MODE == "rewrite":
+    folder_player_checker = os.path.join(FOLDER_PROJECT, 'player', 'checked')
+    folder_account_date = os.path.join(FOLDER_PROJECT, 'account', 'by_date')
+    list_dir, list_folder, list_file = wedolib.findFile(folder_account_date, '*.csv', 0)
+    for path_delete in list_dir:
+        os.remove(path_delete)
+
+    folder_account_player = os.path.join(FOLDER_PROJECT, 'account', 'by_player')
+    list_dir, list_folder, list_file = wedolib.findFile(folder_account_player, '*.csv', -1)
+    for path_delete in list_dir:
+        os.remove(path_delete)
+        
+list_dir, list_folder, list_file = wedolib.findFile(folder_player_checker, '*.xlsx')
+list_dir.sort()
+list_folder.sort()
+list_file.sort()
+n_file = len(list_file)
+if n_file > 0:
     # sort by date
-    for ifile in range(len(list_file)):
+    for ifile in range(n_file):
         filename_listplayer = list_file[ifile]
         date_log = filename_listplayer.split('_')[0]
 
+        # load balance
+        if MODE == "update" or (MODE == "rewrite" and ifile > 0):
+            path_lasted_balance = os.path.join(FOLDER_PROJECT, 'account', 'wedo_badminton_balance.csv')
+
+        elif MODE == "rewrite":  
+            path_lasted_balance = os.path.join(FOLDER_PROJECT, 'account', 'initial', 'account_balance_init.csv')
+
+        dfBalance = pd.read_csv(path_lasted_balance)
+        list_playercode_balance = list(dfBalance['player_code'].unique())
+        dfBalancePlayer = dfBalance.copy()
+        dfBalancePlayer['player_index'] = dfBalancePlayer['player_code']
+        dfBalancePlayer.set_index('player_index', inplace=True)
+
+        # player come
         folder_file = list_folder[ifile]
         path_file_listplayer = list_dir[ifile]
         dfPlayerCome = pd.read_excel(path_file_listplayer)
         list_playercode_come = list(dfPlayerCome['player_code'].unique())
-        # dfPlayerCome2 = dfPlayerCome.set_index('player_code')
-
         n_player = dfPlayerCome.shape[0]
-        
         price_per_player = dfPlayerCome.iloc[0]['price_per_player']
 
         dictNewPlayer = {
@@ -73,7 +88,12 @@ if len(list_file) > 0:
             player_bill = dfPlayerCome.iloc[iplayer]['bill']
             player_pay = dfPlayerCome.iloc[iplayer]['payment']
 
-            print(f'{date_log} {player_code}')
+            # hot fix
+            # if player_code == 'TalayResource':
+            #     player_code = 'TalayOM'
+            #     player_team = 'OM'
+
+            print(f'day {ifile+1}/{n_file}  player {iplayer+1}/{n_player} {date_log} {player_code}')
 
             if player_code in list_playercode_balance:
                 # update balanceb
@@ -93,8 +113,11 @@ if len(list_file) > 0:
 
             # update player history
             filename_player_balance = f'balance_{player_team}_{player_name}.csv'
-            PATH_ACCOUNT_PLAYER = os.path.join(FOLDER_PROJECT, 'account', 'by_player', filename_player_balance)
-            PATH_ACCOUNT_PLAYER_ONEDRIVE = os.path.join(FOLDER_BADMINTON_ONEDRIVE, 'account', 'by_player', filename_player_balance)
+            FOLDER_ACCOUNT_PLAYER = os.path.join(FOLDER_PROJECT, 'account', 'by_player', player_team)
+            if not os.path.exists(FOLDER_ACCOUNT_PLAYER):
+                os.makedirs(FOLDER_ACCOUNT_PLAYER)
+            PATH_ACCOUNT_PLAYER = os.path.join(FOLDER_ACCOUNT_PLAYER, filename_player_balance)
+            # PATH_ACCOUNT_PLAYER_ONEDRIVE = os.path.join(FOLDER_BADMINTON_ONEDRIVE, 'account', 'by_player', filename_player_balance)
             dictHist = {
                 "date": date_log,
                 "team": player_team,
@@ -111,49 +134,46 @@ if len(list_file) > 0:
             if os.path.exists(PATH_ACCOUNT_PLAYER):
                 # load and append
                 dfBalancePlayerHist = pd.read_csv(PATH_ACCOUNT_PLAYER, index_col=False)
-                dfBalancePlayerHist = dfBalancePlayerHist.append(dfBalancePlayerHistNew)
+                # dfBalancePlayerHist = dfBalancePlayerHist.append(dfBalancePlayerHistNew)
+                dfBalancePlayerHist = pd.concat([dfBalancePlayerHist, dfBalancePlayerHistNew], ignore_index=True)
                 dfBalancePlayerHist.to_csv(PATH_ACCOUNT_PLAYER, index=False)
-                dfBalancePlayerHist.to_csv(PATH_ACCOUNT_PLAYER_ONEDRIVE, index=False)
 
             else:
                 # create new 
                 dfBalancePlayerHistNew.to_csv(PATH_ACCOUNT_PLAYER, index=False)
-                dfBalancePlayerHistNew.to_csv(PATH_ACCOUNT_PLAYER_ONEDRIVE, index=False)
-                # dfBalancePlayerHist.to_csv(PATH_ACCOUNT_PLAYER, )
-                # dfBalancePlayerHist.columns = dfBalancePlayerHist.iloc[0]
+    
 
         # add new player
         dfNewPlayer = pd.DataFrame(dictNewPlayer)
-        dfBalancePlayerWrite = dfBalancePlayer.append(dfNewPlayer, ignore_index=True)
+        # dfBalancePlayerWrite = dfBalancePlayer.append(dfNewPlayer, ignore_index=True)
+        dfBalancePlayerWrite = pd.concat([dfBalancePlayer, dfNewPlayer], ignore_index=True)
 
         # write balance date
         filename_balance = f'{date_log}_wedo_badminton_balance.csv'
-        PATH_ACCOUNT_DATE = os.path.join(FOLDER_PROJECT, 'account', 'by_date', filename_balance)
+        FOLDER_DATE = os.path.join(FOLDER_PROJECT, 'account', 'by_date')
+        if not os.path.exists(FOLDER_DATE):
+            os.makedirs(FOLDER_DATE)
+        PATH_ACCOUNT_DATE = os.path.join(FOLDER_DATE, filename_balance)
         dfBalancePlayerWrite.to_csv(PATH_ACCOUNT_DATE, index=False)
         # write to onedrive
-        PATH_ACCOUNT_DATE_ONEDRIVE = os.path.join(FOLDER_BADMINTON_ONEDRIVE, 'account', 'by_date', filename_balance)
-        dfBalancePlayerWrite.to_csv(PATH_ACCOUNT_DATE_ONEDRIVE, index=False)
+        # PATH_ACCOUNT_DATE_ONEDRIVE = os.path.join(FOLDER_BADMINTON_ONEDRIVE, 'account', 'by_date', filename_balance)
+        # dfBalancePlayerWrite.to_csv(PATH_ACCOUNT_DATE_ONEDRIVE, index=False)
 
         # move listplayer to checked
-        path_listplayer_new = os.path.join(FOLDER_PROJECT, folder_file, 'checked', filename_listplayer)
-        if MOVE_CHECKED:
+        if MODE == 'update':
+            path_listplayer_new = os.path.join(FOLDER_PROJECT, folder_file, 'checked', filename_listplayer)
             os.rename(path_file_listplayer, path_listplayer_new)
 
-    # write balance current
-    filename = 'wedo_badminton_balance.csv'
-    path_write = os.path.join(FOLDER_PROJECT, 'account', filename)
-    dfBalancePlayerWrite.to_csv(path_write, index=False)
+        # write balance current
+        filename = 'wedo_badminton_balance.csv'
+        path_write = os.path.join(FOLDER_PROJECT, 'account', filename)
+        dfBalancePlayerWrite.to_csv(path_write, index=False)
+
+        print("Generating image....")
+        path_script = os.path.join(FOLDER_PROJECT, 'tools', 'export_image_current.py')
+        os.system(f"python {path_script}")
 
 else:
     print("file is checklist player is empty !")
-
-# filename = 'wedo_badminton_balance_sorted.csv'
-# path_write = os.path.join(FOLDER_PROJECT, 'account', filename)
-# dfBalancePlayerWrite.sort('balance', reversed=True)
-# dfBalancePlayerWrite.to_csv(path_write)
-
-print("Generating image....")
-path_script = os.path.join(FOLDER_PROJECT, 'tools', 'export_image_current.py')
-os.system(f"python {path_script}")
 
 print("#----- Finished Main-----#")

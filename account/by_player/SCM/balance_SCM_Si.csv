@@ -1,0 +1,8 @@
+date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
+20230724,SCM,Si,SiSCM,37.0,1,0.0,37,0,-37.0
+20230727,SCM,Si,SiSCM,54.0,0,-37.0,0,37,0.0
+20230728,SCM,Si,SiSCM,25.0,0,0.0,0,0,0.0
+20230731,SCM,Si,SiSCM,39.0,0,0.0,0,0,0.0
+20230804,SCM,Si,SiSCM,32.0,0,0.0,0,0,0.0
+20230807,SCM,Si,SiSCM,35.0,1,0.0,35,0,-35.0
+20230821,SCM,Si,SiSCM,35.0,0,-35.0,0,0,-35.0
