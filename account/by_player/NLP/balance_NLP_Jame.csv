@@ -20,3 +20,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20230804,NLP,Jame,JameNLP,32.0,1,0.0,32,0,-32.0
 20230807,NLP,Jame,JameNLP,35.0,1,-32.0,35,0,-67.0
 20230821,NLP,Jame,JameNLP,33.0,0,-67.0,0,0,-67.0
+20230825,NLP,Jame,JameNLP,36.0,0,-67.0,0,0,-67.0
+20230828,NLP,Jame,JameNLP,50.0,1,-67.0,50,0,-117.0
+20230905,NLP,Jame,JameNLP,40.0,0,-117.0,0,0,-117.0

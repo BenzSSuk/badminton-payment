@@ -20,3 +20,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20230804,BD,Chamil,ChamilBD,32.0,0,0.0,0,0,0.0
 20230807,BD,Chamil,ChamilBD,35.0,1,0.0,35,0,-35.0
 20230821,BD,Chamil,ChamilBD,33.0,0,-35.0,0,0,-35.0
+20230825,BD,Chamil,ChamilBD,36.0,0,-35.0,0,0,-35.0
+20230828,BD,Chamil,ChamilBD,50.0,0,-35.0,0,0,-35.0
+20230905,BD,Chamil,ChamilBD,40.0,0,-35.0,0,0,-35.0

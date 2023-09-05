@@ -20,3 +20,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20230804,SRE,Aui,AuiSRE,32.0,0,-106.0,0,0,-106.0
 20230807,SRE,Aui,AuiSRE,35.0,0,-106.0,0,0,-106.0
 20230821,SRE,Aui,AuiSRE,33.0,1,-106.0,33,0,-139.0
+20230825,SRE,Aui,AuiSRE,36.0,0,-139.0,0,0,-139.0
+20230828,SRE,Aui,AuiSRE,50.0,0,-139.0,0,0,-139.0
+20230905,SRE,Aui,AuiSRE,40.0,0,-139.0,0,0,-139.0

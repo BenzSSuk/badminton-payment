@@ -20,3 +20,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20230804,BA,Jinny,JinnyBA,32.0,0,0.0,0,0,0.0
 20230807,BA,Jinny,JinnyBA,35.0,1,0.0,35,0,-35.0
 20230821,BA,Jinny,JinnyBA,33.0,0,-35.0,0,0,-35.0
+20230825,BA,Jinny,JinnyBA,36.0,0,-35.0,0,35,0.0
+20230828,BA,Jinny,JinnyBA,50.0,0,0.0,0,0,0.0
+20230905,BA,Jinny,JinnyBA,40.0,0,0.0,0,0,0.0

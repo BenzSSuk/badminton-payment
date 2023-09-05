@@ -1,3 +1,6 @@
 date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
 20230807,SDE,Fern,FernSDE,35.0,1,0.0,35,0,-35.0
 20230821,SDE,Fern,FernSDE,33.0,0,-35.0,0,0,-35.0
+20230825,SDE,Fern,FernSDE,36.0,0,-35.0,0,35,0.0
+20230828,SDE,Fern,FernSDE,50.0,0,0.0,0,0,0.0
+20230905,SDE,Fern,FernSDE,40.0,1,0.0,40,0,-40.0

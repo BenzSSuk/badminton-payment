@@ -20,3 +20,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20230804,Resource,Maprang,MaprangResource,32.0,0,0.0,0,0,0.0
 20230807,Resource,Maprang,MaprangResource,35.0,0,0.0,0,0,0.0
 20230821,Resource,Maprang,MaprangResource,33.0,1,0.0,33,0,-33.0
+20230825,Resource,Maprang,MaprangResource,36.0,0,-33.0,0,0,-33.0
+20230828,Resource,Maprang,MaprangResource,50.0,0,-33.0,0,0,-33.0
+20230905,Resource,Maprang,MaprangResource,40.0,0,-33.0,0,0,-33.0

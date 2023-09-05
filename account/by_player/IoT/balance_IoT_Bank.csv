@@ -20,3 +20,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20230804,IoT,Bank,BankIoT,32.0,0,171.0,0,0,171.0
 20230807,IoT,Bank,BankIoT,35.0,1,171.0,35,0,136.0
 20230821,IoT,Bank,BankIoT,33.0,0,136.0,0,0,136.0
+20230825,IoT,Bank,BankIoT,36.0,0,136.0,0,0,136.0
+20230828,IoT,Bank,BankIoT,50.0,0,136.0,0,0,136.0
+20230905,IoT,Bank,BankIoT,40.0,1,136.0,40,0,96.0

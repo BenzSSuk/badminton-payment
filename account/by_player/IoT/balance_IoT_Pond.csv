@@ -20,3 +20,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20230804,IoT,Pond,PondIoT,32.0,0,-19.0,0,200,181.0
 20230807,IoT,Pond,PondIoT,35.0,0,181.0,0,0,181.0
 20230821,IoT,Pond,PondIoT,33.0,0,181.0,0,0,181.0
+20230825,IoT,Pond,PondIoT,36.0,0,181.0,0,0,181.0
+20230828,IoT,Pond,PondIoT,50.0,0,181.0,0,0,181.0
+20230905,IoT,Pond,PondIoT,40.0,1,181.0,40,0,141.0

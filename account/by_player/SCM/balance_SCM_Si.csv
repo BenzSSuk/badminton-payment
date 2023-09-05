@@ -6,3 +6,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20230804,SCM,Si,SiSCM,32.0,0,0.0,0,0,0.0
 20230807,SCM,Si,SiSCM,35.0,1,0.0,35,0,-35.0
 20230821,SCM,Si,SiSCM,33.0,0,-35.0,0,0,-35.0
+20230825,SCM,Si,SiSCM,36.0,0,-35.0,0,35,0.0
+20230828,SCM,Si,SiSCM,50.0,0,0.0,0,0,0.0
+20230905,SCM,Si,SiSCM,40.0,0,0.0,0,0,0.0

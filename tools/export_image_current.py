@@ -166,4 +166,69 @@ for i in range(n_plot):
     # PATH_IMG_BALANCE = os.path.join(FOLDER_IMG_RECORD_DATE, filename)
     # fig.write_image(PATH_IMG_BALANCE)
 
+# negative player
+dfBalanceNeg = dfBalance.loc[dfBalance['balance'] < 0]
+dfBalanceNeg = dfBalanceNeg.sort_values(by='balance', ascending=True)
+
+n_player_per_page = 20
+n_row = dfBalanceNeg.shape[0]
+n_plot = int(np.ceil(n_row/n_player_per_page))
+count_page = 0
+for i in range(n_plot):
+    '''
+    1 0  -  19
+    2 20 -  39
+    
+    '''
+    count_page = count_page + 1
+    istr = i*n_player_per_page
+    iend = istr + n_player_per_page
+    if iend > n_row:
+        iend = n_row
+    dfBalancePage = dfBalanceNeg.iloc[istr:iend]
+    dict_header = {
+        'values': ['index', 'team', 'name', 'balance'],
+        'height': 30,
+        'fill_color': 'paleturquoise',
+        'align': 'left',
+        'font': {
+            'color': 'black',
+            'size': 15
+        }
+    }
+    dict_cell = {
+        'values': [dfBalancePage.index,
+                    dfBalancePage['team'].to_list(), 
+                    dfBalancePage['player_name'].to_list(),
+                    dfBalancePage['balance'].to_list()],
+        'height': 30,
+        'fill_color': 'red',
+        'align': 'left',
+        'font': {
+            'color': 'black',
+            'size': 15
+        }
+    }
+    fig = go.Figure(data=[go.Table(
+                            columnwidth = [40, 40, 40],
+                            header=dict_header,
+                            cells=dict_cell)],
+                    layout=go.Layout(title=dict(text=f'{lasted_date}_คนติดลบ_{count_page}',
+                                                font=dict(family="Arial",
+                                                        size=30,
+                                                        color='#000000'
+                                                        )
+                                                ),
+                                                width=500,
+                                                height=800
+                                    )
+                    )
+    filename = f'{lasted_date}_player_balanceNeg_{count_page}.png'
+
+    PATH_IMG_BALANCE = os.path.join(FOLDER_IMG_RECORD_DATE_LOCAL, filename)
+    fig.write_image(PATH_IMG_BALANCE)
+
+    # PATH_IMG_BALANCE = os.path.join(FOLDER_IMG_RECORD_DATE, filename)
+    # fig.write_image(PATH_IMG_BALANCE)
+
 print("# ----- Finished ----- #")

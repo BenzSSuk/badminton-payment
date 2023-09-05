@@ -1,3 +1,6 @@
 date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
 20230807,PM,TaPaew,TaPaewPM,35.0,1,0.0,35,0,-35.0
 20230821,PM,TaPaew,TaPaewPM,33.0,0,-35.0,0,0,-35.0
+20230825,PM,TaPaew,TaPaewPM,36.0,0,-35.0,0,0,-35.0
+20230828,PM,TaPaew,TaPaewPM,50.0,0,-35.0,0,0,-35.0
+20230905,PM,TaPaew,TaPaewPM,40.0,0,-35.0,0,0,-35.0

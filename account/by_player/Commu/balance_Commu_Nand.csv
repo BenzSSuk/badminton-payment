@@ -20,3 +20,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20230804,Commu,Nand,NandCommu,32.0,0,0.0,0,0,0.0
 20230807,Commu,Nand,NandCommu,35.0,0,0.0,0,0,0.0
 20230821,Commu,Nand,NandCommu,33.0,1,0.0,33,0,-33.0
+20230825,Commu,Nand,NandCommu,36.0,0,-33.0,0,35,2.0
+20230828,Commu,Nand,NandCommu,50.0,0,2.0,0,0,2.0
+20230905,Commu,Nand,NandCommu,40.0,0,2.0,0,0,2.0
