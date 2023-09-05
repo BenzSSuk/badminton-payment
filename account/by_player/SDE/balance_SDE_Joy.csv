@@ -1,4 +1,4 @@
 date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
 20230804,SDE,Joy,JoySDE,32.0,1,0.0,32,0,-32.0
 20230807,SDE,Joy,JoySDE,35.0,1,-32.0,35,0,-67.0
-20230821,SDE,Joy,JoySDE,35.0,0,-67.0,0,0,-67.0
+20230821,SDE,Joy,JoySDE,33.0,0,-67.0,0,0,-67.0
