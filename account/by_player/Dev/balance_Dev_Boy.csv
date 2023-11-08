@@ -1,0 +1,6 @@
+date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
+20230905,Dev,Boy,BoyDev,40.0,1,0.0,40,0.0,-40.0
+20230929,Dev,Boy,BoyDev,45.0,0,-40.0,0,0.0,-40.0
+20231009,Dev,Boy,BoyDev,37.0,1,-40.0,37,40.0,-37.0
+20231020,Dev,Boy,BoyDev,50.0,0,-37.0,0,37.0,0.0
+20231024,Dev,Boy,BoyDev,55.0,0,0.0,0,0.0,0.0
