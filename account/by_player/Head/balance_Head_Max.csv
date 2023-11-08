@@ -27,3 +27,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231009,Head,Max,MaxHead,37.0,1,206.0,37,0.0,169.0
 20231020,Head,Max,MaxHead,50.0,0,169.0,0,0.0,169.0
 20231024,Head,Max,MaxHead,55.0,0,169.0,0,0.0,169.0
+20231030,Head,Max,MaxHead,38.0,0,169.0,0,0.0,169.0
+20231106,Head,Max,MaxHead,44.0,0,169.0,0,0.0,169.0

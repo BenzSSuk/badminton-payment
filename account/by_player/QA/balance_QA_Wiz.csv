@@ -27,3 +27,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231009,QA,Wiz,WizQA,37.0,1,-45.0,37,0.0,-82.0
 20231020,QA,Wiz,WizQA,50.0,1,-82.0,50,82.0,-50.0
 20231024,QA,Wiz,WizQA,55.0,1,-50.0,55,0.0,-105.0
+20231030,QA,Wiz,WizQA,38.0,1,-105.0,38,200.0,57.0
+20231106,QA,Wiz,WizQA,44.0,1,57.0,44,0.0,13.0

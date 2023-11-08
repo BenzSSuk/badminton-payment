@@ -27,3 +27,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231009,SDE,Palm,PalmSDE,37.0,0,-30.0,0,200.0,170.0
 20231020,SDE,Palm,PalmSDE,50.0,0,170.0,0,0.0,170.0
 20231024,SDE,Palm,PalmSDE,55.0,0,170.0,0,0.0,170.0
+20231030,SDE,Palm,PalmSDE,38.0,0,170.0,0,0.0,170.0
+20231106,SDE,Palm,PalmSDE,44.0,0,170.0,0,0.0,170.0

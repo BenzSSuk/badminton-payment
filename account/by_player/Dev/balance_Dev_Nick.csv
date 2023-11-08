@@ -27,3 +27,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231009,Dev,Nick,NickDev,37.0,1,-75.0,37,500.0,388.0
 20231020,Dev,Nick,NickDev,50.0,0,388.0,0,0.0,388.0
 20231024,Dev,Nick,NickDev,55.0,0,388.0,0,0.0,388.0
+20231030,Dev,Nick,NickDev,38.0,0,388.0,0,0.0,388.0
+20231106,Dev,Nick,NickDev,44.0,0,388.0,0,0.0,388.0

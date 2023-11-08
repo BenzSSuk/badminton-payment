@@ -27,3 +27,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231009,Dev,Arram,ArramDev,37.0,0,36.0,0,0.0,36.0
 20231020,Dev,Arram,ArramDev,50.0,0,36.0,0,0.0,36.0
 20231024,Dev,Arram,ArramDev,55.0,0,36.0,0,0.0,36.0
+20231030,Dev,Arram,ArramDev,38.0,1,36.0,38,0.0,-2.0
+20231106,Dev,Arram,ArramDev,44.0,0,-2.0,0,0.0,-2.0
