@@ -1,2 +1,4 @@
 date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
-20231106,Dev,It,ItDev,44.0,1,0,44,0,-44
+20231106,Dev,It,ItDev,44.0,1,0.0,44,0,-44.0
+20231110,Dev,It,ItDev,45.0,0,-44.0,0,100,56.0
+20231113,Dev,It,ItDev,36.0,1,56.0,36,0,20.0

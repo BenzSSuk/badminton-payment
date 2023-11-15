@@ -15,3 +15,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231024,External,Song,SongExternal,55.0,0,4.0,0,0.0,4.0
 20231030,External,Song,SongExternal,38.0,0,4.0,0,0.0,4.0
 20231106,External,Song,SongExternal,44.0,1,4.0,44,0.0,-40.0
+20231110,External,Song,SongExternal,45.0,0,-40.0,0,44.0,4.0
+20231113,External,Song,SongExternal,36.0,2,4.0,72,0.0,-68.0
