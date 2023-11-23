@@ -28,10 +28,10 @@ MODE = "update" #
 
 # load daily player checklist
 if MODE == "update":
-    folder_player_checker = os.path.join(FOLDER_PROJECT, 'player')
+    folder_player_checker = os.path.join(FOLDER_PROJECT, 'player_record', 'manual_excel')
 
 elif MODE == "rewrite":
-    folder_player_checker = os.path.join(FOLDER_PROJECT, 'player', 'checked')
+    folder_player_checker = os.path.join(FOLDER_PROJECT, 'player_record', 'excel_checked')
     folder_account_date = os.path.join(FOLDER_PROJECT, 'account', 'by_date')
     list_dir, list_folder, list_file = wedolib.findFile(folder_account_date, '*.csv', 0)
     for path_delete in list_dir:
@@ -161,7 +161,7 @@ if n_file > 0:
 
         # move listplayer to checked
         if MODE == 'update':
-            path_listplayer_new = os.path.join(FOLDER_PROJECT, folder_file, 'checked', filename_listplayer)
+            path_listplayer_new = os.path.join(FOLDER_PROJECT, folder_file, 'excel_checked', filename_listplayer)
             os.rename(path_file_listplayer, path_listplayer_new)
 
         # write balance current
