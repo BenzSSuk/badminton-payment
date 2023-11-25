@@ -23,7 +23,8 @@ import lib.DataProcessing as wedolib
 
 # update: update from current 
 # rewrite: re write histroty from the first file 
-MODE = "update" #
+INPUT = "excel" # "excel", "device_log"
+MODE = "update" # 
 # FOLDER_BADMINTON_ONEDRIVE = os.path.join(r'C:\Users\Panna\OneDrive\Projects\badminton-payment')
 
 # load daily player checklist
