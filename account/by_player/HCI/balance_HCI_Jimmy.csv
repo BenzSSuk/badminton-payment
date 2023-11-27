@@ -31,3 +31,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231106,HCI,Jimmy,JimmyHCI,44.0,0,0.0,0,0.0,0.0
 20231110,HCI,Jimmy,JimmyHCI,45.0,1,0.0,45,0.0,-45.0
 20231113,HCI,Jimmy,JimmyHCI,36.0,0,-45.0,0,0.0,-45.0
+20231117,HCI,Jimmy,JimmyHCI,57.0,0,-45.0,0,45.0,0.0
+20231120,HCI,Jimmy,JimmyHCI,42.0,0,0.0,0,0.0,0.0
+20231127,HCI,Jimmy,JimmyHCI,48.0,0,0.0,0,0.0,0.0

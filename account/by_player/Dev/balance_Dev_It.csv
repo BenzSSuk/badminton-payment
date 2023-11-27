@@ -2,3 +2,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231106,Dev,It,ItDev,44.0,1,0.0,44,0,-44.0
 20231110,Dev,It,ItDev,45.0,0,-44.0,0,100,56.0
 20231113,Dev,It,ItDev,36.0,1,56.0,36,0,20.0
+20231117,Dev,It,ItDev,57.0,0,20.0,0,0,20.0
+20231120,Dev,It,ItDev,42.0,1,20.0,42,0,-22.0
+20231127,Dev,It,ItDev,48.0,1,-22.0,48,0,-70.0

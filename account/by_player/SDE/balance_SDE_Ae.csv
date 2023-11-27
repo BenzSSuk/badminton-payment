@@ -31,3 +31,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231106,SDE,Ae,AeSDE,44.0,0,30.0,0,0.0,30.0
 20231110,SDE,Ae,AeSDE,45.0,1,30.0,45,0.0,-15.0
 20231113,SDE,Ae,AeSDE,36.0,1,-15.0,36,0.0,-51.0
+20231117,SDE,Ae,AeSDE,57.0,0,-51.0,0,200.0,149.0
+20231120,SDE,Ae,AeSDE,42.0,1,149.0,42,0.0,107.0
+20231127,SDE,Ae,AeSDE,48.0,1,107.0,48,0.0,59.0

@@ -31,3 +31,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231106,SA,Film,FilmSA,44.0,1,247.0,44,0.0,203.0
 20231110,SA,Film,FilmSA,45.0,1,203.0,45,0.0,158.0
 20231113,SA,Film,FilmSA,36.0,1,158.0,36,0.0,122.0
+20231117,SA,Film,FilmSA,57.0,0,122.0,0,0.0,122.0
+20231120,SA,Film,FilmSA,42.0,0,122.0,0,0.0,122.0
+20231127,SA,Film,FilmSA,48.0,0,122.0,0,0.0,122.0
