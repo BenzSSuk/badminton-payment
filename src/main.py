@@ -17,7 +17,7 @@ def checkSysPathAndAppend(path, stepBack = 0):
     return pathStepBack
 
 folderFile, filename = os.path.split(os.path.realpath(__file__))
-FOLDER_PROJECT = checkSysPathAndAppend(folderFile, 0)
+FOLDER_PROJECT = checkSysPathAndAppend(folderFile, 1)
 
 import lib.DataProcessing as wedolib
 
@@ -29,7 +29,7 @@ MODE = "update" #
 
 # load daily player checklist
 if MODE == "update":
-    folder_player_checker = os.path.join(FOLDER_PROJECT, 'player_record', 'manual_excel')
+    folder_player_checker = os.path.join(FOLDER_PROJECT, 'player_record', 'excel_new')
 
 elif MODE == "rewrite":
     folder_player_checker = os.path.join(FOLDER_PROJECT, 'player_record', 'excel_checked')
@@ -42,7 +42,21 @@ elif MODE == "rewrite":
     list_dir, list_folder, list_file = wedolib.findFile(folder_account_player, '*.csv', -1)
     for path_delete in list_dir:
         os.remove(path_delete)
-        
+
+def get_df_balance(path_lasted_balance):
+    dfBalance = pd.read_csv(path_lasted_balance)
+    list_playercode_balance = list(dfBalance['player_code'].unique())
+    dfBalanceIdxPlayer = dfBalance.copy()
+    dfBalanceIdxPlayer['player_index'] = dfBalanceIdxPlayer['player_code']
+    dfBalanceIdxPlayer.set_index('player_index', inplace=True)
+
+    return dfBalanceIdxPlayer, list_playercode_balance
+
+folder_checked = os.path.join(FOLDER_PROJECT, 'player_record', 'excel_checked')
+
+dfPlayerCode = pd.read_csv(os.path.join(FOLDER_PROJECT, 'data', 'user_id', 'user_code.csv'))
+dfPlayerCode.set_index('player_code', inplace=True)
+
 list_dir, list_folder, list_file = wedolib.findFile(folder_player_checker, '*.xlsx')
 list_dir.sort()
 list_folder.sort()
@@ -51,6 +65,8 @@ n_file = len(list_file)
 if n_file > 0:
     # sort by date
     for ifile in range(n_file):
+        folder_file = list_folder[ifile]
+        path_file_listplayer = list_dir[ifile]
         filename_listplayer = list_file[ifile]
         date_log = filename_listplayer.split('_')[0]
 
@@ -61,19 +77,21 @@ if n_file > 0:
         elif MODE == "rewrite":  
             path_lasted_balance = os.path.join(FOLDER_PROJECT, 'account', 'initial', 'account_balance_init.csv')
 
-        dfBalance = pd.read_csv(path_lasted_balance)
-        list_playercode_balance = list(dfBalance['player_code'].unique())
-        dfBalancePlayer = dfBalance.copy()
-        dfBalancePlayer['player_index'] = dfBalancePlayer['player_code']
-        dfBalancePlayer.set_index('player_index', inplace=True)
+        dfBalanceIdxPlayer, list_playercode_balance = get_df_balance(path_lasted_balance)
 
-        # player come
-        folder_file = list_folder[ifile]
-        path_file_listplayer = list_dir[ifile]
-        dfPlayerCome = pd.read_excel(path_file_listplayer)
-        list_playercode_come = list(dfPlayerCome['player_code'].unique())
-        n_player = dfPlayerCome.shape[0]
-        price_per_player = dfPlayerCome.iloc[0]['price_per_player']
+        # ---------- Get summary balance ----------#
+        if INPUT == 'excel':
+            # player come
+            dfPlayerCome = pd.read_excel(path_file_listplayer)
+            list_playercode_come = list(dfPlayerCome['player_code'].unique())
+            n_player = dfPlayerCome.shape[0]
+
+            # price per player
+            price_per_player = dfPlayerCome.iloc[0]['price_per_player']
+
+        elif INPUT == 'ggsheet':
+            # 
+            pass
 
         dictNewPlayer = {
             'team': [],
@@ -82,12 +100,23 @@ if n_file > 0:
             'balance': []
         }
         for iplayer in range(n_player):
-            is_play = dfPlayerCome.iloc[iplayer]['is_play']
-            player_team = dfPlayerCome.iloc[iplayer]['team']
-            player_name = dfPlayerCome.iloc[iplayer]['player_name']
-            player_code = dfPlayerCome.iloc[iplayer]['player_code']
-            player_bill = dfPlayerCome.iloc[iplayer]['bill']
-            player_pay = dfPlayerCome.iloc[iplayer]['payment']
+
+            if INPUT == 'excel':
+                is_play = dfPlayerCome.iloc[iplayer]['is_play']
+                player_team = dfPlayerCome.iloc[iplayer]['team']
+                player_name = dfPlayerCome.iloc[iplayer]['player_name']
+                player_code = dfPlayerCome.iloc[iplayer]['player_code']
+                player_bill = dfPlayerCome.iloc[iplayer]['bill']
+                player_pay = dfPlayerCome.iloc[iplayer]['payment']
+            
+            elif INPUT == 'ggsheet':
+                is_play = 1
+                player_code = dfPlayerCome.iloc[iplayer]['player_code']
+                player_team = dfPlayerCode.loc[player_code, 'team']
+                player_name = dfPlayerCode.loc[player_code, 'player_name']
+                player_bill = 
+                player_pay = 
+
 
             # hot fix
             # if player_code == 'TalayResource':
@@ -98,9 +127,9 @@ if n_file > 0:
 
             if player_code in list_playercode_balance:
                 # update balanceb
-                balance_prev = dfBalancePlayer.loc[player_code, 'balance']
+                balance_prev = dfBalanceIdxPlayer.loc[player_code, 'balance']
                 balance_current = balance_prev - player_bill + player_pay
-                dfBalancePlayer.loc[player_code, 'balance'] = balance_current
+                dfBalanceIdxPlayer.loc[player_code, 'balance'] = balance_current
 
             else:
                 # add new player, assume balance = 0
@@ -112,42 +141,42 @@ if n_file > 0:
                 dictNewPlayer['player_code'].append(player_code)
                 dictNewPlayer['balance'].append(balance_current)
 
-            # update player history
-            filename_player_balance = f'balance_{player_team}_{player_name}.csv'
-            FOLDER_ACCOUNT_PLAYER = os.path.join(FOLDER_PROJECT, 'account', 'by_player', player_team)
-            if not os.path.exists(FOLDER_ACCOUNT_PLAYER):
-                os.makedirs(FOLDER_ACCOUNT_PLAYER)
-            PATH_ACCOUNT_PLAYER = os.path.join(FOLDER_ACCOUNT_PLAYER, filename_player_balance)
-            # PATH_ACCOUNT_PLAYER_ONEDRIVE = os.path.join(FOLDER_BADMINTON_ONEDRIVE, 'account', 'by_player', filename_player_balance)
-            dictHist = {
-                "date": date_log,
-                "team": player_team,
-                "player_name": player_name,
-                "player_code": player_code,
-                "price_per_player": price_per_player,
-                "n_player_come": is_play,
-                "balance_prev": balance_prev,
-                "bill": player_bill,
-                "payment": player_pay,
-                "balance": balance_current
-            }
-            dfBalancePlayerHistNew = pd.DataFrame(dictHist, index=[0])
-            if os.path.exists(PATH_ACCOUNT_PLAYER):
-                # load and append
-                dfBalancePlayerHist = pd.read_csv(PATH_ACCOUNT_PLAYER, index_col=False)
-                # dfBalancePlayerHist = dfBalancePlayerHist.append(dfBalancePlayerHistNew)
-                dfBalancePlayerHist = pd.concat([dfBalancePlayerHist, dfBalancePlayerHistNew], ignore_index=True)
-                dfBalancePlayerHist.to_csv(PATH_ACCOUNT_PLAYER, index=False)
 
-            else:
-                # create new 
-                dfBalancePlayerHistNew.to_csv(PATH_ACCOUNT_PLAYER, index=False)
-    
+        #---------- update player history ----------#
+        filename_player_balance = f'balance_{player_team}_{player_name}.csv'
+        FOLDER_ACCOUNT_PLAYER = os.path.join(FOLDER_PROJECT, 'account', 'by_player', player_team)
+        if not os.path.exists(FOLDER_ACCOUNT_PLAYER):
+            os.makedirs(FOLDER_ACCOUNT_PLAYER)
+        PATH_ACCOUNT_PLAYER = os.path.join(FOLDER_ACCOUNT_PLAYER, filename_player_balance)
+        # PATH_ACCOUNT_PLAYER_ONEDRIVE = os.path.join(FOLDER_BADMINTON_ONEDRIVE, 'account', 'by_player', filename_player_balance)
+        dictHist = {
+            "date": date_log,
+            "team": player_team,
+            "player_name": player_name,
+            "player_code": player_code,
+            "price_per_player": price_per_player,
+            "n_player_come": is_play,
+            "balance_prev": balance_prev,
+            "bill": player_bill,
+            "payment": player_pay,
+            "balance": balance_current
+        }
+        dfBalancePlayerHistNew = pd.DataFrame(dictHist, index=[0])
+        if os.path.exists(PATH_ACCOUNT_PLAYER):
+            # load and append
+            dfBalancePlayerHist = pd.read_csv(PATH_ACCOUNT_PLAYER, index_col=False)
+            # dfBalancePlayerHist = dfBalancePlayerHist.append(dfBalancePlayerHistNew)
+            dfBalancePlayerHist = pd.concat([dfBalancePlayerHist, dfBalancePlayerHistNew], ignore_index=True)
+            dfBalancePlayerHist.to_csv(PATH_ACCOUNT_PLAYER, index=False)
+
+        else:
+            # create new 
+            dfBalancePlayerHistNew.to_csv(PATH_ACCOUNT_PLAYER, index=False)
 
         # add new player
         dfNewPlayer = pd.DataFrame(dictNewPlayer)
-        # dfBalancePlayerWrite = dfBalancePlayer.append(dfNewPlayer, ignore_index=True)
-        dfBalancePlayerWrite = pd.concat([dfBalancePlayer, dfNewPlayer], ignore_index=True)
+        # dfBalancePlayerWrite = dfBalanceIdxPlayer.append(dfNewPlayer, ignore_index=True)
+        dfBalancePlayerWrite = pd.concat([dfBalanceIdxPlayer, dfNewPlayer], ignore_index=True)
 
         # write balance date
         filename_balance = f'{date_log}_wedo_badminton_balance.csv'
@@ -162,7 +191,7 @@ if n_file > 0:
 
         # move listplayer to checked
         if MODE == 'update':
-            path_listplayer_new = os.path.join(FOLDER_PROJECT, folder_file, 'excel_checked', filename_listplayer)
+            path_listplayer_new = os.path.join(folder_checked, filename_listplayer)
             os.rename(path_file_listplayer, path_listplayer_new)
 
         # write balance current
@@ -171,7 +200,7 @@ if n_file > 0:
         dfBalancePlayerWrite.to_csv(path_write, index=False)
 
         print("Generating image....")
-        path_script = os.path.join(FOLDER_PROJECT, 'tools', 'export_image_current.py')
+        path_script = os.path.join(FOLDER_PROJECT, 'src', 'generate_image', 'gen_img_balance.py')
         os.system(f"python {path_script}")
 
 else:

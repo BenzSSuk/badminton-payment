@@ -19,7 +19,7 @@ def checkSysPathAndAppend(path, stepBack = 0):
     return pathStepBack
 
 folderFile, filename = os.path.split(os.path.realpath(__file__))
-FOLDER_PROJECT = checkSysPathAndAppend(folderFile, 1)
+FOLDER_PROJECT = checkSysPathAndAppend(folderFile, 2)
 
 # FOLDER_IMG_RECORD = os.path.join(r'C:\Users\Panna\OneDrive\Projects\badminton-payment\image_record')
 FOLDER_IMG_RECORD_LOCAL = os.path.join(FOLDER_PROJECT, 'image_record')
@@ -36,7 +36,7 @@ filename_balance_lasted = list_file[-1]
 lasted_date = filename_balance_lasted.split("_")[0]
 
 filename_player_lasted = f'{lasted_date}_listplayer.xlsx'
-path_file = os.path.join(FOLDER_PROJECT, 'player', 'checked', filename_player_lasted)
+path_file = os.path.join(FOLDER_PROJECT, 'player_record', 'excel_checked', filename_player_lasted)
 dfPlayerCurrent = pd.read_excel(path_file)
 
 # ---------- Shuttle ----------

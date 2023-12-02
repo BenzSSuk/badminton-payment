@@ -31,3 +31,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231106,SDE,Arm,ArmSDE,44.0,0,-142.0,0,0.0,-142.0
 20231110,SDE,Arm,ArmSDE,45.0,0,-142.0,0,200.0,58.0
 20231113,SDE,Arm,ArmSDE,36.0,1,58.0,36,0.0,22.0
+20231117,SDE,Arm,ArmSDE,57.0,0,22.0,0,0.0,22.0
+20231120,SDE,Arm,ArmSDE,42.0,1,22.0,42,0.0,-20.0

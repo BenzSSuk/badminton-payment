@@ -31,3 +31,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231106,IoT,Book,BookIoT,44.0,0,0.0,0,0.0,0.0
 20231110,IoT,Book,BookIoT,45.0,0,0.0,0,0.0,0.0
 20231113,IoT,Book,BookIoT,36.0,0,0.0,0,0.0,0.0
+20231117,IoT,Book,BookIoT,57.0,0,0.0,0,0.0,0.0
+20231120,IoT,Book,BookIoT,42.0,1,0.0,42,0.0,-42.0
