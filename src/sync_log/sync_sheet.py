@@ -1,10 +1,14 @@
 import os
 import sys
+from datetime import datetime
 import google.auth
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
+
+import pandas as pd
 
 def checkSysPathAndAppend(path, stepBack = 0):
     if stepBack > 0:
@@ -82,7 +86,56 @@ def sheet_read(service, spreadsheet_id, sheet_name, range):
   except HttpError as error:
     print(f"An error occurred: {error}")
     return error
+
+def change_format_ts(timestamp, is_datetime=True):
+    if is_datetime:
+        timestamp_datetime = datetime.strptime(timestamp, "%Y-%m-%d %H:%M")
+        timestamp_new = timestamp_datetime.strftime("%Y%m%d_%H%M%S")
     
+    else:
+        timestamp_datetime = datetime.strptime(timestamp, "%Y-%m-%d")
+        timestamp_new = timestamp_datetime.strftime("%Y%m%d")
+
+    return timestamp_new
+
+def write_logday(list_data_row):
+    header_row = list_data_row[0]
+    list_data_day = []
+    list_data_day.append(header_row)
+    n_row_log = len(list_data_row)
+    for i in range(n_row_log):
+        if i == 0:
+            continue
+
+        timestamp = list_data_row[i][0][0:10]
+        data_row = list_data_row[i]
+        if i == 1:
+            list_data_day.append(data_row)
+
+        elif i > 1:
+            if timestamp == timestamp_prev:
+                # same day
+                list_data_day.append(data_row)
+            
+            else:
+                # new day
+                timestamp_new = change_format_ts(timestamp_prev, is_datetime=False)
+                filename_gg_day = f'{timestamp_new}_logday_ggsheet.csv'
+                PATH_LOG = os.path.join(FOLDER_PROJECT, 'player_record', 'ggsheet', filename_gg_day)
+                mylib.list2csv(PATH_LOG, list_data_day, is_nested_list=True)    
+                
+                list_data_day = []
+                list_data_day.append(data_row)
+
+        if i == (n_row_log - 1):
+            # last row
+            timestamp_new = change_format_ts(timestamp, is_datetime=False)
+            filename_gg_day = f'{timestamp_new}_logday_ggsheet.csv'
+            PATH_LOG = os.path.join(FOLDER_PROJECT, 'player_record', 'ggsheet', filename_gg_day)
+            mylib.list2csv(PATH_LOG, list_data_day, is_nested_list=True)   
+
+        timestamp_prev = timestamp
+
 if __name__ == "__main__":
   
     """Shows basic usage of the Sheets API.
@@ -104,11 +157,27 @@ if __name__ == "__main__":
     PATH_USER_ID = os.path.join(FOLDER_DATA, 'user_id', 'user_id_rf.csv')
     mylib.list2csv(PATH_USER_ID, sheet_user_id['values'], is_nested_list=True)
 
-    print("write player log to csv...")
+    print("checking player log...")
     sheet_name = "log"
     range_name = "A1:B100"
     sheet_log = sheet_read(service, spreadsheet_id, sheet_name, range_name)
-    PATH_LOG = os.path.join(FOLDER_PROJECT, 'player_record', 'ggsheet','current_player_log.csv')
-    mylib.list2csv(PATH_LOG, sheet_log['values'], is_nested_list=True)
+    
+    list_data_row = sheet_log['values']
+    timestamp_log = list_data_row[-1][0]
+    timestamp_log = change_format_ts(timestamp_log, is_datetime=True)
 
-    print("Finish")
+    filename_gg = f'{timestamp_log}_log_ggsheet.csv'
+    PATH_LOG = os.path.join(FOLDER_PROJECT, 'player_record', 'ggsheet', 'raw', filename_gg)
+    if os.path.exists(PATH_LOG):
+        print("Player log already up to date.")
+    
+    else:
+        print("write player log to csv...")
+        mylib.list2csv(PATH_LOG, list_data_row, is_nested_list=True)
+
+        print("write player log separate by day...")
+        write_logday(list_data_row)
+    
+    
+
+    print("#----- Finish -----#")
