@@ -81,8 +81,10 @@ def sheet_read(service, spreadsheet_id, sheet_name, range):
     # rows = result.get("values", [])
     # print(f"{len(rows)} rows retrieved")
 
+    list_value = result['values']
 
-    return result
+    return result, list_value
+  
   except HttpError as error:
     print(f"An error occurred: {error}")
     return error
@@ -98,7 +100,7 @@ def change_format_ts(timestamp, is_datetime=True):
 
     return timestamp_new
 
-def write_logday(list_data_row):
+def write_logday(list_data_row, filname_extend="logday.csv"):
     header_row = list_data_row[0]
     list_data_day = []
     list_data_day.append(header_row)
@@ -120,17 +122,18 @@ def write_logday(list_data_row):
             else:
                 # new day
                 timestamp_new = change_format_ts(timestamp_prev, is_datetime=False)
-                filename_gg_day = f'{timestamp_new}_logday_ggsheet.csv'
+                filename_gg_day = f'{timestamp_new}_{filname_extend}'
                 PATH_LOG = os.path.join(FOLDER_PROJECT, 'player_record', 'ggsheet', filename_gg_day)
                 mylib.list2csv(PATH_LOG, list_data_day, is_nested_list=True)    
                 
                 list_data_day = []
+                list_data_day.append(header_row)
                 list_data_day.append(data_row)
 
         if i == (n_row_log - 1):
             # last row
             timestamp_new = change_format_ts(timestamp, is_datetime=False)
-            filename_gg_day = f'{timestamp_new}_logday_ggsheet.csv'
+            filename_gg_day = f'{timestamp_new}_{filname_extend}'
             PATH_LOG = os.path.join(FOLDER_PROJECT, 'player_record', 'ggsheet', filename_gg_day)
             mylib.list2csv(PATH_LOG, list_data_day, is_nested_list=True)   
 
@@ -141,43 +144,43 @@ if __name__ == "__main__":
     """Shows basic usage of the Sheets API.
     Prints values from a sample spreadsheet.
     """
-    print("log in...")
+    print("google authen...")
     creds = google_authen(FOLDER_CONFIG)
 
     print("build google sheet service...")
     service = build("sheets", "v4", credentials=creds)
 
-    print("read data from sheet...")
+    # print("read data from sheet...")
     spreadsheet_id = "1hbDSWdrGu8dfTwmZQ0Avf7LMUoyTt4wGUw2Aw9g5YoU"
 
-    print("write user_id to csv...")
+    print("sync user id...")
     sheet_name = "userID"
     range_name = "A1:C300"
-    sheet_user_id = sheet_read(service, spreadsheet_id, sheet_name, range_name)
+    sheet_user_id, list_user_id = sheet_read(service, spreadsheet_id, sheet_name, range_name)
     PATH_USER_ID = os.path.join(FOLDER_DATA, 'user_id', 'user_id_rf.csv')
-    mylib.list2csv(PATH_USER_ID, sheet_user_id['values'], is_nested_list=True)
+    mylib.list2csv(PATH_USER_ID, list_user_id, is_nested_list=True)
 
-    print("checking player log...")
+    print("sync player log...")
     sheet_name = "log"
     range_name = "A1:B100"
-    sheet_log = sheet_read(service, spreadsheet_id, sheet_name, range_name)
+    sheet_log, list_data_row = sheet_read(service, spreadsheet_id, sheet_name, range_name)
     
-    list_data_row = sheet_log['values']
     timestamp_log = list_data_row[-1][0]
     timestamp_log = change_format_ts(timestamp_log, is_datetime=True)
 
     filename_gg = f'{timestamp_log}_log_ggsheet.csv'
     PATH_LOG = os.path.join(FOLDER_PROJECT, 'player_record', 'ggsheet', 'raw', filename_gg)
-    if os.path.exists(PATH_LOG):
+    if not os.path.exists(PATH_LOG):
+        mylib.list2csv(PATH_LOG, list_data_row, is_nested_list=True)
+        write_logday(list_data_row, 'logday_player.csv')
+
+    else:
         print("Player log already up to date.")
     
-    else:
-        print("write player log to csv...")
-        mylib.list2csv(PATH_LOG, list_data_row, is_nested_list=True)
-
-        print("write player log separate by day...")
-        write_logday(list_data_row)
-    
-    
+    print("sync shuttlecock...")
+    sheet_name = "shuttlecock"
+    range_name = "A1:B100"
+    sheet_shuttlecock, list_shuttlecock = sheet_read(service, spreadsheet_id, sheet_name, range_name)
+    write_logday(list_shuttlecock, 'logday_shuttlecock.csv')
 
     print("#----- Finish -----#")
