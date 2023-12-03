@@ -46,9 +46,12 @@ def google_authen(FOLDER_CONFIG):
         creds = Credentials.from_authorized_user_file(PATH_TOKEN, SCOPES)
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
+        print("credential not valid !")
         if creds and creds.expired and creds.refresh_token:
+            print("credential refresh...")
             creds.refresh(Request())
         else:
+            print("Install app flow and run local server...")
             flow = InstalledAppFlow.from_client_secrets_file(
                 PATH_CREDS, SCOPES
             )
@@ -100,7 +103,7 @@ def change_format_ts(timestamp, is_datetime=True):
 
     return timestamp_new
 
-def write_logday(list_data_row, filname_extend="logday.csv"):
+def write_logday(list_data_row, log_type='player', filname_extend="logday.csv"):
     header_row = list_data_row[0]
     list_data_day = []
     list_data_day.append(header_row)
@@ -123,7 +126,7 @@ def write_logday(list_data_row, filname_extend="logday.csv"):
                 # new day
                 timestamp_new = change_format_ts(timestamp_prev, is_datetime=False)
                 filename_gg_day = f'{timestamp_new}_{filname_extend}'
-                PATH_LOG = os.path.join(FOLDER_PROJECT, 'player_record', 'ggsheet', filename_gg_day)
+                PATH_LOG = os.path.join(FOLDER_PROJECT, 'record', log_type, 'ggsheet', filename_gg_day)
                 mylib.list2csv(PATH_LOG, list_data_day, is_nested_list=True)    
                 
                 list_data_day = []
@@ -134,7 +137,7 @@ def write_logday(list_data_row, filname_extend="logday.csv"):
             # last row
             timestamp_new = change_format_ts(timestamp, is_datetime=False)
             filename_gg_day = f'{timestamp_new}_{filname_extend}'
-            PATH_LOG = os.path.join(FOLDER_PROJECT, 'player_record', 'ggsheet', filename_gg_day)
+            PATH_LOG = os.path.join(FOLDER_PROJECT, 'record', log_type, 'ggsheet', filename_gg_day)
             mylib.list2csv(PATH_LOG, list_data_day, is_nested_list=True)   
 
         timestamp_prev = timestamp
@@ -155,32 +158,32 @@ if __name__ == "__main__":
 
     print("sync user id...")
     sheet_name = "userID"
-    range_name = "A1:C300"
+    range_name = "A1:E300"
     sheet_user_id, list_user_id = sheet_read(service, spreadsheet_id, sheet_name, range_name)
     PATH_USER_ID = os.path.join(FOLDER_DATA, 'user_id', 'user_id_rf.csv')
     mylib.list2csv(PATH_USER_ID, list_user_id, is_nested_list=True)
 
     print("sync player log...")
     sheet_name = "log"
-    range_name = "A1:B100"
+    range_name = "A1:B300"
     sheet_log, list_data_row = sheet_read(service, spreadsheet_id, sheet_name, range_name)
     
     timestamp_log = list_data_row[-1][0]
     timestamp_log = change_format_ts(timestamp_log, is_datetime=True)
 
     filename_gg = f'{timestamp_log}_log_ggsheet.csv'
-    PATH_LOG = os.path.join(FOLDER_PROJECT, 'player_record', 'ggsheet', 'raw', filename_gg)
+    PATH_LOG = os.path.join(FOLDER_PROJECT, 'record', 'player', 'ggsheet', 'raw', filename_gg)
     if not os.path.exists(PATH_LOG):
         mylib.list2csv(PATH_LOG, list_data_row, is_nested_list=True)
-        write_logday(list_data_row, 'logday_player.csv')
+        write_logday(list_data_row, 'player', 'logday_player.csv')
 
     else:
-        print("Player log already up to date.")
+        print("player log already up to date.")
     
     print("sync shuttlecock...")
-    sheet_name = "shuttlecock"
-    range_name = "A1:B100"
+    sheet_name = "shuttlecock_log"
+    range_name = "A1:D10"
     sheet_shuttlecock, list_shuttlecock = sheet_read(service, spreadsheet_id, sheet_name, range_name)
-    write_logday(list_shuttlecock, 'logday_shuttlecock.csv')
+    write_logday(list_shuttlecock, 'shuttlecock', 'logday_shuttlecock.csv')
 
     print("#----- Finish -----#")
