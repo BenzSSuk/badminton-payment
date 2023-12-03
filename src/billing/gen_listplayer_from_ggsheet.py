@@ -78,6 +78,7 @@ for i, path_logday_player in enumerate(list_dir):
         df_listplayer.loc[0, 'n_shuttle'] = n_shuttlecock
         # df_listplayer.iloc[0]['external_pay'] = 0
         # df_listplayer.iloc[0]['pay_to_external'] = 0
+        df_listplayer.loc[0, 'total'] = total_cost
         df_listplayer.loc[0, 'n_player'] = n_player
         df_listplayer.loc[0, 'price_per_player'] = price_per_player
 

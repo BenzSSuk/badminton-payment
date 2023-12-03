@@ -1,4 +1,3 @@
-import arg
 import os
 import sys
 import numpy as np
@@ -29,7 +28,7 @@ import lib.DataProcessing as wedolib
 
 # load daily player checklist
 if len(sys.argv) > 1:
-    lasted_date = sys.argv[0]
+    lasted_date = sys.argv[1]
 
 else:
     folder_player_checked = os.path.join(FOLDER_PROJECT, 'account', 'by_date')
@@ -41,7 +40,7 @@ else:
     lasted_date = filename_balance_lasted.split("_")[0]
 
 filename_player_lasted = f'{lasted_date}_listplayer.xlsx'
-path_file = os.path.join(FOLDER_PROJECT, 'player_record', 'excel_checked', filename_player_lasted)
+path_file = os.path.join(FOLDER_PROJECT, 'data', 'checked', 'player', filename_player_lasted)
 dfPlayerCurrent = pd.read_excel(path_file)
 
 # ---------- Shuttle ----------

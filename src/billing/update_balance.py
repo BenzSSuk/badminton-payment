@@ -93,13 +93,8 @@ if n_file > 0:
             player_bill = dfPlayerCome.iloc[iplayer]['bill']
             player_pay = dfPlayerCome.iloc[iplayer]['payment']
 
-            if len(sys.argv) > 1 and sys.argv[0] == "ggsheet":
-                player_team = df_user_code.iloc[player_code, "team"]
-                player_name = df_user_code.iloc[player_code, "name"]
-
-            else:
-                player_team = dfPlayerCome.iloc[iplayer]['team']
-                player_name = dfPlayerCome.iloc[iplayer]['player_name']
+            player_team = df_user_code.loc[player_code, "team"]
+            player_name = df_user_code.loc[player_code, "name"]
 
             print(f'day {ifile+1}/{n_file}  player {iplayer+1}/{n_player} {date_log} {player_code}')
 
@@ -169,7 +164,7 @@ if n_file > 0:
 
         # move listplayer to checked
         if MODE == 'update':
-            path_listplayer_new = os.path.join(FOLDER_PROJECT, folder_file, 'checked', filename_listplayer)
+            path_listplayer_new = os.path.join(FOLDER_PROJECT, 'data', 'checked', 'player', filename_listplayer)
             os.rename(path_file_listplayer, path_listplayer_new)
 
         # write balance current
@@ -178,7 +173,7 @@ if n_file > 0:
         dfBalancePlayerWrite.to_csv(path_write, index=False)
 
         print("Generating image....")
-        path_script = os.path.join(FOLDER_PROJECT, 'tools', 'export_image_current.py')
+        path_script = os.path.join(FOLDER_PROJECT, 'src', 'billing', 'gen_img_balance.py')
         # os.system(f"python {path_script}")
         subprocess.run(["python", path_script, date_log])
 
