@@ -1,3 +1,4 @@
+import arg
 import os
 import sys
 import numpy as np
@@ -27,13 +28,17 @@ FOLDER_IMG_RECORD_LOCAL = os.path.join(FOLDER_PROJECT, 'image_record')
 import lib.DataProcessing as wedolib
 
 # load daily player checklist
-folder_player_checked = os.path.join(FOLDER_PROJECT, 'account', 'by_date')
-list_dir, list_folder, list_file = wedolib.findFile(folder_player_checked, '*.csv', 0)
-list_dir.sort()
-list_folder.sort()
-list_file.sort()
-filename_balance_lasted = list_file[-1]
-lasted_date = filename_balance_lasted.split("_")[0]
+if len(sys.argv) > 1:
+    lasted_date = sys.argv[0]
+
+else:
+    folder_player_checked = os.path.join(FOLDER_PROJECT, 'account', 'by_date')
+    list_dir, list_folder, list_file = wedolib.findFile(folder_player_checked, '*.csv', 0)
+    list_dir.sort()
+    list_folder.sort()
+    list_file.sort()
+    filename_balance_lasted = list_file[-1]
+    lasted_date = filename_balance_lasted.split("_")[0]
 
 filename_player_lasted = f'{lasted_date}_listplayer.xlsx'
 path_file = os.path.join(FOLDER_PROJECT, 'player_record', 'excel_checked', filename_player_lasted)
