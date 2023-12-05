@@ -88,4 +88,4 @@ for i, path_logday_player in enumerate(list_dir):
         print(f'file logday {filename_shuttle} not found !')
 
     filename_excel = f'{log_date}_listplayer.xlsx'
-    df_listplayer.to_excel(pjoin(FOLDER_RECORD_EXCEL, filename_excel))
+    df_listplayer.to_excel(pjoin(FOLDER_RECORD_EXCEL, filename_excel), index=False)

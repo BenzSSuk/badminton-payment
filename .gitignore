@@ -1,3 +1,5 @@
 /image_record 
 
 *.pyc
+config/credentials.json
+config/token.json
