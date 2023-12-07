@@ -26,7 +26,7 @@ import lib.DataProcessing as wedolib
 
 # update: update from current 
 # rewrite: re write histroty from the first file 
-MODE = "update" #
+MODE = "rewrite" #
 # FOLDER_BADMINTON_ONEDRIVE = os.path.join(r'C:\Users\Panna\OneDrive\Projects\badminton-payment')
 
 # load daily player checklist
