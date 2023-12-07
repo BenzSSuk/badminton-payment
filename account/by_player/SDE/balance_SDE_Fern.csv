@@ -14,3 +14,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231113,SDE,Fern,FernSDE,36.0,0,0.0,0,0.0,0.0
 20231117,SDE,Fern,FernSDE,57.0,0,0.0,0,0.0,0.0
 20231120,SDE,Fern,FernSDE,42.0,0,0.0,0,0.0,0.0
+20231127,SDE,Fern,FernSDE,47.0,1,0.0,47,0.0,-47.0
