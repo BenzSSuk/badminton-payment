@@ -182,7 +182,7 @@ if __name__ == "__main__":
     PATH_LOG = os.path.join(FOLDER_PROJECT, 'record', 'payment', 'ggform', filename_gg)
     PATH_LOG_CHECKED = pjoin(FOLDER_PROJECT, 'data', 'checked', 'payment', filename_gg)
     if os.path.exists(PATH_LOG) or os.path.exists(PATH_LOG_CHECKED):
-        print("player log already up to date.")
+        print("payment log already up to date.")
 
     else:
         mylib.list2csv(PATH_LOG, list_data_row, is_nested_list=True)
