@@ -91,6 +91,37 @@ def sheet_read(service, spreadsheet_id, sheet_name, range):
   except HttpError as error:
     print(f"An error occurred: {error}")
     return error
+  
+def sheet_clear(service, spreadsheet_id, sheet_name, range):
+  """
+  Creates the batch_update the user has access to.
+  Load pre-authorized user credentials from the environment.
+  TODO(developer) - See https://developers.google.com/identity
+  for guides on implementing OAuth2 for the application.
+  """
+
+  # creds, _ = google.auth.default()
+  
+  # pylint: disable=maybe-no-member
+  try:
+    range_name = f"{sheet_name}!{range}"
+    result = (
+        service.spreadsheets()
+        .values()
+        .clear(spreadsheetId=spreadsheet_id, range=range_name)
+        .execute()
+    )
+    # rows = result.get("values", [])
+    # print(f"{len(rows)} rows retrieved")
+
+    # list_value = result['values']
+
+    # return result, list_value
+  
+  except HttpError as error:
+    print(f"An error occurred: {error}")
+    return error
+
 
 def change_format_ts(timestamp, is_datetime=True):
     if is_datetime:
@@ -180,10 +211,26 @@ if __name__ == "__main__":
     else:
         print("player log already up to date.")
     
+    sheet_name = "log"
+    n_row_loaded = len(list_data_row)
+    range_name = f"A2:B{n_row_loaded}"
+    if os.path.exists(PATH_LOG):
+        print(f"found downloaded file {PATH_LOG} ")
+        print(f"clearing player log {range_name}...")
+        sheet_clear(service, spreadsheet_id, sheet_name, range_name)
+    
     print("sync shuttlecock...")
     sheet_name = "shuttlecock_log"
-    range_name = "A1:D10"
+    range_name = "A1:D50"
     sheet_shuttlecock, list_shuttlecock = sheet_read(service, spreadsheet_id, sheet_name, range_name)
     write_logday(list_shuttlecock, 'shuttlecock', 'logday_shuttlecock.csv')
 
+    sheet_name = "shuttlecock_log"
+    n_row_loaded = len(list_shuttlecock)
+    range_name = f"A2:B{n_row_loaded}"
+    if os.path.exists(PATH_LOG):
+        print(f"found downloaded file {PATH_LOG} ")
+        print(f"clearing shuttlecock_log {range_name}...")
+        sheet_clear(service, spreadsheet_id, sheet_name, range_name)
+   
     print("#----- Finish -----#")
