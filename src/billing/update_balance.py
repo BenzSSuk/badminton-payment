@@ -1,9 +1,9 @@
 import os
+from os.path import join as pjoin
 import sys
+import math
 import pandas as pd
 import subprocess
-
-from os.path import join as pjoin
 
 def checkSysPathAndAppend(path, stepBack = 0):
     if stepBack > 0:
@@ -80,6 +80,7 @@ if n_file > 0:
         list_playercode_come = list(dfPlayerCome['player_code'].unique())
         n_player = dfPlayerCome.shape[0]
         price_per_player = dfPlayerCome.iloc[0]['price_per_player']
+        price_per_player = math.ceil(price_per_player)
 
         dictNewPlayer = {
             'team': [],
@@ -91,6 +92,7 @@ if n_file > 0:
             is_play = dfPlayerCome.iloc[iplayer]['is_play']
             player_code = dfPlayerCome.iloc[iplayer]['player_code']
             player_bill = dfPlayerCome.iloc[iplayer]['bill']
+            player_bill = math.ceil(player_bill)
             player_pay = dfPlayerCome.iloc[iplayer]['payment']
 
             player_team = df_user_code.loc[player_code, "team"]
@@ -145,7 +147,6 @@ if n_file > 0:
                 # create new 
                 dfBalancePlayerHistNew.to_csv(PATH_ACCOUNT_PLAYER, index=False)
     
-
         # add new player
         dfNewPlayer = pd.DataFrame(dictNewPlayer)
         # dfBalancePlayerWrite = dfBalancePlayer.append(dfNewPlayer, ignore_index=True)
