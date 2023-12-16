@@ -49,10 +49,45 @@ if n_files > 0:
         for i in range(n_user):
             name_from_form = df_pay['name'][i]
             player_code = df_user_code.loc[name_from_form, 'player_code']
+            player_team = df_user_code.loc[name_from_form, 'team']
+            player_name = df_user_code.loc[name_from_form, 'name']
 
             player_pay = df_pay['payment'][i]
-            df_balance.loc[player_code, 'balance'] = df_balance.loc[player_code, 'balance'] + player_pay
+            timestamp_pay = df_pay['timestamp'][i]
+            balance_prev = df_balance.loc[player_code, 'balance']
+            balance_current = balance_prev + player_pay 
+            df_balance.loc[player_code, 'balance'] = balance_current
 
+            # update player history
+            filename_player_balance = f'balance_{player_team}_{player_name}.csv'
+            FOLDER_ACCOUNT_PLAYER = os.path.join(FOLDER_PROJECT, 'account', 'by_player', player_team)
+            if not os.path.exists(FOLDER_ACCOUNT_PLAYER):
+                os.makedirs(FOLDER_ACCOUNT_PLAYER)
+            PATH_ACCOUNT_PLAYER = os.path.join(FOLDER_ACCOUNT_PLAYER, filename_player_balance)
+            # PATH_ACCOUNT_PLAYER_ONEDRIVE = os.path.join(FOLDER_BADMINTON_ONEDRIVE, 'account', 'by_player', filename_player_balance)
+            dictHist = {
+                "date": timestamp_pay,
+                "team": player_team,
+                "player_name": player_name,
+                "player_code": player_code,
+                "price_per_player": 0,
+                "n_player_come": 0,
+                "balance_prev": balance_prev,
+                "bill": 0,
+                "payment": player_pay,
+                "balance": balance_current
+            }
+            dfBalancePlayerHistNew = pd.DataFrame(dictHist, index=[0])
+            if os.path.exists(PATH_ACCOUNT_PLAYER):
+                # load and append
+                dfBalancePlayerHist = pd.read_csv(PATH_ACCOUNT_PLAYER, index_col=False)
+                # dfBalancePlayerHist = dfBalancePlayerHist.append(dfBalancePlayerHistNew)
+                dfBalancePlayerHist = pd.concat([dfBalancePlayerHist, dfBalancePlayerHistNew], ignore_index=True)
+                dfBalancePlayerHist.to_csv(PATH_ACCOUNT_PLAYER, index=False)
+
+            else:
+                # create new 
+                dfBalancePlayerHistNew.to_csv(PATH_ACCOUNT_PLAYER, index=False)
 
     df_balance.reset_index(inplace=True)
     df_balance.to_csv(path_balance, index=False)
