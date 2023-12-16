@@ -70,13 +70,15 @@ for i, path_logday_player in enumerate(list_dir):
         df_shuttlecock_logday = pd.read_csv(PATH_SHUTTLECOCK)
 
         n_shuttlecock = df_shuttlecock_logday['n_shuttlecock'][0]
-        total_cost = shuttlecock_price_current * n_shuttlecock
+        external_pay = df_shuttlecock_logday['external_pay'][0]
+        # pay_to_external = df_shuttlecock_logday['pay_to_external'][0]
+        total_cost = (shuttlecock_price_current * n_shuttlecock) - external_pay
         n_player = n_row
         price_per_player = np.ceil(total_cost/n_player)
 
         df_listplayer.loc[0, 'price_shuttle'] = shuttlecock_price_current
         df_listplayer.loc[0, 'n_shuttle'] = n_shuttlecock
-        # df_listplayer.iloc[0]['external_pay'] = 0
+        df_listplayer.iloc[0]['external_pay'] = external_pay
         # df_listplayer.iloc[0]['pay_to_external'] = 0
         df_listplayer.loc[0, 'total'] = total_cost
         df_listplayer.loc[0, 'n_player'] = n_player
