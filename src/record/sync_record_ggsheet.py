@@ -1,4 +1,5 @@
 import os
+from os.path import join as pjoin
 import sys
 from datetime import datetime
 import google.auth
@@ -134,7 +135,7 @@ def change_format_ts(timestamp, is_datetime=True):
 
     return timestamp_new
 
-def write_logday(list_data_row, log_type='player', filname_extend="logday.csv"):
+def write_logday(list_data_row, FOLDER_SAVE='cloud_log', log_type='player'):
     header_row = list_data_row[0]
     list_data_day = []
     list_data_day.append(header_row)
@@ -156,8 +157,8 @@ def write_logday(list_data_row, log_type='player', filname_extend="logday.csv"):
             else:
                 # new day
                 timestamp_new = change_format_ts(timestamp_prev, is_datetime=False)
-                filename_gg_day = f'{timestamp_new}_{filname_extend}'
-                PATH_LOG = os.path.join(FOLDER_PROJECT, 'record', log_type, 'ggsheet', filename_gg_day)
+                filename_gg_day = f'{timestamp_new}_logday_{log_type}.csv'
+                PATH_LOG = os.path.join(FOLDER_SAVE, filename_gg_day)
                 mylib.list2csv(PATH_LOG, list_data_day, is_nested_list=True)    
                 
                 list_data_day = []
@@ -167,8 +168,8 @@ def write_logday(list_data_row, log_type='player', filname_extend="logday.csv"):
         if i == (n_row_log - 1):
             # last row
             timestamp_new = change_format_ts(timestamp, is_datetime=False)
-            filename_gg_day = f'{timestamp_new}_{filname_extend}'
-            PATH_LOG = os.path.join(FOLDER_PROJECT, 'record', log_type, 'ggsheet', filename_gg_day)
+            filename_gg_day = f'{timestamp_new}_logday_{log_type}.csv'
+            PATH_LOG = os.path.join(FOLDER_SAVE, filename_gg_day)
             mylib.list2csv(PATH_LOG, list_data_day, is_nested_list=True)   
 
         timestamp_prev = timestamp
@@ -197,40 +198,60 @@ if __name__ == "__main__":
     print("sync player log...")
     sheet_name = "log"
     range_name = "A1:B300"
-    sheet_log, list_data_row = sheet_read(service, spreadsheet_id, sheet_name, range_name)
+    sheet_log, list_data_row_player = sheet_read(service, spreadsheet_id, sheet_name, range_name)
     
-    timestamp_log = list_data_row[-1][0]
-    timestamp_log = change_format_ts(timestamp_log, is_datetime=True)
+    if len(list_data_row_player) > 1:
+        timestamp_log = list_data_row_player[-1][0]
+        timestamp_log = change_format_ts(timestamp_log, is_datetime=True)
 
-    filename_gg = f'{timestamp_log}_log_ggsheet.csv'
-    PATH_LOG = os.path.join(FOLDER_PROJECT, 'record', 'player', 'ggsheet', 'raw', filename_gg)
-    if not os.path.exists(PATH_LOG):
-        mylib.list2csv(PATH_LOG, list_data_row, is_nested_list=True)
-        write_logday(list_data_row, 'player', 'logday_player.csv')
+        filename_gg = f'{timestamp_log}_log_ggsheet.csv'
+        PATH_LOG = os.path.join(FOLDER_PROJECT, 'data', 'cloud', 'player', filename_gg)
+        if not os.path.exists(PATH_LOG):
+            mylib.list2csv(PATH_LOG, list_data_row_player, is_nested_list=True)
+            FOLDER_SAVE = pjoin(FOLDER_PROJECT, 'record', 'player', 'ggsheet')
+            write_logday(list_data_row_player, FOLDER_SAVE, 'player')
 
+        else:
+            print("player log already up to date.")
+        
+        sheet_name = "log"
+        n_row_loaded = len(list_data_row_player)
+        range_name = f"A2:B{n_row_loaded}"
+        if os.path.exists(PATH_LOG):
+            print(f"found downloaded file {PATH_LOG} ")
+            print(f"clearing player log {range_name}...")
+            sheet_clear(service, spreadsheet_id, sheet_name, range_name)
+    
     else:
-        print("player log already up to date.")
-    
-    sheet_name = "log"
-    n_row_loaded = len(list_data_row)
-    range_name = f"A2:B{n_row_loaded}"
-    if os.path.exists(PATH_LOG):
-        print(f"found downloaded file {PATH_LOG} ")
-        print(f"clearing player log {range_name}...")
-        sheet_clear(service, spreadsheet_id, sheet_name, range_name)
-    
+        print('player log is empty !')
+
     print("sync shuttlecock...")
     sheet_name = "shuttlecock_log"
     range_name = "A1:D50"
     sheet_shuttlecock, list_shuttlecock = sheet_read(service, spreadsheet_id, sheet_name, range_name)
-    write_logday(list_shuttlecock, 'shuttlecock', 'logday_shuttlecock.csv')
 
-    sheet_name = "shuttlecock_log"
-    n_row_loaded = len(list_shuttlecock)
-    range_name = f"A2:B{n_row_loaded}"
-    if os.path.exists(PATH_LOG):
-        print(f"found downloaded file {PATH_LOG} ")
-        print(f"clearing shuttlecock_log {range_name}...")
-        sheet_clear(service, spreadsheet_id, sheet_name, range_name)
+    if len(list_shuttlecock) > 1:
+        timestamp_log = list_shuttlecock[-1][0]
+        timestamp_log = change_format_ts(timestamp_log, is_datetime=True)
+        filename_gg = f'{timestamp_log}_shuttlecock_ggsheet.csv'
+        PATH_LOG = os.path.join(FOLDER_PROJECT, 'data', 'cloud', 'shuttlecock', filename_gg)
+        if not os.path.exists(PATH_LOG):
+            mylib.list2csv(PATH_LOG, list_shuttlecock, is_nested_list=True)
+            FOLDER_SAVE = pjoin(FOLDER_PROJECT, 'record', 'shuttlecock', 'ggsheet')
+            write_logday(list_shuttlecock, FOLDER_SAVE, 'shuttlecock')
+
+        else:
+            print("shuttlecock log already up to date.")
+
+        sheet_name = "shuttlecock_log"
+        n_row_loaded = len(list_shuttlecock)
+        range_name = f"A2:D{n_row_loaded}"
+        if os.path.exists(PATH_LOG):
+            print(f"found downloaded file {PATH_LOG} ")
+            print(f"clearing shuttlecock_log {range_name}...")
+            sheet_clear(service, spreadsheet_id, sheet_name, range_name)
+    
+    else:
+        print('shuttlecock log is empty !')
    
     print("#----- Finish -----#")
