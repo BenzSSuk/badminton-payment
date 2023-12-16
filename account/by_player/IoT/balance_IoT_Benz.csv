@@ -36,3 +36,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231127,IoT,Benz,BenzIoT,48.0,1,1646.0,48,0,1598.0
 20231204,IoT,Benz,BenzIoT,56.0,1,1598.0,56,0,1542.0
 20231208,IoT,Benz,BenzIoT,61.4,1,,61,0,
+20231211,IoT,Benz,BenzIoT,42.0,1,,42,0,
