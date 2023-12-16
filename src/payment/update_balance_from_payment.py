@@ -38,29 +38,36 @@ df_user_code.set_index('name_on_form', inplace=True)
 FOLDER_PAY = pjoin(FOLDER_PROJECT, 'record', 'payment', 'ggform')
 list_dir, list_folder, list_name = wedolib.findFile(FOLDER_PAY, '*.csv', 0)
 n_files = len(list_name)
-for ifile in range(n_files):
-    filename = list_name[ifile]
-    path_file = list_dir[ifile]
-    df_pay = pd.read_csv(path_file)
+if n_files > 0:
+    for ifile in range(n_files):
+        filename = list_name[ifile]
+        path_file = list_dir[ifile]
+        df_pay = pd.read_csv(path_file)
 
-    n_user = df_pay.shape[0]
-    print(f'updating balance from payment {filename}')
-    for i in range(n_user):
-        name_from_form = df_pay['name'][i]
-        player_code = df_user_code.loc[name_from_form, 'player_code']
+        n_user = df_pay.shape[0]
+        print(f'updating balance from payment {filename}')
+        for i in range(n_user):
+            name_from_form = df_pay['name'][i]
+            player_code = df_user_code.loc[name_from_form, 'player_code']
 
-        player_pay = df_pay['payment'][i]
-        df_balance.loc[player_code, 'balance'] = df_balance.loc[player_code, 'balance'] + player_pay
+            player_pay = df_pay['payment'][i]
+            df_balance.loc[player_code, 'balance'] = df_balance.loc[player_code, 'balance'] + player_pay
 
 
-df_balance.reset_index(inplace=True)
-df_balance.to_csv(path_balance, index=False)
+    df_balance.reset_index(inplace=True)
+    df_balance.to_csv(path_balance, index=False)
 
-for ifile in range(n_files):
-    path_file = list_dir[ifile]
-    filename = list_name[ifile]
+    for ifile in range(n_files):
+        path_ori = list_dir[ifile]
+        filename = list_name[ifile]
 
-    path_file_new = pjoin(FOLDER_PROJECT, 'data', 'checked', 'payment', filename)
-    os.rename(path_file, path_file_new)
+        path_new = pjoin(FOLDER_PROJECT, 'data', 'checked', 'payment', filename)
+        if os.path.exists(path_new):
+            print(f'deleting {path_ori}...')
+            os.remove(path_ori)
+            
+        else:
+            print(f'moving {path_new}')
+            os.rename(path_ori, path_new)
 
 print("#----- Finish update balance -----#")

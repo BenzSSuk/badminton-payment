@@ -210,8 +210,9 @@ if __name__ == "__main__":
 
     filename_gg = f'{timestamp_log}_payment_ggform.csv'
     PATH_LOG = os.path.join(FOLDER_PROJECT, 'record', 'payment', 'ggform', filename_gg)
-    PATH_LOG_CHECKED = pjoin(FOLDER_PROJECT, 'data', 'checked', 'payment', filename_gg)
-    if os.path.exists(PATH_LOG) or os.path.exists(PATH_LOG_CHECKED):
+    # PATH_LOG_CHECKED = pjoin(FOLDER_PROJECT, 'data', 'checked', 'payment', filename_gg)
+    # if os.path.exists(PATH_LOG) or os.path.exists(PATH_LOG_CHECKED):
+    if os.path.exists(PATH_LOG):
         print("payment log already up to date.")
 
     else:
@@ -221,10 +222,10 @@ if __name__ == "__main__":
     sheet_name = "payment"
     n_row_loaded = len(list_data_row)
     range_name = f"A2:D{n_row_loaded}"
-    if os.path.exists(PATH_LOG) or os.path.exists(PATH_LOG_CHECKED):
+    # if os.path.exists(PATH_LOG) or os.path.exists(PATH_LOG_CHECKED):
+    if os.path.exists(PATH_LOG):
         print(f"found downloaded file {PATH_LOG} ")
         print(f"clearing player log {range_name}...")
         sheet_clear(service, spreadsheet_id, sheet_name, range_name)
     
-
     print("#----- Finish -----#")
