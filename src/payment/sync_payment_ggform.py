@@ -205,27 +205,31 @@ if __name__ == "__main__":
     range_name = "A1:D300"
     sheet_log, list_data_row = sheet_read(service, spreadsheet_id, sheet_name, range_name)
     
-    timestamp_log = list_data_row[-1][0]
-    timestamp_log = change_format_ts(timestamp_log, is_datetime=True, file_type="ggform")
+    if len(list_data_row) > 1:
+        timestamp_log = list_data_row[-1][0]
+        timestamp_log = change_format_ts(timestamp_log, is_datetime=True, file_type="ggform")
 
-    filename_gg = f'{timestamp_log}_payment_ggform.csv'
-    PATH_LOG = os.path.join(FOLDER_PROJECT, 'record', 'payment', 'ggform', filename_gg)
-    # PATH_LOG_CHECKED = pjoin(FOLDER_PROJECT, 'data', 'checked', 'payment', filename_gg)
-    # if os.path.exists(PATH_LOG) or os.path.exists(PATH_LOG_CHECKED):
-    if os.path.exists(PATH_LOG):
-        print("payment log already up to date.")
+        filename_gg = f'{timestamp_log}_payment_ggform.csv'
+        PATH_LOG = os.path.join(FOLDER_PROJECT, 'record', 'payment', 'ggform', filename_gg)
+        # PATH_LOG_CHECKED = pjoin(FOLDER_PROJECT, 'data', 'checked', 'payment', filename_gg)
+        # if os.path.exists(PATH_LOG) or os.path.exists(PATH_LOG_CHECKED):
+        if os.path.exists(PATH_LOG):
+            print("payment log already up to date.")
 
+        else:
+            mylib.list2csv(PATH_LOG, list_data_row, is_nested_list=True)
+            # write_logday(list_data_row, 'player', 'logday_player.csv')
+
+        sheet_name = "payment"
+        n_row_loaded = len(list_data_row)
+        range_name = f"A2:D{n_row_loaded}"
+        # if os.path.exists(PATH_LOG) or os.path.exists(PATH_LOG_CHECKED):
+        if os.path.exists(PATH_LOG):
+            print(f"found downloaded file {PATH_LOG} ")
+            print(f"clearing player log {range_name}...")
+            sheet_clear(service, spreadsheet_id, sheet_name, range_name)
+    
     else:
-        mylib.list2csv(PATH_LOG, list_data_row, is_nested_list=True)
-        # write_logday(list_data_row, 'player', 'logday_player.csv')
-
-    sheet_name = "payment"
-    n_row_loaded = len(list_data_row)
-    range_name = f"A2:D{n_row_loaded}"
-    # if os.path.exists(PATH_LOG) or os.path.exists(PATH_LOG_CHECKED):
-    if os.path.exists(PATH_LOG):
-        print(f"found downloaded file {PATH_LOG} ")
-        print(f"clearing player log {range_name}...")
-        sheet_clear(service, spreadsheet_id, sheet_name, range_name)
+        print('payment log is empty !')
     
     print("#----- Finish -----#")
