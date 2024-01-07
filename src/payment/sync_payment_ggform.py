@@ -133,7 +133,42 @@ def sheet_clear(service, spreadsheet_id, sheet_name, range):
   except HttpError as error:
     print(f"An error occurred: {error}")
     return error
-  
+
+def sheet_delete_row_col(service, spreadsheet_id, sheet_name, range):
+    new_spreadsheet_data = {
+        "requests": [
+            {
+            "deleteDimension": {
+                "range": {
+                "sheetId": sheet_name,
+                "dimension": "ROWS",
+                "startIndex": 0,
+                "endIndex": 3
+                }
+            }
+            },
+            {
+            "deleteDimension": {
+                "range": {
+                "sheetId": sheet_name,
+                "dimension": "COLUMNS",
+                "startIndex": 1,
+                "endIndex": 4
+                }
+            }
+            },
+        ],
+    }
+    
+    result = (
+        service.spreadsheets()
+        .batch_update(spreadsheetId=spreadsheet_id, body=new_spreadsheet_data)
+        .execute()
+    )
+        
+    sheet_service.spreadsheets().batchUpdate(
+        spreadsheetId=spreadsheet_id, body=update_data)
+
 def change_format_ts(timestamp, is_datetime=True, file_type="ggsheet"):
 
 

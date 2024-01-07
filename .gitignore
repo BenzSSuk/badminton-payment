@@ -3,3 +3,5 @@
 *.pyc
 config/credentials.json
 config/token.json
+config/credentials.json
+config/token.json
