@@ -8,3 +8,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231204,Dev,It,ItDev,56.0,1,-70.0,56,0,-126.0
 "17/12/2023, 0:02:14",Dev,It,ItDev,0.0,0,-126.0,0,300,174.0
 20231211,Dev,It,ItDev,42.0,1,174.0,42,0,132.0
+20240105,Dev,It,ItDev,44.0,1,132.0,44,0,88.0
