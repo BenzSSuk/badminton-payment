@@ -25,27 +25,28 @@ FOLDER_PROJECT = checkSysPathAndAppend(folderFile, 1)
 
 FOLDER_SRC = pjoin(FOLDER_PROJECT, 'src')
 
-# ---------- Payment ---------- #
-# sync player payment from google from (response in google sheet)
-subfolder = 'payment'
-filename = 'sync_payment_ggform.py'
-PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
-subprocess.run(['python', PATH_SCRIPT])
+SYNC_CLOUD = False
 
-# update balance with payment from google form
-subfolder = 'payment'
-filename = 'update_balance_from_payment.py'
-PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
-subprocess.run(['python', PATH_SCRIPT])
+if SYNC_CLOUD:
+    # ---------- Payment ---------- #
+    # sync player payment from google from (response in google sheet)
+    subfolder = 'payment'
+    filename = 'sync_payment_ggform.py'
+    PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
+    subprocess.run(['python', PATH_SCRIPT])
 
+    # update balance with payment from google form
+    subfolder = 'payment'
+    filename = 'update_balance_from_payment.py'
+    PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
+    subprocess.run(['python', PATH_SCRIPT])
 
-# ---------- Check Player ---------- #
-# sync player&shuttlecock record from google sheet
-subfolder = 'record'
-filename = 'sync_record_ggsheet.py'
-PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
-subprocess.run(['python', PATH_SCRIPT])
-
+    # ---------- Check Player ---------- #
+    # sync player&shuttlecock record from google sheet
+    subfolder = 'record'
+    filename = 'sync_record_ggsheet.py'
+    PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
+    subprocess.run(['python', PATH_SCRIPT])
 
 # ---------- Billing ---------- #
 # generate original listplayer.xlsx
@@ -57,12 +58,6 @@ subprocess.run(['python', PATH_SCRIPT])
 # update balance after billing 
 subfolder = 'billing'
 filename = 'update_balance.py'
-PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
-subprocess.run(['python', PATH_SCRIPT])
-
-# move checked file to data
-subfolder = 'billing'
-filename = 'move_processed_log.py'
 PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
 subprocess.run(['python', PATH_SCRIPT])
 

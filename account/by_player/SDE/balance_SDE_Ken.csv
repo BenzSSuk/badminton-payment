@@ -35,3 +35,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231120,SDE,Ken,KenSDE,42.0,1,-75.0,42,0.0,-117.0
 20231127,SDE,Ken,KenSDE,48.0,1,-117.0,48,0.0,-165.0
 20231211,SDE,Ken,KenSDE,42.0,1,-65.0,42,0.0,-107.0
+20240108,SDE,Ken,KenSDE,56.0,1,-107.0,56,0.0,-163.0
+20240115,SDE,Ken,KenSDE,56.0,1,-163.0,56,0.0,-219.0

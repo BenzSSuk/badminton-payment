@@ -9,3 +9,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 "17/12/2023, 0:02:14",Dev,It,ItDev,0.0,0,-126.0,0,300,174.0
 20231211,Dev,It,ItDev,42.0,1,174.0,42,0,132.0
 20240105,Dev,It,ItDev,44.0,1,132.0,44,0,88.0
+20240108,Dev,It,ItDev,56.0,1,88.0,56,0,32.0
+20240115,Dev,It,ItDev,56.0,1,32.0,56,0,-24.0

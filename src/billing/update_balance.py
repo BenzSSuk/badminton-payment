@@ -181,4 +181,11 @@ if n_file > 0:
 else:
     print("file is checklist player is empty !")
 
+# move checked file to data
+subfolder = 'billing'
+filename = 'move_processed_log.py'
+PATH_SCRIPT = pjoin(FOLDER_PROJECT, 'src', subfolder, filename)
+subprocess.run(['python', PATH_SCRIPT])
+
+
 print("#----- Finished Main-----#")

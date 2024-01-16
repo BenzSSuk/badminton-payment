@@ -41,3 +41,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 "6/1/2024, 19:39:16",IoT,O,OIoT,0.0,0,447.0,0,345.0,792.0
 20231225,IoT,O,OIoT,82.0,1,792.0,82,0.0,710.0
 20240105,IoT,O,OIoT,44.0,1,710.0,44,0.0,666.0
+20240108,IoT,O,OIoT,56.0,1,666.0,56,0.0,610.0
+20240115,IoT,O,OIoT,56.0,1,610.0,56,0.0,554.0
