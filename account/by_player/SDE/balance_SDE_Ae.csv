@@ -38,3 +38,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 "17/12/2023, 0:02:42",SDE,Ae,AeSDE,0.0,0,-2.0,0,100.0,98.0
 20231211,SDE,Ae,AeSDE,42.0,1,98.0,42,0.0,56.0
 20231225,SDE,Ae,AeSDE,82.0,1,56.0,82,0.0,-26.0
+"6/1/2024, 22:06:47",SDE,Ae,AeSDE,0.0,0,-26.0,0,100.0,74.0
