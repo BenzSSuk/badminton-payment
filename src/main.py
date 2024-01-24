@@ -25,7 +25,7 @@ FOLDER_PROJECT = checkSysPathAndAppend(folderFile, 1)
 
 FOLDER_SRC = pjoin(FOLDER_PROJECT, 'src')
 
-SYNC_CLOUD = False
+SYNC_CLOUD = True
 
 if SYNC_CLOUD:
     # ---------- Payment ---------- #
@@ -33,32 +33,36 @@ if SYNC_CLOUD:
     subfolder = 'payment'
     filename = 'sync_payment_ggform.py'
     PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
-    subprocess.run(['python', PATH_SCRIPT])
+    sp_obj = subprocess.run(['python', PATH_SCRIPT])
+    sp_obj.check_returncode()
 
     # update balance with payment from google form
     subfolder = 'payment'
     filename = 'update_balance_from_payment.py'
     PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
-    subprocess.run(['python', PATH_SCRIPT])
+    sp_obj = subprocess.run(['python', PATH_SCRIPT])
+    sp_obj.check_returncode()
 
     # ---------- Check Player ---------- #
     # sync player&shuttlecock record from google sheet
     subfolder = 'record'
     filename = 'sync_record_ggsheet.py'
     PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
-    subprocess.run(['python', PATH_SCRIPT])
+    sp_obj = subprocess.run(['python', PATH_SCRIPT])
+    sp_obj.check_returncode()
 
 # ---------- Billing ---------- #
 # generate original listplayer.xlsx
 subfolder = 'billing'
 filename = 'gen_listplayer_from_ggsheet.py'
 PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
-subprocess.run(['python', PATH_SCRIPT])
+sp_obj = subprocess.run(['python', PATH_SCRIPT])
+sp_obj.check_returncode()
 
 # update balance after billing 
 subfolder = 'billing'
 filename = 'update_balance.py'
 PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
-subprocess.run(['python', PATH_SCRIPT])
-
+sp_obj = subprocess.run(['python', PATH_SCRIPT])
+sp_obj.check_returncode()
 print("#----- Finish Main -----#")

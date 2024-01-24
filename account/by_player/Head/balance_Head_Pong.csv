@@ -35,3 +35,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231120,Head,Pong,PongHead,42.0,0,7.0,0,0.0,7.0
 20231127,Head,Pong,PongHead,48.0,0,7.0,0,0.0,7.0
 20240105,Head,Pong,PongHead,44.0,1,7.0,44,0.0,-37.0
+20240122,Head,Pong,PongHead,56.0,1,-37.0,56,0.0,-93.0

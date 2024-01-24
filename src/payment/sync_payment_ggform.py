@@ -50,7 +50,8 @@ def google_authen(FOLDER_CONFIG):
         print("credential not valid !")
         if creds and creds.expired and creds.refresh_token:
             print("credential refresh...")
-            creds.refresh(Request())
+            # creds.refresh(Request())
+            os.remove(PATH_TOKEN)
         else:
             print("Install app flow and run local server...")
             flow = InstalledAppFlow.from_client_secrets_file(
