@@ -12,3 +12,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240108,Dev,It,ItDev,56.0,1,88.0,56,0,32.0
 20240115,Dev,It,ItDev,56.0,1,32.0,56,0,-24.0
 20240122,Dev,It,ItDev,56.0,1,-24.0,56,0,-80.0
+20240122-2,Dev,It,ItDev,0.0,1,-80.0,0,56,-24.0

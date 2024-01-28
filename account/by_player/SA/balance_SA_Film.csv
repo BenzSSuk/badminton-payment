@@ -41,3 +41,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240108,SA,Film,FilmSA,56.0,1,-154.0,56,0.0,-210.0
 20240115,SA,Film,FilmSA,56.0,1,-210.0,56,0.0,-266.0
 20240122,SA,Film,FilmSA,56.0,1,-266.0,56,0.0,-322.0
+20240122-2,SA,Film,FilmSA,0.0,1,-322.0,0,56.0,-266.0
+20240122-2,SA,Film,FilmSA,0.0,1,-266.0,0,56.0,-210.0

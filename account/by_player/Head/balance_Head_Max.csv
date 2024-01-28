@@ -39,3 +39,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240105,Head,Max,MaxHead,44.0,1,71.0,44,0.0,27.0
 "7/1/2024, 8:44:49",Head,Max,MaxHead,0.0,0,27.0,0,500.0,527.0
 20240122,Head,Max,MaxHead,56.0,1,527.0,56,0.0,471.0
+20240122-2,Head,Max,MaxHead,0.0,1,471.0,0,56.0,527.0

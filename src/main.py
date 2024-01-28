@@ -25,9 +25,36 @@ FOLDER_PROJECT = checkSysPathAndAppend(folderFile, 1)
 
 FOLDER_SRC = pjoin(FOLDER_PROJECT, 'src')
 
-SYNC_CLOUD = True
+'''
+auto          : - sync player payment&log on cloud to local
+                - process file from cloud to original excel
+                - update balance from excel
+auto_local    : - process file from cloud to original excel
+                - update balance from excel
+manual_excel  : - update balance from excel
+'''
+MODE = 'manual_excel' 
 
-if SYNC_CLOUD:
+mode_config_all = {
+    "auto": {
+        "sync_cloud": True,
+        "process_file_cloud": True,
+        "update_balance": True
+    },
+    "auto_local": {
+        "sync_cloud": False,
+        "process_file_cloud": True,
+        "update_balance": True
+    },
+    "manual_excel": {
+        "sync_cloud": False,
+        "process_file_cloud": False,
+        "update_balance": True
+    }
+}
+mode_config = mode_config_all[MODE]
+
+if mode_config['sync_cloud']:
     # ---------- Payment ---------- #
     # sync player payment from google from (response in google sheet)
     subfolder = 'payment'
@@ -53,16 +80,18 @@ if SYNC_CLOUD:
 
 # ---------- Billing ---------- #
 # generate original listplayer.xlsx
-subfolder = 'billing'
-filename = 'gen_listplayer_from_ggsheet.py'
-PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
-sp_obj = subprocess.run(['python', PATH_SCRIPT])
-sp_obj.check_returncode()
+if mode_config['process_file_cloud']:
+    subfolder = 'billing'
+    filename = 'gen_listplayer_from_ggsheet.py'
+    PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
+    sp_obj = subprocess.run(['python', PATH_SCRIPT])
+    sp_obj.check_returncode()
 
-# update balance after billing 
-subfolder = 'billing'
-filename = 'update_balance.py'
-PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
-sp_obj = subprocess.run(['python', PATH_SCRIPT])
-sp_obj.check_returncode()
-print("#----- Finish Main -----#")
+if mode_config['update_balance']:
+    # update balance after billing 
+    subfolder = 'billing'
+    filename = 'update_balance.py'
+    PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
+    sp_obj = subprocess.run(['python', PATH_SCRIPT])
+    sp_obj.check_returncode()
+    print("#----- Finish Main -----#")
