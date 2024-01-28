@@ -43,3 +43,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 "17/1/2024, 7:38:53",IoT,Boat,BoatIoT,0.0,0,-236.0,0,236.0,0.0
 20240122,IoT,Boat,BoatIoT,56.0,1,0.0,56,0.0,-56.0
 20240122-2,IoT,Boat,BoatIoT,0.0,1,-56.0,0,56.0,0.0
+20240122-3,IoT,Boat,BoatIoT,48.0,1,0.0,48,0.0,-48.0
