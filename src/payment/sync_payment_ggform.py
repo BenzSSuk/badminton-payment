@@ -246,7 +246,10 @@ if __name__ == "__main__":
         timestamp_log = change_format_ts(timestamp_log, is_datetime=True, file_type="ggform")
 
         filename_gg = f'{timestamp_log}_payment_ggform.csv'
-        PATH_LOG = os.path.join(FOLDER_PROJECT, 'record', 'payment', 'ggform', filename_gg)
+        FOLDER_LOG = pjoin(FOLDER_PROJECT, 'record', 'payment', 'ggform')
+        if not os.path.exists(FOLDER_LOG):
+            os.makedirs(FOLDER_LOG)
+        PATH_LOG = os.path.join(FOLDER_LOG, filename_gg)
         # PATH_LOG_CHECKED = pjoin(FOLDER_PROJECT, 'data', 'checked', 'payment', filename_gg)
         # if os.path.exists(PATH_LOG) or os.path.exists(PATH_LOG_CHECKED):
         if os.path.exists(PATH_LOG):
@@ -268,4 +271,4 @@ if __name__ == "__main__":
     else:
         print('payment log is empty !')
     
-    print("#----- Finish -----#")
+    print(f"[Done] {sys.argv[0]}")

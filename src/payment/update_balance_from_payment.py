@@ -105,4 +105,4 @@ if n_files > 0:
             print(f'moving {path_new}')
             os.rename(path_ori, path_new)
 
-print("#----- Finish update balance -----#")
+print(f"[Done] {sys.argv[0]}")

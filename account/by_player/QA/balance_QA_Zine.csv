@@ -31,3 +31,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240122,QA,Zine,ZineQA,56.0,1,0.0,56,0.0,-56.0
 20240122-2,QA,Zine,ZineQA,0.0,1,-56.0,0,56.0,0.0
 20240122-3,QA,Zine,ZineQA,48.0,1,0.0,48,0.0,-48.0
+20240126,QA,Zine,ZineQA,40.0,1,-48.0,40,0.0,-88.0

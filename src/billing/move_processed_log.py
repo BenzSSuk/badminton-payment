@@ -73,6 +73,7 @@ for i, filename_ggsheet in enumerate(list_name_ggsheet):
             print(f'moving {path_new}')
             os.rename(path_ori, path_new)
 
+print(f"[Done] {sys.argv[0]}")
 # # check log payment
 # print('checking payment...')
 # FOLDER_LOGTYPE = 'payment'
