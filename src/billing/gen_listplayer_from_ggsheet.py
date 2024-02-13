@@ -3,7 +3,6 @@ from os.path import join as pjoin
 import sys
 import pandas as pd
 import numpy as np
-import math
 
 def checkSysPathAndAppend(path, stepBack = 0):
     if stepBack > 0:
@@ -22,9 +21,6 @@ def checkSysPathAndAppend(path, stepBack = 0):
 folderFile, filename = os.path.split(os.path.realpath(__file__))
 FOLDER_PROJECT = checkSysPathAndAppend(folderFile, 2)
 FOLDER_RECORD_EXCEL = pjoin(FOLDER_PROJECT, 'record', 'player', 'excel')
-if not os.path.exists(FOLDER_RECORD_EXCEL):
-    os.makedirs(FOLDER_RECORD_EXCEL)
-
 import lib as wedolib
 
 def get_df_listplayer(df_listplayer):
@@ -75,8 +71,6 @@ for i, path_logday_player in enumerate(list_dir):
 
         n_shuttlecock = df_shuttlecock_logday['n_shuttlecock'][0]
         external_pay = df_shuttlecock_logday['external_pay'][0]
-        if math.isnan(external_pay):
-            external_pay = 0
         # pay_to_external = df_shuttlecock_logday['pay_to_external'][0]
         total_cost = (shuttlecock_price_current * n_shuttlecock) - external_pay
         n_player = n_row
@@ -97,5 +91,3 @@ for i, path_logday_player in enumerate(list_dir):
 
     filename_excel = f'{log_date}_listplayer.xlsx'
     df_listplayer.to_excel(pjoin(FOLDER_RECORD_EXCEL, filename_excel), index=False)
-
-print(f"[Done] {sys.argv[0]}")

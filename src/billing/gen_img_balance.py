@@ -235,4 +235,4 @@ for i in range(n_plot):
     # PATH_IMG_BALANCE = os.path.join(FOLDER_IMG_RECORD_DATE, filename)
     # fig.write_image(PATH_IMG_BALANCE)
 
-print(f"[Done] {sys.argv[0]}")
+print("# ----- Finished ----- #")
