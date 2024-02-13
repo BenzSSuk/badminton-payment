@@ -188,4 +188,4 @@ PATH_SCRIPT = pjoin(FOLDER_PROJECT, 'src', subfolder, filename)
 subprocess.run(['python', PATH_SCRIPT])
 
 
-print("#----- Finished Main-----#")
+print(f"[Done] {sys.argv[0]}")

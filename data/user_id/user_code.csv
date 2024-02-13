@@ -23,6 +23,7 @@ Dev,Nop,NopDev,Dev - Nop
 Dev,Tui,TuiDev,Dev - Tui
 Dev,Wan,WanDev,Dev - Wan
 External,Song,SongExternal,External - Song
+External,Ponpat,PonpatExternal,External - Ponpat
 HCI,Jimmy,JimmyHCI,HCI - Jimmy
 Head,Max,MaxHead,Head - Max
 Head,Pong,PongHead,Head - Pong
@@ -63,6 +64,7 @@ SDE,Max,MaxSDE,SDE - Max
 SDE,Move,MoveSDE,SDE - Move
 SDE,Palm,PalmSDE,SDE - Palm
 SDE,Perm,PermSDE,SDE - Perm
+SDE,Tae,TaeSDE,SDE - Tae
 SRE,Aui,AuiSRE,SRE - Aui
 SRE,F,FSRE,SRE - F
 Test,xxx,xxxtest,Test - xxx

@@ -33,7 +33,7 @@ auto_local    : - process file from cloud to original excel
                 - update balance from excel
 manual_excel  : - update balance from excel
 '''
-MODE = 'manual_excel' 
+MODE = 'auto' 
 
 mode_config_all = {
     "auto": {
@@ -59,6 +59,7 @@ if mode_config['sync_cloud']:
     # sync player payment from google from (response in google sheet)
     subfolder = 'payment'
     filename = 'sync_payment_ggform.py'
+    print(filename)
     PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
     sp_obj = subprocess.run(['python', PATH_SCRIPT])
     sp_obj.check_returncode()
@@ -66,6 +67,7 @@ if mode_config['sync_cloud']:
     # update balance with payment from google form
     subfolder = 'payment'
     filename = 'update_balance_from_payment.py'
+    print(filename)
     PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
     sp_obj = subprocess.run(['python', PATH_SCRIPT])
     sp_obj.check_returncode()
@@ -74,6 +76,7 @@ if mode_config['sync_cloud']:
     # sync player&shuttlecock record from google sheet
     subfolder = 'record'
     filename = 'sync_record_ggsheet.py'
+    print(filename)
     PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
     sp_obj = subprocess.run(['python', PATH_SCRIPT])
     sp_obj.check_returncode()
@@ -83,6 +86,7 @@ if mode_config['sync_cloud']:
 if mode_config['process_file_cloud']:
     subfolder = 'billing'
     filename = 'gen_listplayer_from_ggsheet.py'
+    print(filename)
     PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
     sp_obj = subprocess.run(['python', PATH_SCRIPT])
     sp_obj.check_returncode()
@@ -91,6 +95,7 @@ if mode_config['update_balance']:
     # update balance after billing 
     subfolder = 'billing'
     filename = 'update_balance.py'
+    print(filename)
     PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
     sp_obj = subprocess.run(['python', PATH_SCRIPT])
     sp_obj.check_returncode()

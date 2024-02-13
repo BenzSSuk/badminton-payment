@@ -158,6 +158,7 @@ def write_logday(list_data_row, FOLDER_SAVE='cloud_log', log_type='player'):
                 # new day
                 timestamp_new = change_format_ts(timestamp_prev, is_datetime=False)
                 filename_gg_day = f'{timestamp_new}_logday_{log_type}.csv'
+
                 PATH_LOG = os.path.join(FOLDER_SAVE, filename_gg_day)
                 mylib.list2csv(PATH_LOG, list_data_day, is_nested_list=True)    
                 
@@ -209,6 +210,8 @@ if __name__ == "__main__":
         if not os.path.exists(PATH_LOG):
             mylib.list2csv(PATH_LOG, list_data_row_player, is_nested_list=True)
             FOLDER_SAVE = pjoin(FOLDER_PROJECT, 'record', 'player', 'ggsheet')
+            if not os.path.exists(FOLDER_SAVE):
+                os.makedirs(FOLDER_SAVE)
             write_logday(list_data_row_player, FOLDER_SAVE, 'player')
 
         else:
@@ -238,6 +241,8 @@ if __name__ == "__main__":
         if not os.path.exists(PATH_LOG):
             mylib.list2csv(PATH_LOG, list_shuttlecock, is_nested_list=True)
             FOLDER_SAVE = pjoin(FOLDER_PROJECT, 'record', 'shuttlecock', 'ggsheet')
+            if not os.path.exists(FOLDER_SAVE):
+                os.makedirs(FOLDER_SAVE)
             write_logday(list_shuttlecock, FOLDER_SAVE, 'shuttlecock')
 
         else:
@@ -254,4 +259,4 @@ if __name__ == "__main__":
     else:
         print('shuttlecock log is empty !')
    
-    print("#----- Finish -----#")
+    print(f"[Done] {sys.argv[0]}")
