@@ -1,0 +1,3 @@
+date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
+20240129,External,Ponpat,PonpatExternal,68,1,0.0,68,0,-68.0
+20240212,External,Ponpat,PonpatExternal,55,1,-68.0,55,0,-123.0

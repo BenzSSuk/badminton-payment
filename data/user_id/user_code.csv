@@ -65,6 +65,7 @@ SDE,Move,MoveSDE,SDE - Move
 SDE,Palm,PalmSDE,SDE - Palm
 SDE,Perm,PermSDE,SDE - Perm
 SDE,Tae,TaeSDE,SDE - Tae
+SDE,MUBMIIB,MUBMIIBSDE,SDE - MUBMIIB
 SRE,Aui,AuiSRE,SRE - Aui
 SRE,F,FSRE,SRE - F
 Test,xxx,xxxtest,Test - xxx

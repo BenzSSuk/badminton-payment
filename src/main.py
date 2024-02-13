@@ -33,7 +33,7 @@ auto_local    : - process file from cloud to original excel
                 - update balance from excel
 manual_excel  : - update balance from excel
 '''
-MODE = 'auto' 
+MODE = 'auto_local' 
 
 mode_config_all = {
     "auto": {

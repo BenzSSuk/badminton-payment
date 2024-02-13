@@ -1,8 +1,8 @@
 player_code,team,player_name,balance
 BenzIoT,IoT,Benz,
-KuangIoT,IoT,Kuang,42.0
+KuangIoT,IoT,Kuang,2.0
 BookIoT,IoT,Book,-104.0
-OIoT,IoT,O,466.0
+OIoT,IoT,O,426.0
 BankIoT,IoT,Bank,126.0
 JameIoT,IoT,Jame,0.0
 PondIoT,IoT,Pond,-24.0
@@ -10,10 +10,10 @@ BoatIoT,IoT,Boat,-48.0
 JuniorIoT,IoT,Junior,0.0
 UnIoT,IoT,Un,0.0
 JimmyHCI,HCI,Jimmy,8.0
-WizQA,QA,Wiz,402.0
+WizQA,QA,Wiz,362.0
 KanQA,QA,Kan,0.0
 FrameQA,QA,Frame,0.0
-AeSDE,SDE,Ae,90.0
+AeSDE,SDE,Ae,50.0
 PalmSDE,SDE,Palm,170.0
 ArmSDE,SDE,Arm,30.0
 KenSDE,SDE,Ken,33.0
@@ -55,7 +55,7 @@ NandCommu,Commu,Nand,2.0
 xxxtest,Test,xxx,0.0
 MuayDesign,Design,Muay,0.0
 PetchData,Data,Petch,2.0
-ZineQA,QA,Zine,-88.0
+ZineQA,QA,Zine,-128.0
 AomOM,OM,Aom,0.0
 SiSCM,SCM,Si,0.0
 NuengSCM,SCM,Nueng,0.0
