@@ -67,6 +67,7 @@ if mode_config['sync_cloud']:
     sp_obj.check_returncode()
     time.sleep(t_offset_script)
 
+if mode_config['process_file_cloud']:
     # update balance with payment from google form
     subfolder = 'payment'
     filename = 'update_balance_from_payment.py'
@@ -76,6 +77,7 @@ if mode_config['sync_cloud']:
     sp_obj.check_returncode()
     time.sleep(t_offset_script)
 
+if mode_config['sync_cloud']:
     # ---------- Check Player ---------- #
     # sync player&shuttlecock record from google sheet
     subfolder = 'record'
