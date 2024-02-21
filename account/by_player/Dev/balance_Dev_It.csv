@@ -17,3 +17,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 "29/1/2024, 22:01:51",Dev,It,ItDev,0.0,0,-72.0,0,500,428.0
 20240129,Dev,It,ItDev,68.0,1,428.0,68,0,360.0
 20240212,Dev,It,ItDev,55.0,1,360.0,55,0,305.0
+20240219,Dev,It,ItDev,44.0,1,305.0,44,0,261.0

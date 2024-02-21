@@ -3,6 +3,7 @@ from os.path import join as pjoin
 import sys
 import pandas as pd
 import subprocess
+import time
 
 from os.path import join as pjoin
 
@@ -33,7 +34,8 @@ auto_local    : - process file from cloud to original excel
                 - update balance from excel
 manual_excel  : - update balance from excel
 '''
-MODE = 'auto_local' 
+MODE = 'auto' 
+t_offset_script = 3
 
 mode_config_all = {
     "auto": {
@@ -63,6 +65,7 @@ if mode_config['sync_cloud']:
     PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
     sp_obj = subprocess.run(['python', PATH_SCRIPT])
     sp_obj.check_returncode()
+    time.sleep(t_offset_script)
 
     # update balance with payment from google form
     subfolder = 'payment'
@@ -71,6 +74,7 @@ if mode_config['sync_cloud']:
     PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
     sp_obj = subprocess.run(['python', PATH_SCRIPT])
     sp_obj.check_returncode()
+    time.sleep(t_offset_script)
 
     # ---------- Check Player ---------- #
     # sync player&shuttlecock record from google sheet
@@ -80,6 +84,7 @@ if mode_config['sync_cloud']:
     PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
     sp_obj = subprocess.run(['python', PATH_SCRIPT])
     sp_obj.check_returncode()
+    time.sleep(t_offset_script)
 
 # ---------- Billing ---------- #
 # generate original listplayer.xlsx
@@ -90,6 +95,7 @@ if mode_config['process_file_cloud']:
     PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
     sp_obj = subprocess.run(['python', PATH_SCRIPT])
     sp_obj.check_returncode()
+    time.sleep(t_offset_script)
 
 if mode_config['update_balance']:
     # update balance after billing 
@@ -100,3 +106,4 @@ if mode_config['update_balance']:
     sp_obj = subprocess.run(['python', PATH_SCRIPT])
     sp_obj.check_returncode()
     print("#----- Finish Main -----#")
+    time.sleep(t_offset_script)

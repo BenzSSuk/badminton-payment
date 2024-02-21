@@ -49,3 +49,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240126,QA,Wiz,WizQA,40.0,1,402.0,40,0.0,362.0
 20240129,QA,Wiz,WizQA,68.0,1,362.0,68,0.0,294.0
 20240212,QA,Wiz,WizQA,55.0,1,294.0,55,0.0,239.0
+"14/2/2024, 22:46:17",QA,Wiz,WizQA,0.0,0,239.0,0,300.0,539.0

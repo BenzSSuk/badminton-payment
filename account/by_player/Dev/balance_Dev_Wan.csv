@@ -35,3 +35,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231120,Dev,Wan,WanDev,42.0,0,48.0,0,0.0,48.0
 20231127,Dev,Wan,WanDev,48.0,0,48.0,0,0.0,48.0
 20231211,Dev,Wan,WanDev,42.0,1,48.0,42,0.0,6.0
+20240219,Dev,Wan,WanDev,44.0,1,6.0,44,0.0,-38.0
