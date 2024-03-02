@@ -1,0 +1,277 @@
+import os
+from os.path import join as pjoin
+import sys
+from datetime import datetime
+import google.auth
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
+
+import pandas as pd
+
+'''
+https://docs.google.com/spreadsheets/d/1QaZ5CNJCBPIRh6N95hoh1l4HOfZz8GjZR6vOKd7vU9s/edit?resourcekey#gid=1451979486
+speardsheet_id = 1QaZ5CNJCBPIRh6N95hoh1l4HOfZz8GjZR6vOKd7vU9s
+sheet_id = 1451979486
+'''
+
+def checkSysPathAndAppend(path, stepBack = 0):
+    if stepBack > 0:
+        for istep in range(stepBack):
+            if istep == 0:
+                pathStepBack = path
+            pathStepBack, filename = os.path.split(pathStepBack)
+    else:
+        pathStepBack = path
+
+    if not pathStepBack in sys.path:
+        sys.path.append(pathStepBack)
+
+    return pathStepBack
+
+folderFile, filename = os.path.split(os.path.realpath(__file__))
+FOLDER_PROJECT = checkSysPathAndAppend(folderFile, 2)
+FOLDER_CONFIG = os.path.join(FOLDER_PROJECT, 'config')
+FOLDER_RECORD = os.path.join(FOLDER_PROJECT, 'player_record')
+FOLDER_DATA = os.path.join(FOLDER_PROJECT, 'data')
+
+import lib.DataProcessing as mylib
+
+SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
+
+def google_authen(FOLDER_CONFIG):
+
+    creds = None
+    # The file token.json stores the user's access and refresh tokens, and is
+    # created automatically when the authorization flow completes for the first
+    # time.
+    PATH_CREDS = os.path.join(FOLDER_CONFIG, 'credentials.json')
+    PATH_TOKEN = os.path.join(FOLDER_CONFIG, "token.json")
+    if os.path.exists(PATH_TOKEN):
+        creds = Credentials.from_authorized_user_file(PATH_TOKEN, SCOPES)
+    # If there are no (valid) credentials available, let the user log in.
+    if not creds or not creds.valid:
+        print("credential not valid !")
+        if creds and creds.expired and creds.refresh_token:
+            print("credential refresh...")
+            # creds.refresh(Request())
+            os.remove(PATH_TOKEN)
+        else:
+            print("Install app flow and run local server...")
+            flow = InstalledAppFlow.from_client_secrets_file(
+                PATH_CREDS, SCOPES
+            )
+            creds = flow.run_local_server(port=0)
+    # Save the credentials for the next run
+    with open(PATH_TOKEN, "w") as token:
+        token.write(creds.to_json())
+    
+    return creds
+
+def sheet_read(service, spreadsheet_id, sheet_name, range):
+  """
+  Creates the batch_update the user has access to.
+  Load pre-authorized user credentials from the environment.
+  TODO(developer) - See https://developers.google.com/identity
+  for guides on implementing OAuth2 for the application.
+  """
+
+  # creds, _ = google.auth.default()
+  
+  # pylint: disable=maybe-no-member
+  try:
+    range_name = f"{sheet_name}!{range}"
+    result = (
+        service.spreadsheets()
+        .values()
+        .get(spreadsheetId=spreadsheet_id, range=range_name)
+        .execute()
+    )
+    # rows = result.get("values", [])
+    # print(f"{len(rows)} rows retrieved")
+
+    list_value = result['values']
+
+    return result, list_value
+  
+  except HttpError as error:
+    print(f"An error occurred: {error}")
+    return error
+
+dict_format_timestamp = {
+    "ggsheet": {
+        "date": "%Y-%m-%d",
+        "datetime": "%Y-%m-%d %H:%M"
+    },
+    "ggform": {
+        "date": "%d/%m/%Y",
+        "datetime": "%d/%m/%Y, %H:%M:%S"
+    }
+}
+
+def sheet_clear(service, spreadsheet_id, sheet_name, range):
+  """
+  Creates the batch_update the user has access to.
+  Load pre-authorized user credentials from the environment.
+  TODO(developer) - See https://developers.google.com/identity
+  for guides on implementing OAuth2 for the application.
+  """
+
+  # creds, _ = google.auth.default()
+  
+  # pylint: disable=maybe-no-member
+  try:
+    range_name = f"{sheet_name}!{range}"
+    result = (
+        service.spreadsheets()
+        .values()
+        .clear(spreadsheetId=spreadsheet_id, range=range_name)
+        .execute()
+    )
+    # rows = result.get("values", [])
+    # print(f"{len(rows)} rows retrieved")
+
+    # list_value = result['values']
+
+    # return result, list_value
+  
+  except HttpError as error:
+    print(f"An error occurred: {error}")
+    return error
+
+def sheet_delete_row_col(service, spreadsheet_id, sheet_name, range):
+    new_spreadsheet_data = {
+        "requests": [
+            {
+            "deleteDimension": {
+                "range": {
+                "sheetId": sheet_name,
+                "dimension": "ROWS",
+                "startIndex": 0,
+                "endIndex": 3
+                }
+            }
+            },
+            {
+            "deleteDimension": {
+                "range": {
+                "sheetId": sheet_name,
+                "dimension": "COLUMNS",
+                "startIndex": 1,
+                "endIndex": 4
+                }
+            }
+            },
+        ],
+    }
+    
+    result = (
+        service.spreadsheets()
+        .batch_update(spreadsheetId=spreadsheet_id, body=new_spreadsheet_data)
+        .execute()
+    )
+        
+    sheet_service.spreadsheets().batchUpdate(
+        spreadsheetId=spreadsheet_id, body=update_data)
+
+def change_format_ts(timestamp, is_datetime=True, file_type="ggsheet"):
+
+
+    if is_datetime:
+        timestamp_datetime = datetime.strptime(timestamp, dict_format_timestamp[file_type]["datetime"])
+        timestamp_new = timestamp_datetime.strftime("%Y%m%d_%H%M%S")
+    
+    else:
+        timestamp_datetime = datetime.strptime(timestamp, dict_format_timestamp[file_type]["date"])
+        timestamp_new = timestamp_datetime.strftime("%Y%m%d")
+
+    return timestamp_new
+
+def write_logday(list_data_row, log_type='player', filname_extend="logday.csv"):
+    header_row = list_data_row[0]
+    list_data_day = []
+    list_data_day.append(header_row)
+    n_row_log = len(list_data_row)
+    for i in range(n_row_log):
+        if i == 0:
+            continue
+
+        timestamp = list_data_row[i][0][0:10]
+        data_row = list_data_row[i]
+        if i == 1:
+            list_data_day.append(data_row)
+
+        elif i > 1:
+            if timestamp == timestamp_prev:
+                # same day
+                list_data_day.append(data_row)
+            
+            else:
+                # new day
+                timestamp_new = change_format_ts(timestamp_prev, is_datetime=False)
+                filename_gg_day = f'{timestamp_new}_{filname_extend}'
+                PATH_LOG = os.path.join(FOLDER_PROJECT, 'record', log_type, 'ggsheet', filename_gg_day)
+                mylib.list2csv(PATH_LOG, list_data_day, is_nested_list=True)    
+                
+                list_data_day = []
+                list_data_day.append(header_row)
+                list_data_day.append(data_row)
+
+        if i == (n_row_log - 1):
+            # last row
+            timestamp_new = change_format_ts(timestamp, is_datetime=False)
+            filename_gg_day = f'{timestamp_new}_{filname_extend}'
+            PATH_LOG = os.path.join(FOLDER_PROJECT, 'record', log_type, 'ggsheet', filename_gg_day)
+            mylib.list2csv(PATH_LOG, list_data_day, is_nested_list=True)   
+
+        timestamp_prev = timestamp
+
+if __name__ == "__main__":
+  
+    """Shows basic usage of the Sheets API.
+    Prints values from a sample spreadsheet.
+    """
+    print("google authen...")
+    creds = google_authen(FOLDER_CONFIG)
+
+
+    # print("build google sheet service...")
+    # service = build("sheets", "v4", credentials=creds)
+    with build("sheets", "v4", credentials=creds) as service:
+        # print("read data from sheet...")
+        
+        spreadsheet_id = "1QaZ5CNJCBPIRh6N95hoh1l4HOfZz8GjZR6vOKd7vU9s"
+        sheet_id = 1451979486
+        
+        # Create the request body
+        list_request_body = [
+            {
+                "deleteDimension": {
+                    "range": {
+                        "sheetId": sheet_id,
+                        "dimension": "ROWS",
+                        "startIndex": 1,
+                        "endIndex": 3
+                    }
+                }
+            }
+        ]
+        sheet_request_body = {
+            "requests": list_request_body,
+            "includeSpreadsheetInResponse": False,
+        }
+        # update_spreadsheet_data = {
+        #     "requests": spreadsheet_data,
+        #     "includeSpreadsheetInResponse": False,
+        #     "responseRanges": [""],
+        #     "responseIncludeGridData": False    
+        # }
+
+        # Execute the batch update
+        request = service.spreadsheets().batchUpdate(spreadsheetId=spreadsheet_id,
+                                                     body=sheet_request_body)
+        request.execute()
+
+    print('Finished !')
