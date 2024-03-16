@@ -255,6 +255,7 @@ if __name__ == "__main__":
         if os.path.exists(PATH_LOG):
             print("payment log already up to date.")
 
+
         else:
             mylib.list2csv(PATH_LOG, list_data_row, is_nested_list=True)
             # write_logday(list_data_row, 'player', 'logday_player.csv')

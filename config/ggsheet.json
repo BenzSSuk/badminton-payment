@@ -1,0 +1,17 @@
+{
+    "user_log": {
+        "spreadsheet_id": "1hbDSWdrGu8dfTwmZQ0Avf7LMUoyTt4wGUw2Aw9g5YoU",
+        "sheet_id": {
+            "userID": 0,
+            "log": 1512194892,
+            "shuttlecock_log": 256766368
+        }
+    },
+    "payment": {
+        "spreadsheet_id": "1645HEPOmEV723MY27-sttmxb6_dT6YK0EJyUvocvbOE",
+        "sheet_id": {
+            "payment": 608600682,
+            "payment-code": 1394862169
+        }
+    }
+}
