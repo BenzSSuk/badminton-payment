@@ -49,6 +49,7 @@ class SpreadSheet:
                 list_value.remove(list_value[0])
                 data = list_value
                 df_data = pd.DataFrame(data, columns=header)
+                df_data.reset_index(drop=True, inplace=True)
 
                 return df_data
             
@@ -60,6 +61,17 @@ class SpreadSheet:
 
             return error
   
+    def write_data(self, df_data, PATH_FILE):
+        is_write_successed = False
+
+        df_data.to_csv(PATH_FILE, index=False)
+
+        # checking write file
+        df_data_write = pd.read_csv(PATH_FILE)
+
+        is_write_successed = df_data.shape == df_data_write.shape
+
+        return is_write_successed
 
     def clear(self, sheet_name, range):
         """

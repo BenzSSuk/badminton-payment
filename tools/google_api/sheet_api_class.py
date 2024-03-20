@@ -78,13 +78,23 @@ if __name__ == "__main__":
     creds = google_authen(FOLDER_CONFIG)
     
     PATH_SHEET_ID = pjoin(FOLDER_CONFIG, 'ggsheet.json')
-    ggsheet_info = srisuk.read_json(PATH_SHEET_ID)
+    dict_ggsheet_info = srisuk.read_json(PATH_SHEET_ID)
 
-    spreadsheet_id = ggsheet_info['user_log']['spreadsheet_id']
-    service_sheet = srisuk.SpreadSheet(creds=creds, spreadsheet_id=spreadsheet_id)
+    filename_sheet = 'test'
+    sheet_info = dict_ggsheet_info[filename_sheet]
+    sheet = srisuk.SpreadSheet(creds=creds, spreadsheet_id=sheet_info['spreadsheet_id'])
+    
+    print("reading...")
+    df_data = sheet.read('test', 'a1:d100')
 
-    df_data = service_sheet.read('test', 'a1:d5')
+    print("writing...")
+    is_write_successed = sheet.write_data(df_data, PATH_FILE='sheet_class_data.csv')
+    
+    if is_write_successed:
+        print('deleting...')
+        nrow, ncol = df_data.shape
+        sheet.delete(sheet_info['sheet_id']['test'], index_axis='ROWS', range=[1, nrow + 1])
 
-    service_sheet.close()
+    sheet.close()
 
     print('Finished !')

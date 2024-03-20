@@ -13,5 +13,11 @@
             "payment": 608600682,
             "payment-code": 1394862169
         }
+    },
+    "test": {
+        "spreadsheet_id": "1QaZ5CNJCBPIRh6N95hoh1l4HOfZz8GjZR6vOKd7vU9s",
+        "sheet_id": {
+            "test": 1451979486
+        }
     }
 }
