@@ -171,5 +171,9 @@ class SpreadSheet:
                                                      body=sheet_request_body)
         request.execute()
 
+    def delete_row_data(self, sheet_id, n_row):
+        # n_row = df_data.shape[0]
+        self.delete(sheet_id, 'ROWS', [1, n_row + 1])
+
     def close(self):
         self.service.close()
