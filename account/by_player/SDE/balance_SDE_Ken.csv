@@ -42,3 +42,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240122-3,SDE,Ken,KenSDE,48.0,1,-219.0,48,0.0,-267.0
 "1/2/2024, 9:11:55",SDE,Ken,KenSDE,0.0,0,-267.0,0,300.0,33.0
 20240212,SDE,Ken,KenSDE,55.0,1,33.0,55,0.0,-22.0
+20240311,SDE,Ken,KenSDE,41.0,1,-22.0,41,0.0,-63.0

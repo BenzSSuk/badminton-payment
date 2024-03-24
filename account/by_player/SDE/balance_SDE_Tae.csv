@@ -1,2 +1,3 @@
 date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
-20240212,SDE,Tae,TaeSDE,55,1,0,55,0,-55
+20240212,SDE,Tae,TaeSDE,55,1,0.0,55,0,-55.0
+20240311,SDE,Tae,TaeSDE,41,1,-55.0,41,0,-96.0
