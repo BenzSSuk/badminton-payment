@@ -34,3 +34,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231117,Dev,Moo,MooDev,57.0,0,-9.0,0,0.0,-9.0
 20231120,Dev,Moo,MooDev,42.0,0,-9.0,0,0.0,-9.0
 20231127,Dev,Moo,MooDev,48.0,0,-9.0,0,0.0,-9.0
+20240401,Dev,Moo,MooDev,82.0,1,-9.0,82,0.0,-91.0
+20240405,Dev,Moo,MooDev,58.0,1,-91.0,58,0.0,-149.0

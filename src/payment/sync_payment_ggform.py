@@ -167,8 +167,8 @@ def sheet_delete_row_col(service, spreadsheet_id, sheet_name, range):
         .execute()
     )
         
-    sheet_service.spreadsheets().batchUpdate(
-        spreadsheetId=spreadsheet_id, body=update_data)
+    # sheet_service.spreadsheets().batchUpdate(
+    #     spreadsheetId=spreadsheet_id, body=update_data)
 
 def change_format_ts(timestamp, is_datetime=True, file_type="ggsheet"):
 
@@ -252,12 +252,14 @@ if __name__ == "__main__":
         PATH_LOG = os.path.join(FOLDER_LOG, filename_gg)
         # PATH_LOG_CHECKED = pjoin(FOLDER_PROJECT, 'data', 'checked', 'payment', filename_gg)
         # if os.path.exists(PATH_LOG) or os.path.exists(PATH_LOG_CHECKED):
-        if os.path.exists(PATH_LOG):
-            print("payment log already up to date.")
+        # if os.path.exists(PATH_LOG):
+        #     print("payment log already up to date.")
 
-        else:
-            mylib.list2csv(PATH_LOG, list_data_row, is_nested_list=True)
-            # write_logday(list_data_row, 'player', 'logday_player.csv')
+        # else:
+        print("writing log payment...")
+        list_data_row[0] = ['timestamp', 'img_slip', 'payment', 'name']
+        mylib.list2csv(PATH_LOG, list_data_row, is_nested_list=True)
+        # write_logday(list_data_row, 'player', 'logday_player.csv')
 
         sheet_name = "payment"
         n_row_loaded = len(list_data_row)

@@ -43,3 +43,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240212,Head,Pong,PongHead,55.0,1,347.0,55,0.0,292.0
 20240219,Head,Pong,PongHead,44.0,1,292.0,44,0.0,248.0
 20240311,Head,Pong,PongHead,41.0,1,248.0,41,0.0,207.0
+20240325,Head,Pong,PongHead,81.0,1,207.0,81,0.0,126.0
+20240401,Head,Pong,PongHead,82.0,1,126.0,82,0.0,44.0

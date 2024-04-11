@@ -34,7 +34,11 @@ auto_local    : - process file from cloud to original excel
                 - update balance from excel
 manual_excel  : - update balance from excel
 '''
+
 MODE = 'auto' 
+if len(sys.argv) > 1:
+    MODE = sys.argv[1]
+
 t_offset_script = 3
 
 mode_config_all = {

@@ -50,6 +50,7 @@ QA,Frame,FrameQA,QA - Frame
 QA,Kan,KanQA,QA - Kan
 QA,Wiz,WizQA,QA - Wiz
 QA,Zine,ZineQA,QA - Zine
+QA,Dao,DaoQA,QA - Dao
 Resource,Fin,FinResource,Resource - Fin
 Resource,Maprang,MaprangResource,Resource - Maprang
 SA,Film,FilmSA,SA - Film

@@ -53,3 +53,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240304,QA,Wiz,WizQA,72.0,1,539.0,72,0.0,467.0
 20240311,QA,Wiz,WizQA,41.0,1,467.0,41,0.0,426.0
 20240318,QA,Wiz,WizQA,70.0,1,426.0,70,0.0,356.0
+20240325,QA,Wiz,WizQA,81.0,1,356.0,81,0.0,275.0
+20240401,QA,Wiz,WizQA,82.0,1,275.0,82,0.0,193.0
+20240405,QA,Wiz,WizQA,58.0,1,193.0,58,0.0,135.0
