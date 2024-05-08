@@ -1,3 +1,5 @@
 date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
 20240129,SDE,MUBMIIB,MUBMIIBSDE,68,1,0.0,68,0,-68.0
 20240219,SDE,MUBMIIB,MUBMIIBSDE,44,1,-68.0,44,0,-112.0
+20240422,SDE,MUBMIIB,MUBMIIBSDE,50,1,-112.0,50,0,-162.0
+20240429,SDE,MUBMIIB,MUBMIIBSDE,46,1,-162.0,46,0,-208.0

@@ -53,3 +53,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240405,HCI,Jimmy,JimmyHCI,58.0,1,-305.0,58,0.0,-363.0
 "10/4/2024, 12:36:00",HCI,Jimmy,JimmyHCI,0.0,0,-363.0,0,259.0,-104.0
 "12/4/2024, 16:30:40",HCI,Jimmy,JimmyHCI,0.0,0,-104.0,0,104.0,0.0
+20240412,HCI,Jimmy,JimmyHCI,44.0,1,0.0,44,0.0,-44.0
+20240422,HCI,Jimmy,JimmyHCI,50.0,1,-44.0,50,0.0,-94.0
+20240429,HCI,Jimmy,JimmyHCI,46.0,1,-94.0,46,0.0,-140.0

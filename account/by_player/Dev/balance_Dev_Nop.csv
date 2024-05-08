@@ -40,3 +40,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240108,Dev,Nop,NopDev,56.0,1,483.0,56,0.0,427.0
 20240212,Dev,Nop,NopDev,55.0,1,427.0,55,0.0,372.0
 20240304,Dev,Nop,NopDev,72.0,1,372.0,72,0.0,300.0
+20240429,Dev,Nop,NopDev,46.0,1,300.0,46,0.0,254.0
