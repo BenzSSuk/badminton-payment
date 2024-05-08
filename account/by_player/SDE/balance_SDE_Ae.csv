@@ -55,3 +55,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240304,SDE,Ae,AeSDE,72.0,1,143.0,72,0.0,71.0
 20240311,SDE,Ae,AeSDE,41.0,1,71.0,41,0.0,30.0
 20240401,SDE,Ae,AeSDE,82.0,1,30.0,82,0.0,-52.0
+"11/4/2024, 22:29:58",SDE,Ae,AeSDE,0.0,0,-52.0,0,52.0,0.0

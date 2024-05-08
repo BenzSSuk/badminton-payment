@@ -1,3 +1,4 @@
 date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
 20240325,QA,Dao,DaoQA,81,1,0.0,81,0,-81.0
 20240401,QA,Dao,DaoQA,82,1,-81.0,82,0,-163.0
+"12/4/2024, 13:16:11",QA,Dao,DaoQA,0,0,-163.0,0,163,0.0
