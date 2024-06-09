@@ -7,3 +7,5 @@ config/credentials.json
 config/token.json
 
 .Rproj.user
+.RData
+.Rhistory

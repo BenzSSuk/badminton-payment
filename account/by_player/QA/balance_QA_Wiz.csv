@@ -59,3 +59,8 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240419,QA,Wiz,WizQA,72.0,1,135.0,72,0.0,63.0
 20240422,QA,Wiz,WizQA,50.0,1,63.0,50,0.0,13.0
 20240429,QA,Wiz,WizQA,46.0,1,13.0,46,0.0,-33.0
+"8/5/2024, 23:48:33",QA,Wiz,WizQA,0.0,0,-33.0,0,300.0,267.0
+20240513,QA,Wiz,WizQA,58.0,1,267.0,58,0.0,209.0
+20240520,QA,Wiz,WizQA,48.0,1,209.0,48,0.0,161.0
+20240527,QA,Wiz,WizQA,73.0,1,161.0,73,0.0,88.0
+20240531,QA,Wiz,WizQA,44.0,1,88.0,44,0.0,44.0
