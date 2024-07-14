@@ -71,5 +71,5 @@ SDE,Tae,TaeSDE,SDE - Tae
 SDE,MUBMIIB,MUBMIIBSDE,SDE - MUBMIIB
 SRE,Aui,AuiSRE,SRE - Aui
 SRE,F,FSRE,SRE - F
-SRE,Pat,SRE,SRE - Pat
+SRE,Pat,PatSRE,SRE - Pat
 Test,xxx,xxxtest,Test - xxx
