@@ -1,5 +1,6 @@
 team,name,player_code,name_on_form
 BA,Jinny,JinnyBA,BA - Jinny
+BA,Lilly,LillyBA,BA - Lilly
 BD,Chamil,ChamilBD,BD - Chamil
 BD,Jame,JameBD,BD - Jame
 BD,Nicha,NichaBD,BD - Nicha
@@ -69,4 +70,5 @@ SDE,Tae,TaeSDE,SDE - Tae
 SDE,MUBMIIB,MUBMIIBSDE,SDE - MUBMIIB
 SRE,Aui,AuiSRE,SRE - Aui
 SRE,F,FSRE,SRE - F
+SRE,Pat,SRE,SRE - Pat
 Test,xxx,xxxtest,Test - xxx
