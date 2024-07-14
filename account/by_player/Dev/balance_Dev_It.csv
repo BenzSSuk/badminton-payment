@@ -32,3 +32,10 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240513,Dev,It,ItDev,58.0,1,792.0,58,0,734.0
 20240520,Dev,It,ItDev,48.0,1,734.0,48,0,686.0
 20240607,Dev,It,ItDev,58.0,1,686.0,58,0,628.0
+20240617,Dev,It,ItDev,33.0,1,628.0,33,0,595.0
+20240621,Dev,It,ItDev,57.0,1,595.0,57,0,538.0
+20240624,Dev,It,ItDev,31.0,1,538.0,31,0,507.0
+20240701,Dev,It,ItDev,45.0,1,507.0,45,0,462.0
+20240705,Dev,It,ItDev,29.0,1,462.0,29,0,433.0
+20240708,Dev,It,ItDev,34.0,1,433.0,34,0,399.0
+20240712,Dev,It,ItDev,45.0,1,399.0,45,0,354.0

@@ -45,3 +45,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240311,SDE,Arm,ArmSDE,41.0,1,-38.0,41,0.0,-79.0
 20240429,SDE,Arm,ArmSDE,46.0,1,-79.0,46,0.0,-125.0
 "14/6/2024, 10:32:29",SDE,Arm,ArmSDE,0.0,0,-125.0,0,125.0,0.0
+20240701,SDE,Arm,ArmSDE,45.0,1,0.0,45,0.0,-45.0

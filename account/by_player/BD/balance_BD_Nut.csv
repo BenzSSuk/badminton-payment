@@ -34,3 +34,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20231117,BD,Nut,NutBD,57.0,0,0.0,0,0.0,0.0
 20231120,BD,Nut,NutBD,42.0,0,0.0,0,0.0,0.0
 20231127,BD,Nut,NutBD,48.0,0,0.0,0,0.0,0.0
+20240624,BD,Nut,NutBD,31.0,1,0.0,31,0.0,-31.0
+20240624,BD,Nut,NutBD,31.0,1,-31.0,31,0.0,-62.0
+20240624,BD,Nut,NutBD,31.0,1,-62.0,31,0.0,-93.0
