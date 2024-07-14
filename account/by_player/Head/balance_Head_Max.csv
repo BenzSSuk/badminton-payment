@@ -50,3 +50,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240429,Head,Max,MaxHead,46.0,1,149.0,46,0.0,103.0
 20240520,Head,Max,MaxHead,48.0,1,103.0,48,0.0,55.0
 20240527,Head,Max,MaxHead,73.0,1,55.0,73,0.0,-18.0
+"14/6/2024, 10:32:29",Head,Max,MaxHead,0.0,0,-18.0,0,18.0,0.0
