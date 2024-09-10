@@ -1,4 +1,6 @@
 date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
 20240624,BD,March,MarchBD,31,1,0,31,0,-31
-20240624,BD,March,MarchBD,31,1,0,31,0,-31
-20240624,BD,March,MarchBD,31,1,0,31,0,-31
+20240624,BD,March,MarchBD,31,1,-31,31,0,-62
+20240624,BD,March,MarchBD,31,1,-62,31,0,-93
+20240902,BD,March,MarchBD,55,1,-93,55,0,-148
+20240909,BD,March,MarchBD,38,1,-148,38,0,-186

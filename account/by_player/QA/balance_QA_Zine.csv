@@ -59,3 +59,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240701,QA,Zine,ZineQA,45.0,1,65.0,45,0.0,20.0
 20240708,QA,Zine,ZineQA,34.0,1,20.0,34,0.0,-14.0
 20240712,QA,Zine,ZineQA,45.0,1,-14.0,45,0.0,-59.0
+"14/7/2024, 18:23:15",QA,Zine,ZineQA,0.0,0,-59.0,0,59.0,0.0
+20240816,QA,Zine,ZineQA,48.0,1,0.0,48,0.0,-48.0
+20240826,QA,Zine,ZineQA,46.0,1,-48.0,46,0.0,-94.0

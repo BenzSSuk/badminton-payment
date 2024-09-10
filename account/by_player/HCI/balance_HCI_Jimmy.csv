@@ -67,3 +67,9 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240624,HCI,Jimmy,JimmyHCI,31.0,1,146.0,31,0.0,115.0
 20240701,HCI,Jimmy,JimmyHCI,45.0,1,115.0,45,0.0,70.0
 20240712,HCI,Jimmy,JimmyHCI,45.0,1,70.0,45,0.0,25.0
+20240726,HCI,Jimmy,JimmyHCI,39.0,1,25.0,39,0.0,-14.0
+20240805,HCI,Jimmy,JimmyHCI,41.0,1,-14.0,41,0.0,-55.0
+20240816,HCI,Jimmy,JimmyHCI,48.0,1,-55.0,48,0.0,-103.0
+20240819,HCI,Jimmy,JimmyHCI,37.0,1,-103.0,37,0.0,-140.0
+20240826,HCI,Jimmy,JimmyHCI,46.0,1,-140.0,46,0.0,-186.0
+20240902,HCI,Jimmy,JimmyHCI,55.0,1,-186.0,55,0.0,-241.0

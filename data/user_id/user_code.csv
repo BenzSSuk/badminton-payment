@@ -56,6 +56,7 @@ QA,Dao,DaoQA,QA - Dao
 Resource,Fin,FinResource,Resource - Fin
 Resource,Maprang,MaprangResource,Resource - Maprang
 SA,Film,FilmSA,SA - Film
+SA,Praew,PraewSA,SA - Praew
 SCM,Nueng,NuengSCM,SCM - Nueng
 SCM,Si,SiSCM,SCM - Si
 SDE,Ae,AeSDE,SDE - Ae
@@ -72,4 +73,5 @@ SDE,MUBMIIB,MUBMIIBSDE,SDE - MUBMIIB
 SRE,Aui,AuiSRE,SRE - Aui
 SRE,F,FSRE,SRE - F
 SRE,Pat,PatSRE,SRE - Pat
+SRE,Au,AuSRE,SRE - Au
 Test,xxx,xxxtest,Test - xxx
