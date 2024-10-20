@@ -37,3 +37,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240712,SRE,F,FSRE,45.0,1,0.0,45,0.0,-45.0
 20240826,SRE,F,FSRE,46.0,1,-45.0,46,0.0,-91.0
 20240909,SRE,F,FSRE,38.0,1,-91.0,38,0.0,-129.0
+20240916,SRE,F,FSRE,29.0,1,-129.0,29,0.0,-158.0

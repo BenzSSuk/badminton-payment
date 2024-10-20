@@ -11,3 +11,8 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240902,SRE,Pat,PatSRE,55,1,-266.0,55,0,-321.0
 20240909,SRE,Pat,PatSRE,38,1,-321.0,38,0,-359.0
 20240909,SRE,Pat,PatSRE,38,1,-359.0,38,0,-397.0
+"10/9/2024, 18:16:30",SRE,Pat,PatSRE,0,0,-397.0,0,397,0.0
+20240916,SRE,Pat,PatSRE,29,1,0.0,29,0,-29.0
+20240916,SRE,Pat,PatSRE,29,1,-29.0,29,0,-58.0
+20240930,SRE,Pat,PatSRE,46,1,-58.0,46,0,-104.0
+20240930,SRE,Pat,PatSRE,46,1,-104.0,46,0,-150.0

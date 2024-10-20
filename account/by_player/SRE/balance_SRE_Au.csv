@@ -3,3 +3,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240819,SRE,Au,AuSRE,37,1,-41.0,37,0,-78.0
 20240826,SRE,Au,AuSRE,46,1,-78.0,46,0,-124.0
 20240902,SRE,Au,AuSRE,55,1,-124.0,55,0,-179.0
+"16/9/2024, 19:34:00",SRE,Au,AuSRE,0,0,-179.0,0,179,0.0
