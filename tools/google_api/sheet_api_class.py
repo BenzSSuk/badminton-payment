@@ -38,62 +38,37 @@ FOLDER_RECORD = os.path.join(FOLDER_PROJECT, 'player_record')
 FOLDER_DATA = os.path.join(FOLDER_PROJECT, 'data')
 
 # import lib.DataProcessing as mylib
-import lib as srisuk
+import lib as mylib
 
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
-
-def google_authen(FOLDER_CONFIG):
-    creds = None
-    # The file token.json stores the user's access and refresh tokens, and is
-    # created automatically when the authorization flow completes for the first
-    # time.
-    PATH_CREDS = os.path.join(FOLDER_CONFIG, 'credentials.json')
-    PATH_TOKEN = os.path.join(FOLDER_CONFIG, "token.json")
-    if os.path.exists(PATH_TOKEN):
-        creds = Credentials.from_authorized_user_file(PATH_TOKEN, SCOPES)
-    # If there are no (valid) credentials available, let the user log in.
-    if not creds or not creds.valid:
-        print("credential not valid !")
-        if creds and creds.expired and creds.refresh_token:
-            print("credential refresh...")
-            # creds.refresh(Request())
-            os.remove(PATH_TOKEN)
-        else:
-            print("Install app flow and run local server...")
-            flow = InstalledAppFlow.from_client_secrets_file(
-                PATH_CREDS, SCOPES
-            )
-            creds = flow.run_local_server(port=0)
-    # Save the credentials for the next run
-    with open(PATH_TOKEN, "w") as token:
-        token.write(creds.to_json())
-    
-    return creds
 
 if __name__ == "__main__":
     """Shows basic usage of the Sheets API.
     Prints values from a sample spreadsheet.
     """
     print("google authen...")
-    creds = google_authen(FOLDER_CONFIG)
-    
+    creds = mylib.get_credentials(FOLDER_CONFIG, SCOPES=SCOPES, method='service_account', filename_json_key='admin01.json')
+
     PATH_SHEET_ID = pjoin(FOLDER_CONFIG, 'ggsheet.json')
-    dict_ggsheet_info = srisuk.read_json(PATH_SHEET_ID)
+    dict_ggsheet_info = mylib.read_json(PATH_SHEET_ID)
 
-    filename_sheet = 'test'
-    sheet_info = dict_ggsheet_info[filename_sheet]
-    sheet = srisuk.SpreadSheet(creds=creds, spreadsheet_id=sheet_info['spreadsheet_id'])
+    filename_spreadsheet = 'user_log'
+    spreadsheet_info = dict_ggsheet_info[filename_spreadsheet]
+    sheet = mylib.SpreadSheet(creds=creds, spreadsheet_id=spreadsheet_info['spreadsheet_id'])
     
-    print("reading...")
-    df_data = sheet.read('test', 'a1:d100')
+    # print("reading...")
+    # df_data = sheet.read(sheet_name='test', range='a1:d100', output_type='df')
 
-    print("writing...")
-    is_write_successed = sheet.write_data(df_data, PATH_FILE='sheet_class_data.csv')
+    # print("writing...")
+    # path_csv = pjoin(FOLDER_PROJECT, 'sheet_class_data.csv')
+    # is_write_successed = sheet.write_data(df_data, PATH_FILE=path_csv)
     
-    if is_write_successed:
-        print('deleting...')
-        nrow, ncol = df_data.shape
-        sheet.delete(sheet_info['sheet_id']['test'], index_axis='ROWS', range=[1, nrow + 1])
+    # if is_write_successed:
+    #     print('deleting...')
+    #     nrow, ncol = df_data.shape
+    #     sheet.delete(spreadsheet_info['sheet_id']['test'], index_axis='ROWS', range=[1, nrow + 1])
+    sheet.delete_first_n_row(spreadsheet_info['sheet_id']['test'], n_row=2, skip_row=1)
+
 
     sheet.close()
 

@@ -1,10 +1,18 @@
-import os 
+import os
+import json
 # from googleapiclient.discovery import build
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
-SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
+# SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
+
+def read_json(pathFile, mode='r'):
+    f = open(pathFile, mode)
+    dict_json = json.load(f)
+    f.close()
+
+    return dict_json
 
 def google_authen(FOLDER_CONFIG):
 
@@ -33,3 +41,24 @@ def google_authen(FOLDER_CONFIG):
         token.write(creds.to_json())
     
     return creds
+
+def get_credentials(FOLDER_CONFIG, SCOPES, method='service_account', filename_json_key=None):
+    if method == 'authen':
+        """Shows basic usage of the Sheets API.
+        Prints values from a sample spreadsheet.
+        """
+        print("google authen...")
+        credentials = google_authen(FOLDER_CONFIG)
+
+    elif method == 'service_account':
+        if filename_json_key is None:
+            raise ValueError(f'please input filename of json key: {filename_json_key}')
+
+        from google.oauth2.service_account import Credentials
+
+        PATH_CRED_SERVICE_ACC = os.path.join(FOLDER_CONFIG, filename_json_key)
+        # service_account_info = json.load(open('service_account.json'))
+        service_account_info = read_json(PATH_CRED_SERVICE_ACC)
+        credentials = Credentials.from_service_account_info(service_account_info, scopes=SCOPES)
+
+    return credentials
