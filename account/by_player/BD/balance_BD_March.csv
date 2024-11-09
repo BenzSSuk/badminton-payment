@@ -1,0 +1,8 @@
+date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
+20240624,BD,March,MarchBD,31,1,0.0,31,0,-31.0
+20240624,BD,March,MarchBD,31,1,-31.0,31,0,-62.0
+20240624,BD,March,MarchBD,31,1,-62.0,31,0,-93.0
+20240902,BD,March,MarchBD,55,1,-93.0,55,0,-148.0
+20240909,BD,March,MarchBD,38,1,-148.0,38,0,-186.0
+"10/9/2024, 23:24:01",BD,March,MarchBD,0,0,-186.0,0,187,1.0
+20240916,BD,March,MarchBD,29,1,1.0,29,0,-28.0

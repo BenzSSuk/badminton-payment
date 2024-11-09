@@ -1,0 +1,5 @@
+date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
+20240708,BA,Lilly,LillyBA,34,1,0.0,34,0,-34.0
+"15/7/2024, 10:55:59",BA,Lilly,LillyBA,0,0,-34.0,0,34,0.0
+20240916,BA,Lilly,LillyBA,29,1,0.0,29,0,-29.0
+20241007,BA,Lilly,LillyBA,43,1,-29.0,43,0,-72.0

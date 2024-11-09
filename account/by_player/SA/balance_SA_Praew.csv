@@ -1,0 +1,8 @@
+date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bill,payment,balance
+20240826,SA,Praew,PraewSA,46,1,0.0,46,0,-46.0
+20240909,SA,Praew,PraewSA,38,1,-46.0,38,0,-84.0
+"10/9/2024, 18:20:27",SA,Praew,PraewSA,0,0,-84.0,0,84,0.0
+20240916,SA,Praew,PraewSA,29,1,0.0,29,0,-29.0
+20240923,SA,Praew,PraewSA,43,1,-29.0,43,0,-72.0
+20240930,SA,Praew,PraewSA,46,1,-72.0,46,0,-118.0
+20241007,SA,Praew,PraewSA,43,1,-118.0,43,0,-161.0

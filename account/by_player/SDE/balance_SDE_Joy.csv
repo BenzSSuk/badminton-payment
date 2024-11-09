@@ -19,3 +19,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240212,SDE,Joy,JoySDE,55.0,1,0.0,55,0.0,-55.0
 20240212,SDE,Joy,JoySDE,55.0,1,-55.0,55,0.0,-110.0
 "14/2/2024, 22:46:17",SDE,Joy,JoySDE,0.0,0,-110.0,0,110.0,0.0
+20240311,SDE,Joy,JoySDE,41.0,1,0.0,41,0.0,-41.0
+20240311,SDE,Joy,JoySDE,41.0,1,-41.0,41,0.0,-82.0
+"24/3/2024, 22:32:58",SDE,Joy,JoySDE,0.0,0,-82.0,0,82.0,0.0

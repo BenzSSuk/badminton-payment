@@ -44,3 +44,19 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240129,Head,Max,MaxHead,68.0,1,479.0,68,0.0,411.0
 20240212,Head,Max,MaxHead,55.0,1,411.0,55,0.0,356.0
 20240219,Head,Max,MaxHead,44.0,1,356.0,44,0.0,312.0
+20240304,Head,Max,MaxHead,72.0,1,312.0,72,0.0,240.0
+20240311,Head,Max,MaxHead,41.0,1,240.0,41,0.0,199.0
+20240422,Head,Max,MaxHead,50.0,1,199.0,50,0.0,149.0
+20240429,Head,Max,MaxHead,46.0,1,149.0,46,0.0,103.0
+20240520,Head,Max,MaxHead,48.0,1,103.0,48,0.0,55.0
+20240527,Head,Max,MaxHead,73.0,1,55.0,73,0.0,-18.0
+"14/6/2024, 10:32:29",Head,Max,MaxHead,0.0,0,-18.0,0,18.0,0.0
+20240617,Head,Max,MaxHead,33.0,1,0.0,33,0.0,-33.0
+20240708,Head,Max,MaxHead,34.0,1,-33.0,34,0.0,-67.0
+"15/7/2024, 0:14:04",Head,Max,MaxHead,0.0,0,-67.0,0,500.0,433.0
+20240819,Head,Max,MaxHead,37.0,1,433.0,37,0.0,396.0
+20240826,Head,Max,MaxHead,46.0,1,396.0,46,0.0,350.0
+20240909,Head,Max,MaxHead,38.0,1,350.0,38,0.0,312.0
+20240916,Head,Max,MaxHead,29.0,1,312.0,29,0.0,283.0
+20240930,Head,Max,MaxHead,46.0,1,283.0,46,0.0,237.0
+20241007,Head,Max,MaxHead,43.0,1,237.0,43,0.0,194.0

@@ -3,3 +3,19 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240212,External,Ponpat,PonpatExternal,55,1,-68.0,55,0,-123.0
 "14/2/2024, 22:46:17",External,Ponpat,PonpatExternal,0,0,-123.0,0,500,377.0
 20240219,External,Ponpat,PonpatExternal,44,1,377.0,44,0,333.0
+20240304,External,Ponpat,PonpatExternal,72,1,333.0,72,0,261.0
+20240325,External,Ponpat,PonpatExternal,81,1,261.0,81,0,180.0
+20240405,External,Ponpat,PonpatExternal,58,1,180.0,58,0,122.0
+20240419,External,Ponpat,PonpatExternal,72,1,122.0,72,0,50.0
+20240422,External,Ponpat,PonpatExternal,50,1,50.0,50,0,0.0
+20240429,External,Ponpat,PonpatExternal,46,1,0.0,46,0,-46.0
+"15/5/2024, 11:13:27",External,Ponpat,PonpatExternal,0,0,-46.0,0,500,454.0
+20240513,External,Ponpat,PonpatExternal,58,1,454.0,58,0,396.0
+20240520,External,Ponpat,PonpatExternal,48,1,396.0,48,0,348.0
+20240531,External,Ponpat,PonpatExternal,44,1,348.0,44,0,304.0
+20240624,External,Ponpat,PonpatExternal,31,1,304.0,31,0,273.0
+20240712,External,Ponpat,PonpatExternal,45,1,273.0,45,0,228.0
+20240816,External,Ponpat,PonpatExternal,48,1,228.0,48,0,180.0
+20240909,External,Ponpat,PonpatExternal,38,1,180.0,38,0,142.0
+20240916,External,Ponpat,PonpatExternal,29,1,142.0,29,0,113.0
+20240930,External,Ponpat,PonpatExternal,46,1,113.0,46,0,67.0

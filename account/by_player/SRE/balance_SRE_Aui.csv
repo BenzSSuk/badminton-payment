@@ -37,3 +37,7 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240122,SRE,Aui,AuiSRE,56.0,1,25.0,56,0.0,-31.0
 20240122-2,SRE,Aui,AuiSRE,0.0,1,-31.0,0,56.0,25.0
 20240122-3,SRE,Aui,AuiSRE,48.0,1,25.0,48,0.0,-23.0
+"14/6/2024, 10:32:29",SRE,Aui,AuiSRE,0.0,0,-23.0,0,23.0,0.0
+20240826,SRE,Aui,AuiSRE,46.0,1,0.0,46,0.0,-46.0
+20240902,SRE,Aui,AuiSRE,55.0,1,-46.0,55,0.0,-101.0
+20240902,SRE,Aui,AuiSRE,55.0,1,-101.0,55,0.0,-156.0
