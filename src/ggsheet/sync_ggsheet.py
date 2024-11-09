@@ -47,39 +47,42 @@ if __name__ == "__main__":
     dict_ggsheet_info = mylib.read_json(PATH_SHEET_ID)
 
     # ----- Sheet Log Player & Shuttlecock ----- #
+    print('sync google sheet user log...')
     filename_spreadsheet = 'user_log'
     spreadsheet_info = dict_ggsheet_info[filename_spreadsheet]
     sheet = mylib.SpreadSheet(creds=creds, spreadsheet_id=spreadsheet_info['spreadsheet_id'])
-    folder_file = pjoin(FOLDER_DATA, 'cloud', 'player')
-    filename = 'log_player.csv'
-    is_write_successed = sheet.read_and_write(sheet_name='log', sheet_range='a1:b100',
+    folder_file = pjoin(FOLDER_DATA, 'ggsheet', 'player')
+    filename = 'ggsheet_player.csv'
+    is_write_successed = sheet.read_and_write(sheet_name='log', sheet_range='a1:b200',
                                               folder_file=folder_file, filename=filename,
                                               header_timestamp='timestamp', format_ts='%Y-%m-%d %H:%M')
 
-    folder_file = pjoin(FOLDER_DATA, 'cloud', 'shuttlecock')
-    filename = 'log_shuttlecock.csv'
+    print('sync google sheet shuttlecock...')
+    folder_file = pjoin(FOLDER_DATA, 'ggsheet', 'shuttlecock')
+    filename = 'ggsheet_shuttlecock.csv'
     is_write_successed = sheet.read_and_write(sheet_name='shuttlecock_log', sheet_range='a1:d100',
                                               folder_file=folder_file, filename=filename,
                                               header_timestamp='timestamp', format_ts='%Y-%m-%d %H:%M')
     sheet.close()
 
     # ----- Sheet log payment ----- #
+    print('sync google sheet payment...')
     filename_spreadsheet = 'payment'
     spreadsheet_info = dict_ggsheet_info[filename_spreadsheet]
     sheet = mylib.SpreadSheet(creds=creds, spreadsheet_id=spreadsheet_info['spreadsheet_id'])
 
-    folder_file = pjoin(FOLDER_DATA, 'cloud', 'payment')
-    filename = 'log_payment.csv'
+    folder_file = pjoin(FOLDER_DATA, 'ggsheet', 'payment')
+    filename = 'ggsheet_payment.csv'
     is_write_successed = sheet.read_and_write(sheet_name='payment', sheet_range='a1:d100',
                                               folder_file=folder_file, filename=filename,
                                               header_timestamp='ประทับเวลา', format_ts='%d/%m/%Y, %H:%M:%S')
+    # df_payment = sheet.read(sheet_name='payment', sheet_range='a1:d100', output_type='df')
+    sheet.close()
 
     # if is_write_successed:
     #     print('deleting...')
     #     nrow, ncol = df_data.shape
     #     sheet.delete(spreadsheet_infMaxo['sheet_id']['test'], index_axis='ROWS', range=[1, nrow + 1])
     # sheet.delete_first_n_row(spreadsheet_info['sheet_id']['test'], n_row=2, skip_row=1)
-
-    sheet.close()
 
     print('Finished !')

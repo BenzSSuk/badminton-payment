@@ -114,6 +114,9 @@ class SpreadSheet:
             filename_ts = self.get_filename_timestamp(df_data, header_timestamp, filename, format_ts=format_ts)
         else:
             filename_ts = filename
+        
+        if not os.path.exists(folder_file):
+            os.makedirs(folder_file)
         path_file = pjoin(folder_file, filename_ts)
 
         return self.write_data(df_data, path_file)
