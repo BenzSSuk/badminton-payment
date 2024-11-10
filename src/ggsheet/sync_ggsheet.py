@@ -55,14 +55,16 @@ if __name__ == "__main__":
     filename = 'ggsheet_player.csv'
     is_write_successed = sheet.read_and_write(sheet_name='log', sheet_range='a1:b200',
                                               folder_file=folder_file, filename=filename,
-                                              header_timestamp='timestamp', format_ts='%Y-%m-%d %H:%M')
+                                              header_timestamp='timestamp', format_ts='%Y-%m-%d %H:%M',
+                                              delete_row=True)
 
     print('sync google sheet shuttlecock...')
     folder_file = pjoin(FOLDER_DATA, 'ggsheet', 'landing', 'shuttlecock')
     filename = 'ggsheet_shuttlecock.csv'
     is_write_successed = sheet.read_and_write(sheet_name='shuttlecock_log', sheet_range='a1:d100',
                                               folder_file=folder_file, filename=filename,
-                                              header_timestamp='timestamp', format_ts='%Y-%m-%d %H:%M')
+                                              header_timestamp='timestamp', format_ts='%Y-%m-%d %H:%M',
+                                              delete_row=True)
     sheet.close()
 
     # ----- Sheet log payment ----- #
@@ -75,7 +77,8 @@ if __name__ == "__main__":
     filename = 'ggsheet_payment.csv'
     is_write_successed = sheet.read_and_write(sheet_name='payment', sheet_range='a1:d100',
                                               folder_file=folder_file, filename=filename,
-                                              header_timestamp='ประทับเวลา', format_ts='%d/%m/%Y, %H:%M:%S')
+                                              header_timestamp='ประทับเวลา', format_ts='%d/%m/%Y, %H:%M:%S',
+                                              delete_row=True)
     # df_payment = sheet.read(sheet_name='payment', sheet_range='a1:d100', output_type='df')
     sheet.close()
 

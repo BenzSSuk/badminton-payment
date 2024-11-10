@@ -31,7 +31,7 @@ class SpreadSheet:
     def __init__(self, creds, spreadsheet_id='', gservice="sheets", version='v4'):
         self.service = build(gservice, version, credentials=creds)
         self.set_spreadsheet_id(spreadsheet_id)
-    
+
     def set_spreadsheet_id(self, spreadsheet_id):
         ''' 
             example https://docs.google.com/spreadsheets/d/WrdsqdgvWE/edit#gid=1512194892
@@ -39,9 +39,26 @@ class SpreadSheet:
                                 spreadsheet_id='WrdsqdgvWE'  sheet_id='1512194892''
         '''
         self.spreadsheet_id = spreadsheet_id
+        self.init_sheet_id()
 
-    # def set_sheet_id(self, sheet_id):
-    #     self.sheet_id = sheet_id
+    def init_sheet_id(self):
+        self.dict_sheet_id = {}
+        sheet = self.service.spreadsheets().get(spreadsheetId=self.spreadsheet_id).execute()
+        sheets = sheet.get('sheets', [])
+        for sheet in sheets:
+            sheet_name = sheet["properties"]["title"]
+            sheet_id = sheet["properties"]["sheetId"]
+            self.dict_sheet_id[sheet_name] = sheet_id
+
+    def get_sheet_id(self, sheet_name):
+        # Call the Sheets API
+        sheet = self.service.spreadsheets().get(spreadsheetId=self.spreadsheet_id).execute()
+        sheets = sheet.get('sheets', [])
+
+        for sheet in sheets:
+            if sheet.get("properties", {}).get("title") == sheet_name:
+                return sheet.get("properties", {}).get("sheetId")
+        return None
 
     def read(self, sheet_name, sheet_range, output_type='df'):
         """
@@ -92,20 +109,25 @@ class SpreadSheet:
 
         return filename_timestamp
 
-    def write_data(self, df_data, path_file):
+    def write_data(self, df_data, path_file, reture_shape_write=False):
         if df_data.empty:
             return False
 
         # path_file = pjoin(folder_file, filename)
         df_data.to_csv(path_file, index=False)
         df_data_write = pd.read_csv(path_file)
-
+        
         is_write_successed = (df_data.shape == df_data_write.shape)
 
-        return is_write_successed
+        if reture_shape_write:
+            return is_write_successed, df_data_write.shape
+
+        else:
+            return is_write_successed
+
     
     def read_and_write(self, sheet_name, sheet_range, folder_file, filename,
-                       header_timestamp=None, format_ts=None):
+                       header_timestamp=None, format_ts=None, delete_row=False):
         df_data = self.read(sheet_name, sheet_range, output_type='df')
         if df_data.empty:
             return False
@@ -119,7 +141,17 @@ class SpreadSheet:
             os.makedirs(folder_file)
         path_file = pjoin(folder_file, filename_ts)
 
-        return self.write_data(df_data, path_file)
+        is_write_successed, shape_data_write = self.write_data(df_data, path_file, reture_shape_write=True)
+            
+        if delete_row and is_write_successed:
+            n_row_write = shape_data_write[0]
+            if n_row_write > 0:
+                # delete row
+                sheet_id = self.dict_sheet_id[sheet_name]
+                self.delete_first_n_row(sheet_id=sheet_id, n_row=n_row_write, skip_row=1)
+                
+        else:
+            return is_write_successed
 
     def clear(self, sheet_name, sheet_range):
         """
@@ -168,7 +200,7 @@ class SpreadSheet:
         list_request_body = [
             {
                 "deleteDimension": {
-                    "sheet_range": {
+                    "range": {
                         "sheetId": sheet_id,
                         "dimension": index_axis,
                         "startIndex": sheet_range[0],
@@ -180,7 +212,7 @@ class SpreadSheet:
         # list_request_body = [
         #     {
         #     "deleteDimension": {
-        #         "sheet_range": {
+        #         "range": {
         #         "sheetId": sheet_name,
         #         "dimension": "ROWS",
         #         "startIndex": 0,
@@ -190,7 +222,7 @@ class SpreadSheet:
         #     },
         #     {
         #     "deleteDimension": {
-        #         "sheet_range": {
+        #         "range": {
         #         "sheetId": sheet_name,
         #         "dimension": "COLUMNS",
         #         "startIndex": 1,
