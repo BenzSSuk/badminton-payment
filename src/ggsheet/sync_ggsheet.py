@@ -51,14 +51,14 @@ if __name__ == "__main__":
     filename_spreadsheet = 'user_log'
     spreadsheet_info = dict_ggsheet_info[filename_spreadsheet]
     sheet = mylib.SpreadSheet(creds=creds, spreadsheet_id=spreadsheet_info['spreadsheet_id'])
-    folder_file = pjoin(FOLDER_DATA, 'ggsheet', 'player')
+    folder_file = pjoin(FOLDER_DATA, 'ggsheet', 'landing', 'player')
     filename = 'ggsheet_player.csv'
     is_write_successed = sheet.read_and_write(sheet_name='log', sheet_range='a1:b200',
                                               folder_file=folder_file, filename=filename,
                                               header_timestamp='timestamp', format_ts='%Y-%m-%d %H:%M')
 
     print('sync google sheet shuttlecock...')
-    folder_file = pjoin(FOLDER_DATA, 'ggsheet', 'shuttlecock')
+    folder_file = pjoin(FOLDER_DATA, 'ggsheet', 'landing', 'shuttlecock')
     filename = 'ggsheet_shuttlecock.csv'
     is_write_successed = sheet.read_and_write(sheet_name='shuttlecock_log', sheet_range='a1:d100',
                                               folder_file=folder_file, filename=filename,
@@ -71,7 +71,7 @@ if __name__ == "__main__":
     spreadsheet_info = dict_ggsheet_info[filename_spreadsheet]
     sheet = mylib.SpreadSheet(creds=creds, spreadsheet_id=spreadsheet_info['spreadsheet_id'])
 
-    folder_file = pjoin(FOLDER_DATA, 'ggsheet', 'payment')
+    folder_file = pjoin(FOLDER_DATA, 'ggsheet', 'landing', 'payment')
     filename = 'ggsheet_payment.csv'
     is_write_successed = sheet.read_and_write(sheet_name='payment', sheet_range='a1:d100',
                                               folder_file=folder_file, filename=filename,
