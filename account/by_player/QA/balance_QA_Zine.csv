@@ -65,3 +65,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 "10/9/2024, 18:11:10",QA,Zine,ZineQA,0.0,0,-94.0,0,94.0,0.0
 20241011,QA,Zine,ZineQA,89.0,1,0.0,89,0.0,-89.0
 "20/10/2024, 22:30:20",QA,Zine,ZineQA,0.0,0,-89.0,0,102.0,13.0
+20241028,QA,Zine,ZineQA,29.0,1,13.0,29,0.0,-16.0
