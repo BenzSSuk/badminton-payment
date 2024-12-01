@@ -28,7 +28,7 @@ import lib as wedolib
 FOLDER_PLAYER_RAW = pjoin(FOLDER_DATA, 'ggsheet', 'landing', 'player')
 FOLDER_PLAYER_RAW_KEEP = pjoin(FOLDER_DATA, 'ggsheet', 'checked', 'player')
 wedolib.isFolderExist(FOLDER_PLAYER_RAW_KEEP)
-FOLDER_PLAYER_DAY = pjoin(FOLDER_DATA, 'split_day', 'plyer')
+FOLDER_PLAYER_DAY = pjoin(FOLDER_DATA, 'split_day', 'player')
 wedolib.isFolderExist(FOLDER_PLAYER_DAY)
 
 FOLDER_SHUTTLECOCK_RAW = pjoin(FOLDER_DATA, 'ggsheet', 'landing', 'shuttlecock')
