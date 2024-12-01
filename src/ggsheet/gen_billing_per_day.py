@@ -21,13 +21,20 @@ def checkSysPathAndAppend(path, stepBack = 0):
 
 folderFile, filename = os.path.split(os.path.realpath(__file__))
 FOLDER_PROJECT = checkSysPathAndAppend(folderFile, 2)
-FOLDER_RECORD_EXCEL = pjoin(FOLDER_PROJECT, 'record', 'player', 'excel')
+FOLDER_DATA = pjoin(FOLDER_PROJECT, 'data')
+FOLDER_SPLITDAY = pjoin(FOLDER_DATA, 'split_day')
+
+year = '2024'
+
+FOLDER_RECORD_EXCEL = pjoin(FOLDER_SPLITDAY, 'player_excel', year)
 if not os.path.exists(FOLDER_RECORD_EXCEL):
     os.makedirs(FOLDER_RECORD_EXCEL)
 
 import lib as wedolib
 
 def get_df_listplayer(df_listplayer):
+    n_row = df_listplayer.shape[0]
+
     # ---------- add column is_play, billing, payment ----------
     df_listplayer['is_play'] = np.ones((n_row, 1))
     df_listplayer['bill'] = np.zeros((n_row, 1))
@@ -52,8 +59,10 @@ PATH_SHUTTLECOCK_BUY = os.path.join(FOLDER_PROJECT, 'data', 'purchase', 'shuttle
 df_price_shuttlecock = pd.read_excel(PATH_SHUTTLECOCK_BUY)
 shuttlecock_price_current = df_price_shuttlecock.iloc[-1]['price_single']
 
+
+
 # load logday player
-FOLDER_LOGDAY = pjoin(FOLDER_PROJECT, 'record', 'player', 'ggsheet')
+FOLDER_LOGDAY = pjoin(FOLDER_SPLITDAY, 'player', year)
 list_dir, list_folder, list_name = wedolib.findFile(FOLDER_LOGDAY, '*.csv', 0)
 
 for i, path_logday_player in enumerate(list_dir):
@@ -68,7 +77,7 @@ for i, path_logday_player in enumerate(list_dir):
 
     # ---------- calculate billing ---------- 
     filename_shuttle = f'{log_date}_logday_shuttlecock.csv'
-    PATH_SHUTTLECOCK = pjoin(FOLDER_PROJECT, 'record', 'shuttlecock', 'ggsheet', filename_shuttle)
+    PATH_SHUTTLECOCK = pjoin(FOLDER_SPLITDAY, 'shuttlecock', year, filename_shuttle)
     if os.path.exists(PATH_SHUTTLECOCK):
         print(f"calulating shuttlecock cost {log_date}...")
         df_shuttlecock_logday = pd.read_csv(PATH_SHUTTLECOCK)
