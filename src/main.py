@@ -30,94 +30,68 @@ FOLDER_SRC = pjoin(FOLDER_PROJECT, 'src')
 auto          : - sync player payment&log on cloud to local
                 - process file from cloud to original excel
                 - update balance from excel
-auto_local    : - process file from cloud to original excel
+local         : - process file from cloud to original excel
                 - update balance from excel
-manual_excel  : - update balance from excel
 '''
 
 MODE = 'auto' 
 if len(sys.argv) > 1:
     MODE = sys.argv[1]
 
-t_offset_script = 3
-
-mode_config_all = {
-    "auto": {
-        "sync_cloud": True,
-        "process_file_cloud": True,
-        "update_balance": True
+list_dict_script = [
+    {
+        "task_info": "sync log file from ggsheet",
+        "folder": pjoin("src", "ggsheet"),
+        "script_name": "sync_ggsheet.py",
+        "mode": ["auto", "sync"]
     },
-    "auto_local": {
-        "sync_cloud": False,
-        "process_file_cloud": True,
-        "update_balance": True
+    {
+        "task_info": "split raw_log.csv file to log_day.csv",
+        "folder": pjoin("src", "ggsheet"),
+        "script_name": "split_log_day.py",
+        "mode": ["auto", "local"]
     },
-    "manual_excel": {
-        "sync_cloud": False,
-        "process_file_cloud": False,
-        "update_balance": True
-    }
-}
-mode_config = mode_config_all[MODE]
+    {
+        "task_info": "convert log_day.csv to log_day.excel",
+        "folder": pjoin("src", "ggsheet"),
+        "script_name": "gen_billing_per_day.py",
+        "mode": ["auto", "local"]
+    },
+    {
+        "task_info": "update account from player payment",
+        "folder": pjoin("src", "account"),
+        "script_name": "update_account_from_payment.py",
+        "mode": ["auto", "local"]
+    },
+    {
+        "task_info": "update account from player billing",
+        "folder": pjoin("src", "account"),
+        "script_name": "update_account_from_billing.py",
+        "mode": ["auto", "local"]
+    },
+    {
+        "task_info": "generate player's lasted account balance",
+        "folder": pjoin("src", "account"),
+        "script_name": "gen_lasted_account_balance.py",
+        "mode": ["auto", "local"]
+    },
+    {
+        "task_info": "generate image balance",
+        "folder": pjoin("src", "billing"),
+        "script_name": "gen_img_balance.py",
+        "mode": ["auto", "local"]
+    }   
+]
 
-if mode_config['sync_cloud']:
-    # ---------- Payment ---------- #
-    # sync player payment from google from (response in google sheet)
-    subfolder = 'ggsheet'
-    filename = 'sync_ggsheet.py'
-    print(filename)
-    PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
-    sp_obj = subprocess.run(['python', PATH_SCRIPT])
+def run_python(path_script, time_delay=0.5):
+    sp_obj = subprocess.run(['python', path_script])
     sp_obj.check_returncode()
-    time.sleep(t_offset_script)
+    time.sleep(time_delay)
 
+for dict_script in list_dict_script:
+    print(dict_script['task_info'])
+    print(pjoin(dict_script['folder'], dict_script['script_name']))
 
-if mode_config['process_file_cloud']:
-    # update balance with payment from google form
-    subfolder = 'payment'
-    filename = 'update_balance_from_payment.py'
-    print(filename)
-    PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
-    sp_obj = subprocess.run(['python', PATH_SCRIPT])
-    sp_obj.check_returncode()
-    time.sleep(t_offset_script)
-
-# ---------- Billing ---------- #
-# generate original listplayer.xlsx
-if mode_config['process_file_cloud']:
-    subfolder = 'billing'
-    filename = 'gen_listplayer_from_ggsheet.py'
-    print(filename)
-    PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
-    sp_obj = subprocess.run(['python', PATH_SCRIPT])
-    sp_obj.check_returncode()
-    time.sleep(t_offset_script)
-
-if mode_config['update_balance']:
-    # update balance after billing 
-    subfolder = 'billing'
-    filename = 'update_balance.py'
-    print(filename)
-    PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
-    sp_obj = subprocess.run(['python', PATH_SCRIPT])
-    sp_obj.check_returncode()
-    print("#----- Finish Main -----#")
-    time.sleep(t_offset_script)
-
-
-'''
-    step
-    1. sync log from google sheet
-        ggsheet/sync_ggsheet.py
-    2. split raw_log file to one day per file
-        ggsheet/split_log_day.py
-    3. update account payment from raw_log_payment.csv
-        account/update_account_from_payment.py
-    4. update account from billing
-    4.1 convert log_day.csv to log_day.excel (contain list player and cost of that day)
-        ggsheet/gen_billing_per_day.py
-    4.2 update account from log_day.excel
-        account/update_account_from_billing.py
-    5. get summary current balance
-        account/gen_billing_
-'''
+    if MODE in dict_script['mode']:
+        path_script = pjoin(FOLDER_PROJECT, dict_script['folder'], dict_script['script_name'])
+        run_python(path_script)

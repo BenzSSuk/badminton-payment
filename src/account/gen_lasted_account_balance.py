@@ -42,7 +42,7 @@ for i in range(n_file):
     player_team = split_buff[1]
     player_name = split_buff[-1].split('.')[0]
 
-    print(f'{player_team} {player_name}')
+    print(f'checking lasted balance {player_team} - {player_name} ...')
     df_player_acc = pd.read_csv(path_file)
 
     dict_lasted_balance = mylib.addFeatureToDict(dict_lasted_balance, 'team', player_team)
