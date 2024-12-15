@@ -79,3 +79,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20241125,SA,Film,FilmSA,47.0,1,-794.0,47,0.0,-841.0
 20241202,SA,Film,FilmSA,55.0,1,-841.0,55,0.0,-896.0
 20241213,SA,Film,FilmSA,25.0,1,-896.0,25,0.0,-921.0
+"11/11/2024, 17:53:21",SA,Film,FilmSA,0.0,0,-921.0,0,90.0,-831.0
