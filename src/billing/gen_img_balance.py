@@ -22,25 +22,29 @@ folderFile, filename = os.path.split(os.path.realpath(__file__))
 FOLDER_PROJECT = checkSysPathAndAppend(folderFile, 2)
 
 # FOLDER_IMG_RECORD = os.path.join(r'C:\Users\Panna\OneDrive\Projects\badminton-payment\image_record')
-FOLDER_IMG_RECORD_LOCAL = os.path.join(FOLDER_PROJECT, 'image_record')
+FOLDER_IMG_RECORD_LOCAL = os.path.join(FOLDER_PROJECT, 'data', 'billing')
 
-import lib.DataProcessing as wedolib
+import lib.DataProcessing as mylib
 
 # load daily player checklist
 if len(sys.argv) > 1:
     lasted_date = sys.argv[1]
 
 else:
-    folder_player_checked = os.path.join(FOLDER_PROJECT, 'account', 'by_date')
-    list_dir, list_folder, list_file = wedolib.findFile(folder_player_checked, '*.csv', 0)
+    folder_player_checked = os.path.join(FOLDER_PROJECT, 'data', 'checked', 'player_excel', '2024')
+    list_dir, list_folder, list_file = mylib.findFile(folder_player_checked, '*.xlsx', 0)
     list_dir.sort()
     list_folder.sort()
     list_file.sort()
     filename_balance_lasted = list_file[-1]
     lasted_date = filename_balance_lasted.split("_")[0]
 
+# creat folder save image
+FOLDER_IMG_RECORD_DATE_LOCAL = os.path.join(FOLDER_IMG_RECORD_LOCAL, lasted_date[0:6], lasted_date)
+mylib.isFolderExist(FOLDER_IMG_RECORD_DATE_LOCAL)
+
 filename_player_lasted = f'{lasted_date}_listplayer.xlsx'
-path_file = os.path.join(FOLDER_PROJECT, 'data', 'checked', 'player', filename_player_lasted)
+path_file = os.path.join(folder_player_checked, filename_player_lasted)
 dfPlayerCurrent = pd.read_excel(path_file)
 
 # ---------- Shuttle ----------
@@ -88,9 +92,6 @@ fig = go.Figure(data=[go.Table(
 # FOLDER_IMG_RECORD_DATE = os.path.join(FOLDER_IMG_RECORD, lasted_date)
 # if not os.path.exists(FOLDER_IMG_RECORD_DATE):
 #     os.makedirs(FOLDER_IMG_RECORD_DATE)
-FOLDER_IMG_RECORD_DATE_LOCAL = os.path.join(FOLDER_IMG_RECORD_LOCAL, lasted_date)
-if not os.path.exists(FOLDER_IMG_RECORD_DATE_LOCAL):
-    os.makedirs(FOLDER_IMG_RECORD_DATE_LOCAL)
 
 filename = f'{lasted_date}_shuttlecock_used.png'
 
@@ -102,10 +103,10 @@ fig.write_image(PATH_IMG_SHUTTLE)
 
 # ---------- Player balance ----------
 print('Generating image player balance...')
-path_file = os.path.join(FOLDER_PROJECT, 'account', 'by_date', f'{lasted_date}_wedo_badminton_balance.csv')
+path_file = os.path.join(FOLDER_PROJECT, 'account', 'player_lasted_balance.csv')
 dfBalance = pd.read_csv(path_file)
 
-dfBalance.sort_values(by=['team', 'player_name'], inplace=True, ignore_index=True)
+dfBalance.sort_values(by=['team', 'name'], inplace=True, ignore_index=True)
 dfBalance.index = dfBalance.index + 1
 # dfBalance.reset_index(inplace=True)
 
@@ -138,7 +139,7 @@ for i in range(n_plot):
     dict_cell = {
         'values': [dfBalancePage.index,
                     dfBalancePage['team'].to_list(), 
-                    dfBalancePage['player_name'].to_list(),
+                    dfBalancePage['name'].to_list(),
                     dfBalancePage['balance'].to_list()],
         'height': 30,
         'fill_color': 'lavender',
@@ -203,7 +204,7 @@ for i in range(n_plot):
     dict_cell = {
         'values': [dfBalancePage.index,
                     dfBalancePage['team'].to_list(), 
-                    dfBalancePage['player_name'].to_list(),
+                    dfBalancePage['name'].to_list(),
                     dfBalancePage['balance'].to_list()],
         'height': 30,
         'fill_color': 'red',
