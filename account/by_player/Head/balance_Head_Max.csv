@@ -63,3 +63,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20241021,Head,Max,MaxHead,31.0,1,194.0,31,0.0,163.0
 20241028,Head,Max,MaxHead,29.0,1,163.0,29,0.0,134.0
 20241104,Head,Max,MaxHead,45.0,1,134.0,45,0.0,89.0
+20241118,Head,Max,MaxHead,50.0,1,89.0,50,0.0,39.0
+20241125,Head,Max,MaxHead,47.0,1,39.0,47,0.0,-8.0
+20241202,Head,Max,MaxHead,55.0,1,-8.0,55,0.0,-63.0

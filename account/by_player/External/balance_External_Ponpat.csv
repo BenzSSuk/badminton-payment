@@ -20,3 +20,6 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20240916,External,Ponpat,PonpatExternal,29,1,142.0,29,0,113.0
 20240930,External,Ponpat,PonpatExternal,46,1,113.0,46,0,67.0
 20241021,External,Ponpat,PonpatExternal,31,1,67.0,31,0,36.0
+20241118,External,Ponpat,PonpatExternal,50,1,36.0,50,0,-14.0
+20241202,External,Ponpat,PonpatExternal,55,1,-14.0,55,0,-69.0
+20241206,External,Ponpat,PonpatExternal,25,1,-69.0,25,0,-94.0
