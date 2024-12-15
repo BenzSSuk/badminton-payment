@@ -63,29 +63,19 @@ mode_config = mode_config_all[MODE]
 if mode_config['sync_cloud']:
     # ---------- Payment ---------- #
     # sync player payment from google from (response in google sheet)
-    subfolder = 'payment'
-    filename = 'sync_payment_ggform.py'
+    subfolder = 'ggsheet'
+    filename = 'sync_ggsheet.py'
     print(filename)
     PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
     sp_obj = subprocess.run(['python', PATH_SCRIPT])
     sp_obj.check_returncode()
     time.sleep(t_offset_script)
+
 
 if mode_config['process_file_cloud']:
     # update balance with payment from google form
     subfolder = 'payment'
     filename = 'update_balance_from_payment.py'
-    print(filename)
-    PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
-    sp_obj = subprocess.run(['python', PATH_SCRIPT])
-    sp_obj.check_returncode()
-    time.sleep(t_offset_script)
-
-if mode_config['sync_cloud']:
-    # ---------- Check Player ---------- #
-    # sync player&shuttlecock record from google sheet
-    subfolder = 'record'
-    filename = 'sync_record_ggsheet.py'
     print(filename)
     PATH_SCRIPT = pjoin(FOLDER_SRC, subfolder, filename)
     sp_obj = subprocess.run(['python', PATH_SCRIPT])
@@ -113,3 +103,21 @@ if mode_config['update_balance']:
     sp_obj.check_returncode()
     print("#----- Finish Main -----#")
     time.sleep(t_offset_script)
+
+
+'''
+    step
+    1. sync log from google sheet
+        ggsheet/sync_ggsheet.py
+    2. split raw_log file to one day per file
+        ggsheet/split_log_day.py
+    3. update account payment from raw_log_payment.csv
+        account/update_account_from_payment.py
+    4. update account from billing
+    4.1 convert log_day.csv to log_day.excel (contain list player and cost of that day)
+        ggsheet/gen_billing_per_day.py
+    4.2 update account from log_day.excel
+        account/update_account_from_billing.py
+    5. get summary current balance
+        account/gen_billing_
+'''
