@@ -105,6 +105,14 @@ for i, path_logday_player in enumerate(list_dir):
         print(f'file logday {filename_shuttle} not found !')
 
     filename_excel = f'{log_date}_listplayer.xlsx'
-    df_listplayer.to_excel(pjoin(FOLDER_RECORD_EXCEL, filename_excel), index=False)
+    path_file_excel = pjoin(FOLDER_RECORD_EXCEL, filename_excel)
+    df_listplayer.to_excel(path_file_excel, index=False)
+
+    # move log_day.csv to checked
+    path_log_day_checked = pjoin(FOLDER_DATA, 'checked', 'split_day', 'player', year, filename)
+    os.rename(path_logday_player, path_log_day_checked)
+
+    path_log_shuttlecock_checked = pjoin(FOLDER_DATA, 'checked', 'split_day', 'shuttlecock', year, filename_shuttle)
+    os.rename(PATH_SHUTTLECOCK, path_log_shuttlecock_checked)
 
 print(f"[Done] {sys.argv[0]}")
