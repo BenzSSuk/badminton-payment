@@ -24,7 +24,7 @@ FOLDER_PROJECT = checkSysPathAndAppend(folderFile, 2)
 FOLDER_DATA = pjoin(FOLDER_PROJECT, 'data')
 FOLDER_SPLITDAY = pjoin(FOLDER_DATA, 'split_day')
 
-year = '2024'
+year = '2025'
 
 FOLDER_RECORD_EXCEL = pjoin(FOLDER_SPLITDAY, 'player_excel', year)
 if not os.path.exists(FOLDER_RECORD_EXCEL):
@@ -109,10 +109,14 @@ for i, path_logday_player in enumerate(list_dir):
     df_listplayer.to_excel(path_file_excel, index=False)
 
     # move log_day.csv to checked
-    path_log_day_checked = pjoin(FOLDER_DATA, 'checked', 'split_day', 'player', year, filename)
+    folder_new = pjoin(FOLDER_DATA, 'checked', 'split_day', 'player', year)
+    wedolib.isFolderExist(folder_new)
+    path_log_day_checked = pjoin(folder_new, filename)
     os.rename(path_logday_player, path_log_day_checked)
 
-    path_log_shuttlecock_checked = pjoin(FOLDER_DATA, 'checked', 'split_day', 'shuttlecock', year, filename_shuttle)
+    folder_new = pjoin(FOLDER_DATA, 'checked', 'split_day', 'shuttlecock', year)
+    wedolib.isFolderExist(folder_new)
+    path_log_shuttlecock_checked = pjoin(folder_new, filename_shuttle)
     os.rename(PATH_SHUTTLECOCK, path_log_shuttlecock_checked)
 
 print(f"[Done] {sys.argv[0]}")

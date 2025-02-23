@@ -70,3 +70,7 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20241111,IoT,Benz,BenzIoT,50.0,1,99940,50,0,99890
 20241118,IoT,Benz,BenzIoT,50.0,1,99890,50,0,99840
 20241206,IoT,Benz,BenzIoT,25.0,1,99840,25,0,99815
+20250113,IoT,Benz,BenzIoT,75.0,1,99815,75,0,99740
+20250120,IoT,Benz,BenzIoT,53.0,1,99740,53,0,99687
+20250127,IoT,Benz,BenzIoT,114.0,1,99687,114,0,99573
+20250210,IoT,Benz,BenzIoT,85.0,1,99573,85,0,99488

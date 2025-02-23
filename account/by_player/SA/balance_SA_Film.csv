@@ -81,3 +81,7 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20241213,SA,Film,FilmSA,25.0,1,-896.0,25,0.0,-921.0
 "11/11/2024, 17:53:21",SA,Film,FilmSA,0.0,0,-921.0,0,90.0,-831.0
 "6/1/2025, 8:43:10",SA,Film,FilmSA,0.0,0,-831.0,0,2000.0,1169.0
+20241223,SA,Film,FilmSA,52.0,1,1169.0,52,0.0,1117.0
+20250106,SA,Film,FilmSA,61.0,1,1117.0,61,0.0,1056.0
+20250207,SA,Film,FilmSA,102.0,1,1056.0,102,0.0,954.0
+20250210,SA,Film,FilmSA,85.0,1,954.0,85,0.0,869.0

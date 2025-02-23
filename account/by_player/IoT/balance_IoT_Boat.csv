@@ -81,3 +81,7 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20241104,IoT,Boat,BoatIoT,45.0,1,29.0,45,0.0,-16.0
 20241125,IoT,Boat,BoatIoT,47.0,1,-16.0,47,0.0,-63.0
 20241202,IoT,Boat,BoatIoT,55.0,1,-63.0,55,0.0,-118.0
+20250106,IoT,Boat,BoatIoT,61.0,1,-118.0,61,0.0,-179.0
+20250113,IoT,Boat,BoatIoT,75.0,1,-179.0,75,0.0,-254.0
+20250120,IoT,Boat,BoatIoT,53.0,1,-254.0,53,0.0,-307.0
+20250127,IoT,Boat,BoatIoT,114.0,1,-307.0,114,0.0,-421.0

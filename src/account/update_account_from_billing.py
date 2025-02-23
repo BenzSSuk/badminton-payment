@@ -26,7 +26,7 @@ FOLDER_SPLITDAY = pjoin(FOLDER_DATA, 'split_day')
 
 import lib.DataProcessing as wedolib
 
-year = '2024'
+year = '2025'
 # update: update from current 
 # rewrite: re write histroty from the first file 
 MODE = "update" #

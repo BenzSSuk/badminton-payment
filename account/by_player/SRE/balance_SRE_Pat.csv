@@ -30,3 +30,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20241213,SRE,Pat,PatSRE,25,1,-424.0,25,0,-449.0
 20241213,SRE,Pat,PatSRE,25,1,-449.0,25,0,-474.0
 "15/12/2024, 22:40:33",SRE,Pat,PatSRE,0,0,-474.0,0,474,0.0
+20250113,SRE,Pat,PatSRE,75,1,0.0,75,0,-75.0
+20250113,SRE,Pat,PatSRE,75,1,-75.0,75,0,-150.0
