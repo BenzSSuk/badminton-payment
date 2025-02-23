@@ -103,3 +103,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20241125,SDE,Ae,AeSDE,47.0,1,-184.0,47,0.0,-231.0
 20241213,SDE,Ae,AeSDE,25.0,1,-231.0,25,0.0,-256.0
 20241213,SDE,Ae,AeSDE,25.0,1,-256.0,25,0.0,-281.0
+"15/12/2024, 23:56:13",SDE,Ae,AeSDE,0.0,0,-281.0,0,281.0,0.0

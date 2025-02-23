@@ -77,3 +77,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20241118,IoT,Kuang,KuangIoT,50.0,1,123.0,50,0,73.0
 20241125,IoT,Kuang,KuangIoT,47.0,1,73.0,47,0,26.0
 20241202,IoT,Kuang,KuangIoT,55.0,1,26.0,55,0,-29.0
+"16/12/2024, 12:57:18",IoT,Kuang,KuangIoT,0.0,0,-29.0,0,500,471.0
