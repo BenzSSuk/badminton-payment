@@ -1,6 +1,8 @@
 /image_record 
 .idea
 
+data/billing
+
 *.pyc
 config/credentials.json
 config/token.json

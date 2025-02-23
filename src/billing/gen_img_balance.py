@@ -26,12 +26,14 @@ FOLDER_IMG_RECORD_LOCAL = os.path.join(FOLDER_PROJECT, 'data', 'billing')
 
 import lib.DataProcessing as mylib
 
+year = '2025'
+
 # load daily player checklist
 if len(sys.argv) > 1:
     lasted_date = sys.argv[1]
 
 else:
-    folder_player_checked = os.path.join(FOLDER_PROJECT, 'data', 'checked', 'player_excel', '2024')
+    folder_player_checked = os.path.join(FOLDER_PROJECT, 'data', 'checked', 'player_excel', year)
     list_dir, list_folder, list_file = mylib.findFile(folder_player_checked, '*.xlsx', 0)
     list_dir.sort()
     list_folder.sort()
