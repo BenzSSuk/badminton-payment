@@ -6,6 +6,7 @@ config/credentials.json
 config/token.json
 config/credentials.json
 config/token.json
+config/admin01.json
 
 .Rproj.user
 .RData
