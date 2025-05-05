@@ -69,3 +69,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 "16/12/2024, 12:54:45",Head,Max,MaxHead,0.0,0,-63.0,0,600.0,537.0
 20250106,Head,Max,MaxHead,61.0,1,537.0,61,0.0,476.0
 20250113,Head,Max,MaxHead,75.0,1,476.0,75,0.0,401.0
+20250317,Head,Max,MaxHead,41.0,1,401.0,41,0.0,360.0

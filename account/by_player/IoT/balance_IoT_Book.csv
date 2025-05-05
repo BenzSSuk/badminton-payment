@@ -46,3 +46,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 "14/6/2024, 10:32:29",IoT,Book,BookIoT,0.0,0,-145.0,0,145.0,0.0
 20241021,IoT,Book,BookIoT,31.0,1,0.0,31,0.0,-31.0
 20241028,IoT,Book,BookIoT,29.0,1,-31.0,29,0.0,-60.0
+"23/2/2025, 21:19:01",IoT,Book,BookIoT,0.0,0,-60.0,0,60.0,0.0
