@@ -109,11 +109,11 @@ if n_file > 0:
             filename_balance = f'balance_{player_team}_{player_name}.csv'
             folder_balance = os.path.join(FOLDER_PROJECT, 'account', 'by_player', player_team)
             path_lasted_balance = os.path.join(folder_balance, filename_balance)
-            dfBalancePlayer = pd.read_csv(path_lasted_balance)
 
             if os.path.exists(path_lasted_balance):
                 # update balance
                 # balance_prev = dfBalancePlayer.loc[player_code, 'balance']
+                dfBalancePlayer = pd.read_csv(path_lasted_balance)
                 balance_prev = int(dfBalancePlayer['balance'].values[-1])
                 balance_current = balance_prev - player_bill + player_pay
                 dfBalancePlayer.loc[player_code, 'balance'] = balance_current
@@ -123,10 +123,10 @@ if n_file > 0:
                 balance_prev = 0
                 balance_current = balance_prev - player_bill + player_pay
 
-                dictNewPlayer['team'].append(player_team)
-                dictNewPlayer['player_name'].append(player_name)
-                dictNewPlayer['player_code'].append(player_code)
-                dictNewPlayer['balance'].append(balance_current)
+                # dictNewPlayer['team'].append(player_team)
+                # dictNewPlayer['player_name'].append(player_name)
+                # dictNewPlayer['player_code'].append(player_code)
+                # dictNewPlayer['balance'].append(balance_current)
 
             # update player history
             filename_player_balance = f'balance_{player_team}_{player_name}.csv'
@@ -160,9 +160,9 @@ if n_file > 0:
                 dfBalancePlayerHistNew.to_csv(PATH_ACCOUNT_PLAYER, index=False)
     
         # add new player
-        dfNewPlayer = pd.DataFrame(dictNewPlayer)
+        # dfNewPlayer = pd.DataFrame(dictNewPlayer)
         # dfBalancePlayerWrite = dfBalancePlayer.append(dfNewPlayer, ignore_index=True)
-        dfBalancePlayerWrite = pd.concat([dfBalancePlayer, dfNewPlayer], ignore_index=True)
+        # dfBalancePlayerWrite = pd.concat([dfBalancePlayer, dfNewPlayer], ignore_index=True)
 
         # write balance date
         # filename_balance = f'{date_log}_wedo_badminton_balance.csv'
