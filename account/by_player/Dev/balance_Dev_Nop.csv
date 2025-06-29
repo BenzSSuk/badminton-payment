@@ -55,3 +55,5 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20250127,Dev,Nop,NopDev,114.0,1,-6.0,114,0.0,-120.0
 "24/2/2025, 8:33:22",Dev,Nop,NopDev,0.0,0,-120.0,0,500.0,380.0
 20250317,Dev,Nop,NopDev,41.0,1,380.0,41,0.0,339.0
+20250609,Dev,Nop,NopDev,82.0,1,339.0,82,0.0,257.0
+20250623,Dev,Nop,NopDev,68.0,1,257.0,68,0.0,189.0

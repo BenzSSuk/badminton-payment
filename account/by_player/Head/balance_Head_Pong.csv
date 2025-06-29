@@ -75,3 +75,9 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20250317,Head,Pong,PongHead,41.0,1,-328.0,41,0.0,-369.0
 20250324,Head,Pong,PongHead,68.0,1,-369.0,68,0.0,-437.0
 20250421,Head,Pong,PongHead,81.0,1,-437.0,81,0.0,-518.0
+"5/5/2025, 18:55:09",Head,Pong,PongHead,0.0,0,-518.0,0,1000.0,482.0
+20250519,Head,Pong,PongHead,49.0,1,482.0,49,0.0,433.0
+20250526,Head,Pong,PongHead,144.0,1,433.0,144,0.0,289.0
+20250609,Head,Pong,PongHead,82.0,1,289.0,82,0.0,207.0
+20250616,Head,Pong,PongHead,117.0,1,207.0,117,0.0,90.0
+20250623,Head,Pong,PongHead,68.0,1,90.0,68,0.0,22.0
