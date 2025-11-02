@@ -89,3 +89,18 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20250609,IoT,Kuang,KuangIoT,82.0,1,-212.0,82,0,-294.0
 20250616,IoT,Kuang,KuangIoT,117.0,1,-294.0,117,0,-411.0
 20250623,IoT,Kuang,KuangIoT,68.0,1,-411.0,68,0,-479.0
+"29/6/2025, 22:13:48",IoT,Kuang,KuangIoT,0.0,0,-479.0,0,1500,1021.0
+20250630,IoT,Kuang,KuangIoT,113.0,1,1021.0,113,0,908.0
+20250707,IoT,Kuang,KuangIoT,48.0,1,908.0,48,0,860.0
+20250714,IoT,Kuang,KuangIoT,50.0,1,860.0,50,0,810.0
+20250721,IoT,Kuang,KuangIoT,68.0,1,810.0,68,0,742.0
+20250804,IoT,Kuang,KuangIoT,125.0,1,742.0,125,0,617.0
+20250818,IoT,Kuang,KuangIoT,91.0,1,617.0,91,0,526.0
+20250825,IoT,Kuang,KuangIoT,80.0,1,526.0,80,0,446.0
+20250901,IoT,Kuang,KuangIoT,103.0,1,446.0,103,0,343.0
+20250908,IoT,Kuang,KuangIoT,81.0,1,343.0,81,0,262.0
+20250915,IoT,Kuang,KuangIoT,68.0,1,262.0,68,0,194.0
+20250929,IoT,Kuang,KuangIoT,85.0,1,194.0,85,0,109.0
+20251006,IoT,Kuang,KuangIoT,114.0,1,109.0,114,0,-5.0
+20251020,IoT,Kuang,KuangIoT,102.0,1,-5.0,102,0,-107.0
+20251027,IoT,Kuang,KuangIoT,93.0,1,-107.0,93,0,-200.0

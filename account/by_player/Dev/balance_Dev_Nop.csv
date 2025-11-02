@@ -57,3 +57,10 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20250317,Dev,Nop,NopDev,41.0,1,380.0,41,0.0,339.0
 20250609,Dev,Nop,NopDev,82.0,1,339.0,82,0.0,257.0
 20250623,Dev,Nop,NopDev,68.0,1,257.0,68,0.0,189.0
+20250707,Dev,Nop,NopDev,48.0,1,189.0,48,0.0,141.0
+20250714,Dev,Nop,NopDev,50.0,1,141.0,50,0.0,91.0
+20250721,Dev,Nop,NopDev,68.0,1,91.0,68,0.0,23.0
+20250818,Dev,Nop,NopDev,91.0,1,23.0,91,0.0,-68.0
+20250901,Dev,Nop,NopDev,103.0,1,-68.0,103,0.0,-171.0
+20250915,Dev,Nop,NopDev,68.0,1,-171.0,68,0.0,-239.0
+20251027,Dev,Nop,NopDev,93.0,1,-239.0,93,0.0,-332.0

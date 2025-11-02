@@ -30,12 +30,13 @@ folder_acc_player = pjoin(FOLDER_ACCOUNT, 'by_player')
 
 list_dir, list_folder, list_filename = mylib.findFile(folder_acc_player, '*.csv', -1)
 
-n_file = len(list_filename)
+n_file = len(list_dir)
 
 dict_lasted_balance = {}
 for i in range(n_file):
     path_file = list_dir[i]
-    filename = list_filename[i]
+    # filename = list_filename[i]
+    folder_file, filename = os.path.split(path_file)
 
     # get name and team
     split_buff = filename.split('_')

@@ -88,3 +88,4 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20250310,IoT,Boat,BoatIoT,106.0,1,-421.0,106,0.0,-527.0
 20250317,IoT,Boat,BoatIoT,41.0,1,-527.0,41,0.0,-568.0
 20250519,IoT,Boat,BoatIoT,49.0,1,-568.0,49,0.0,-617.0
+"30/6/2025, 5:48:02",IoT,Boat,BoatIoT,0.0,0,-617.0,0,617.0,0.0

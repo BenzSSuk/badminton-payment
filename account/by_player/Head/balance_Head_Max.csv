@@ -71,3 +71,14 @@ date,team,player_name,player_code,price_per_player,n_player_come,balance_prev,bi
 20250113,Head,Max,MaxHead,75.0,1,476.0,75,0.0,401.0
 20250317,Head,Max,MaxHead,41.0,1,401.0,41,0.0,360.0
 20250623,Head,Max,MaxHead,68.0,1,360.0,68,0.0,292.0
+20250707,Head,Max,MaxHead,48.0,1,292.0,48,0.0,244.0
+20250714,Head,Max,MaxHead,50.0,1,244.0,50,0.0,194.0
+20250804,Head,Max,MaxHead,125.0,1,194.0,125,0.0,69.0
+20250818,Head,Max,MaxHead,91.0,1,69.0,91,0.0,-22.0
+20250825,Head,Max,MaxHead,80.0,1,-22.0,80,0.0,-102.0
+20250901,Head,Max,MaxHead,103.0,1,-102.0,103,0.0,-205.0
+20250908,Head,Max,MaxHead,81.0,1,-205.0,81,0.0,-286.0
+20250915,Head,Max,MaxHead,68.0,1,-286.0,68,0.0,-354.0
+20250922,Head,Max,MaxHead,78.0,1,-354.0,78,0.0,-432.0
+20251020,Head,Max,MaxHead,102.0,1,-432.0,102,0.0,-534.0
+20251027,Head,Max,MaxHead,93.0,1,-534.0,93,0.0,-627.0
